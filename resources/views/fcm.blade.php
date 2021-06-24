@@ -210,6 +210,7 @@
       resetUI();  
       getNotification();          
     @else
+      //requestPermission();
       deleteToken();
     @endauth
   </script>

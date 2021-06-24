@@ -26,8 +26,8 @@
 <body class="layout-3">
   <div id="app">
     <div class="main-wrapper container">
-      <div class="navbar-bg"></div>
-      <nav class="navbar navbar-expand-lg main-navbar">
+      <div class="navbar-bg bg-primary"></div>
+      <nav class="navbar navbar-expand-lg main-navbar bg-primary">
         <a class="navbar-brand sidebar-gone-hide" href="{{ url('') }}">
           <img src="{{ asset('img/bakawan-logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
