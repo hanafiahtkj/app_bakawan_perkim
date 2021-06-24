@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>@isset($title){{ $title }}@endisset</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="manifest" href="{{ asset('manifest.json') }}">
+  
+  <!-- Extra CSS -->
+  @isset($extra_css)
+    {{ $extra_css }}
+  @endisset
+
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/components.css') }}">
+
+  @laravelPWA
+  <style>
+    .masthead {
+      padding-top: 4.5rem;
+    }
+    .main-footer {
+      border-top: none;
+    }
+    h1 {
+      font-weight: 600;
+    }
+    .bg-primary {
+      background-color: #3f51b5 !important;
+    }
+    .gallery.gallery-md .gallery-item {
+      width: 200px;
+      height: 200px;
+    }
+    .gallery.gallery-md .gallery-more div {
+      line-height: 200px;
+    }
+    body.bg-image {
+      background-image: url(img/web.png);
+      background-position: left;
+    }
+    body.bg-image2 {
+      background-image: url(img/web2.png);
+      background-position: left;
+    }
+  </style>
+  @if (!request()->routeIs('home'))
+  <style>
+    .main-content {
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 110px!important;
+    }
+  </style>
+  @endif
+</head>
+
+<body class="layout-3 {{ (request()->routeIs('home')) ? 'bg-primary bg-image' : '' }}">
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="container">
+      <!-- <div class="navbar-bg"></div> -->
+      <nav class="navbar navbar-expand-lg main-navbar bg-primary">
+      <div class="container">
+        <a class="navbar-brand sidebar-gone-hide" href="{{ url('') }}">
+          <img src="{{ asset('img/bakawan-logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+        </a>
+        <a href="{{ url('') }}" class="navbar-brand sidebar-gone-hide">BAKAWAN-RTLH</a>
+        <div class="navbar-nav">
+          <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
+        </div>
+        <div class="nav-collapse d-none d-md-block">
+          <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
+            <i class="fas fa-ellipsis-v"></i>
+          </a>
+          <ul class="navbar-nav">
+            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
+            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Gallery</a></li>
+            <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li>
+            <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                @foreach ($posts as $post)
+                <a class="dropdown-item" href="{{ url('post') }}/{{ $post->id }}">{{ $post->title }}</a>
+                @endforeach
+              </div>
+            </li>
+            <!-- <li class="nav-item"><a href="#" class="nav-link">About</a></li> -->
+          </ul>
+        </div>
+        <form class="form-inline ml-auto">
+          <!-- <ul class="navbar-nav">
+            <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i class="fas fa-search"></i></a></li>
+          </ul> -->
+          <!-- <div class="search-element">
+            <input class="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250">
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+            <div class="search-backdrop"></div>
+          </div> -->
+        </form>
+        <ul class="navbar-nav navbar-right">
+          @auth
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+            <img alt="image" src="{{ asset((Auth::User()->foto != null) ? Auth::User()->foto : 'img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+            <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::User()->name }}</div></a>
+            <div class="dropdown-menu dropdown-menu-right">
+              @role('Admin')
+              <a href="{{ url('/admin/profile') }}" class="dropdown-item has-icon">
+                <i class="far fa-user"></i> Profile
+              </a>
+              <a href="{{ route('admin.dashboard') }}" class="dropdown-item has-icon"><i class="fas fa-home"></i> Dashboad</a>
+              @else
+              <a href="{{ url('/profile') }}" class="dropdown-item has-icon">
+                <i class="far fa-user"></i> Profile
+              </a>
+              <a href="{{ route('dashboard') }}" class="dropdown-item has-icon"><i class="fas fa-home"></i> Dashboad</a>
+              @endrole
+              <div class="dropdown-divider"></div>
+              <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <a href="route('logout')" class="dropdown-item has-icon text-danger" 
+                    onclick="event.preventDefault(); this.closest('form').submit();">
+                    <i class="fas fa-sign-out-alt"></i> {{ __('Log out') }}
+                </a>
+              </form>
+            </div>
+          </li>
+          @endauth
+          </li>
+        </ul>
+      </div>
+      </nav>
+
+      <nav class="navbar navbar-secondary navbar-expand-lg d-none">
+        <div class="container">
+          <ul class="navbar-nav">
+            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
+            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Gallery</a></li>
+            <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li>
+            <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                @foreach ($posts as $post)
+                <a class="dropdown-item" href="{{ url('post') }}/{{ $post->id }}">{{ $post->title }}</a>
+                @endforeach
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+     <!-- Main Content -->
+     {{ $slot }}
+
+     <footer class="main-footer p-3 text-white" style="
+          /* background-color: #8492f9; */
+          border-radius: 10px;
+      ">
+        <div class="footer-left">
+          Copyright &copy; BAKAWAN-RTLH 2021
+          <!-- <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a> -->
+        </div>
+        <div class="footer-right">
+          1.0.0
+        </div>
+      </footer>
+    </div>
+    </div>
+  </div>
+
+  <!-- General JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="{{ asset('js/stisla.js') }}"></script>
+
+  <!-- FCM JS -->
+  @include('fcm')
+
+  <!-- Extra Js -->
+  @isset($extra_js)
+    {{ $extra_js }}
+  @endisset
+
+  <!-- Template JS File -->
+  <script src="{{ asset('js/scripts.js') }}"></script>
+  <script src="{{ asset('js/custom.js') }}"></script>
+</body>
+</html>

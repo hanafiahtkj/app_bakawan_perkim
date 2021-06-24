@@ -1,0 +1,39 @@
+/**
+ *
+ * You can write your CSS code here, DO NOT touch the default JavaScript file
+ * because it will make it harder for you to update.
+ * 
+ */
+
+/*# sourceMappingURL=custom.css.map */
+
+div.required .col-form-label:not(span):before, td.required:before {
+	content: '* ';
+	color: #F00;
+	font-weight: bold;
+}
+
+.legend {
+	text-align: left;
+	line-height: 18px;
+	color: #555;
+  }
+.legend i {
+width: 18px;
+height: 18px;
+padding-left: 4px;
+float: left;
+margin-right: 8px;
+opacity: 0.7;
+}
+.info {
+padding: 6px 8px;
+font: 14px/16px Arial, Helvetica, sans-serif;
+background: rgba(255,255,255,0.8);
+box-shadow: 0 0 15px rgb(0 0 0 / 20%);
+border-radius: 5px;
+}
+.info p {
+line-height: 20px;
+margin-bottom: 0rem;
+}
