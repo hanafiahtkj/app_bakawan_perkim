@@ -349,6 +349,8 @@
           }
         });
       })
+
+      $('#button-filter').trigger( "click" );
       
     });
     </script>

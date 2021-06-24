@@ -37,7 +37,7 @@
             </ul>
             </li>
             <li class="nav-item dropdown {{ (request()->is('admin/lainnya*')) ? 'active' : '' }}">
-            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-table"></i> <span>Lainnya</span></a>
+            <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-share"></i> <span>Lainnya</span></a>
             <ul class="dropdown-menu">
                 <li class="{{ (request()->routeIs('posts.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('posts.index') }}">Pengumuman</a></li>
                 <li class="{{ (request()->routeIs('gallery.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('gallery.index') }}">Gallery</a></li>
