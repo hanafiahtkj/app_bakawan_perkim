@@ -17,26 +17,30 @@ div.required .col-form-label:not(span):before, td.required:before {
 	text-align: left;
 	line-height: 18px;
 	color: #555;
-  }
+}
+
 .legend i {
-width: 18px;
-height: 18px;
-padding-left: 4px;
-float: left;
-margin-right: 8px;
-opacity: 0.7;
+	width: 18px;
+	height: 18px;
+	padding-left: 4px;
+	float: left;
+	margin-right: 8px;
+	opacity: 0.7;
 }
 .info {
-padding: 6px 8px;
-font: 14px/16px Arial, Helvetica, sans-serif;
-background: rgba(255,255,255,0.8);
-box-shadow: 0 0 15px rgb(0 0 0 / 20%);
-border-radius: 5px;
+	padding: 6px 8px;
+	font: 14px/16px Arial, Helvetica, sans-serif;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgb(0 0 0 / 20%);
+	border-radius: 5px;
 }
 .info p {
-line-height: 20px;
-margin-bottom: 0rem;
+	line-height: 20px;
+	margin-bottom: 0rem;
 }
 .bg-primary {
 	background-color: #3f51b5 !important;
-  }
+}
+.main-sidebar .sidebar-menu li a {
+    color: #555555;
+}
