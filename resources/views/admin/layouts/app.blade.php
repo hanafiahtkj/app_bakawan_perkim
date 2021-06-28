@@ -54,7 +54,7 @@
   <script src="{{ asset('js/sticky-kit.min.js') }}"></script>
 
   <!-- FCM JS -->
-  @include('fcm')
+  <!-- @include('fcm') -->
 
   <!-- Extra Js -->
   @isset($extra_js)
