@@ -1,9 +1,9 @@
 <div class="navbar-bg bg-primary"></div>
 <nav class="navbar navbar-expand-lg main-navbar bg-primary">
-<a class="navbar-brand sidebar-gone-hide" href="{{ url('') }}">
-    <img src="{{ asset('img/bakawan-logo.png') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+<a href="{{ url('') }}" class="navbar-brand d-none d-md-none">BAKAWAN-RTLH</a>
+<a class="navbar-brand d-none d-md-block" href="{{ url('') }}">
+    <img src="{{ asset('img/bakawan-logo.png') }}" width="35" height="35" class="d-inline-block align-top" alt="">
 </a>
-<a href="{{ url('') }}" class="navbar-brand sidebar-gone-hide">BAKAWAN-RTLH</a>
 <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
 <div class="nav-collapse">
     <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
