@@ -26,7 +26,7 @@ class AdminGisController extends Controller
         $rtlh = DB::table('rtlh')
             ->join('rtlh_kondisi_rumah', 'rtlh_kondisi_rumah.id_rtlh', '=', 'rtlh.id')
             ->select('rtlh.*', 
-                'rtlh_kondisi_rumah.koordinat_rumah',
+                'rtlh_kondisi_rumah.koordinat_rumah'
             )
             ->where('rtlh.stts_realisasi', null)
             ->get();
@@ -66,7 +66,7 @@ class AdminGisController extends Controller
         $rtlh = DB::table('rtlh')
             ->join('rtlh_kondisi_rumah', 'rtlh_kondisi_rumah.id_rtlh', '=', 'rtlh.id')
             ->select('rtlh.*', 
-                'rtlh_kondisi_rumah.koordinat_rumah',
+                'rtlh_kondisi_rumah.koordinat_rumah'
             )
             ->where('rtlh.stts_realisasi', 1)
             ->get();
