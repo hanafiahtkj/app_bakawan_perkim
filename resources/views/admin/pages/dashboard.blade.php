@@ -176,7 +176,7 @@
   </div>
 
   <x-slot name="extra_js">
-    <script src="{{ asset('plugins/chartjs/Chart.min.js') }}"></script>
+    <script src="{{ asset('plugins/chartjs/chart.min.js') }}"></script>
     <script>
 
     function getAdminNotification() {
