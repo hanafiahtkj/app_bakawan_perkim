@@ -136,7 +136,7 @@ class AdminPostController extends Controller
             ->join('users', 'users.id', '=', 'posts.id_user')
             ->select('posts.*', 
                 'users.name as author',
-                DB::raw("DATE_FORMAT(posts.created_at, '%d-%m-%Y') as tanggal"),
+                DB::raw("DATE_FORMAT(posts.created_at, '%d-%m-%Y') as tanggal")
             );
         
         return DataTables::of($query)->toJson();
