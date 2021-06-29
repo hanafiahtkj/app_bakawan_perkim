@@ -461,7 +461,7 @@ class RtlhController extends Controller
         $rtlh = DB::table('rtlh')
             ->select(
                 'rtlh.*', 
-                DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d/%m/%Y') as tgl_lahir2"), 
+                DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d/%m/%Y') as tgl_lahir2")
             )
             ->where('rtlh.id', $id)->first();
 
@@ -914,7 +914,7 @@ class RtlhController extends Controller
                 'kel.name as kelurahan',
                 'kel.id as kode_wilayah',
                 'setup_bukti.list_name as bukti_kepemilikan',
-                'stts_verif.name as ket_verif',
+                'stts_verif.name as ket_verif'
             );
         
         if ($id_kecamatan = $request->get('id_kecamatan')) {
