@@ -309,7 +309,7 @@ class AdminRtlhController extends Controller
         $rtlh = DB::table('rtlh')
             ->select(
                 'rtlh.*', 
-                DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d/%m/%Y') as tgl_lahir2"), 
+                DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d/%m/%Y') as tgl_lahir2")
             )
             ->where('rtlh.id', $id)->first();
 
