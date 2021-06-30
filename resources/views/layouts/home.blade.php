@@ -62,6 +62,9 @@
     .navbar .dropdown-menu {
       width: auto;
     }
+    .h1, h1 {
+      font-size: 2.2rem;
+    }
   </style>
   @if (!request()->routeIs('home'))
   <style>
