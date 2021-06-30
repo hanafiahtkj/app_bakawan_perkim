@@ -46,4 +46,7 @@ div.required .col-form-label:not(span):before, td.required:before {
 }
 .navbar .dropdown-menu.max-width {
 	width: auto;
-  }
+}
+.fixed-bottom {
+	position: fixed !important;
+}

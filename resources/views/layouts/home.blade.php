@@ -83,6 +83,9 @@
       padding-left: 20px;
       overflow: auto;
     }
+    .fixed-bottom {
+      position: fixed !important;
+    }
   </style>
   @if (!request()->routeIs('home'))
   <style>
@@ -195,13 +198,12 @@
      <!-- Main Content -->
      {{ $slot }}
 
-     <footer class="main-footer p-3 text-white" style="
+     <footer class="main-footer p-3 text-white d-none d-md-inline-block" style="
           /* background-color: #8492f9; */
           border-radius: 10px;
       ">
         <div class="footer-left">
           Copyright &copy; BAKAWAN-RTLH 2021
-          <!-- <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a> -->
         </div>
         <div class="footer-right">
           1.0.0
@@ -210,6 +212,17 @@
     </div>
     </div>
   </div>
+
+  <nav class="navbar fixed-bottom navbar-light bg-primary text-white d-md-none">
+    <div class="container">
+      <div class="footer-left">
+          Copyright &copy; BAKAWAN-RTLH 2021
+        </div>
+        <div class="footer-right">
+          1.0.0
+        </div>
+    </div>
+  </nav>
 
   <!-- General JS Scripts -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
