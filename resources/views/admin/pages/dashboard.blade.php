@@ -1,12 +1,12 @@
 <x-admin-layout>
   
-  <x-slot name="title">Dashboard</x-slot>
+  <x-slot name="title">Dasbor</x-slot>
 
   <!-- Main Content -->
   <div class="main-content">
     <section class="section">
       <div class="section-header">
-        <h1>Dashboard</h1>
+        <h1>Dasbor</h1>
       </div>
       <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -163,7 +163,7 @@
                     </select>
                   </div>
                   <div class="col">
-                    <button type="button" id="button-filter" class="btn btn-primary pull-right "><i class="fa fa-filter"></i> Filter Kriteria</button>
+                    <button type="button" id="button-filter" class="btn btn-primary pull-right "><i class="fa fa-filter"></i> Filter</button>
                   </div>
                 </div>
               

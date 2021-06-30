@@ -186,9 +186,9 @@
               "</td></tr>" + "<tr><th>JUMLAH KELURAHAN</th><td>" + feature.properties.JUMLAH_KEL + 
               "</td></tr>" + "<tr><th>JUMLAH PENDUDUK (JIWA)</th><td>" + feature.properties.JUMLAH_JIWA + 
               "</td></tr>" + "<tr><th>KEPADATAN PENDUDUK (JIWA/KM<sup>2</sup>)</th><td>" + feature.properties.KEPADATAN + 
-              "</td></tr>" + "<tr><th>AKSES AMAN (%)</th><td>" + feature.properties.AKSES_AMAN + 
-              "</td></tr>" + "<tr><th>AKSES DASAR/CUBLUK (%)</th><td>" + feature.properties.AKSES_DASAR + 
-              "</td></tr>" + "<tr><th>TANPA AKSES/ PENGGUNA JAMBAN DI PINGGIR SUNGAI (%)</th><td>" + feature.properties.TANPA_AKSES + 
+              // "</td></tr>" + "<tr><th>AKSES AMAN (%)</th><td>" + feature.properties.AKSES_AMAN + 
+              // "</td></tr>" + "<tr><th>AKSES DASAR/CUBLUK (%)</th><td>" + feature.properties.AKSES_DASAR + 
+              // "</td></tr>" + "<tr><th>TANPA AKSES/ PENGGUNA JAMBAN DI PINGGIR SUNGAI (%)</th><td>" + feature.properties.TANPA_AKSES + 
               "</td></tr>" +  "</td></tr>" + "<table>" ;
 
               layer.on({

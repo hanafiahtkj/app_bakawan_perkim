@@ -62,8 +62,8 @@
                         <label class="control-label" for="input-date-added">Jumlah KK</label>
                         <input type="text" name="jml_kk" value="" id="jml_kk" class="form-control numeric">
                       </div>
-                      <button type="button" id="button-filter" class="btn btn-primary pull-right mr-2"><i class="fa fa-filter"></i> Filter</button>
-                      <button type="button" target="_blank" name="type" value="json" id="button-show" class="btn btn-dark pull-right mr-2" data-toggle="modal" data-target="#form">Show / Hide</button>
+                      <button type="button" id="button-filter" class="btn btn-primary pull-right mr-2 mb-2"><i class="fa fa-filter"></i> Filter</button>
+                      <button type="button" target="_blank" name="type" value="json" id="button-show" class="btn btn-dark pull-right mr-2 mb-2" data-toggle="modal" data-target="#form">Show / Hide</button>
                       <button type="submit" target="_blank" name="type" value="excel" id="button-excel" class="btn btn-success pull-right mr-2"><i class="fa fa-file-excel"></i> Export Excel</button>
                       <button type="submit" target="_blank" name="type" value="json" id="button-json" class="btn btn-success pull-right"><i class="far fa-copy"></i> Export JSON</button>
                     </div>
