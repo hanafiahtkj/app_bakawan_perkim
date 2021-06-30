@@ -15,7 +15,7 @@
         <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Gallery</a></li>
         <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li>
         <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu max-width" aria-labelledby="navbarDropdown">
             @foreach ($posts as $post)
             <a class="dropdown-item" href="{{ url('post') }}/{{ $post->id }}">{{ $post->title }}</a>
             @endforeach

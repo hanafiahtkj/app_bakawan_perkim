@@ -44,6 +44,6 @@ div.required .col-form-label:not(span):before, td.required:before {
 .main-sidebar .sidebar-menu li a {
     color: #555555;
 }
-.navbar .dropdown-menu {
+.navbar .dropdown-menu.max-width {
 	width: auto;
   }
