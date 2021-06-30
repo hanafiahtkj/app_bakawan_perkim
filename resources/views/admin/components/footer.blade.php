@@ -1,6 +1,6 @@
 <footer class="main-footer">
     <div class="footer-left">
-        Copyright &copy; BAKAWAN-RTLH 2021
+        Copyright &copy; Dinas Perumahan dan Kawasan Permukiman Kota Banjarmasin 2021
         <!-- <div class="bullet"></div>  -->
         <!-- Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a> -->
     </div>

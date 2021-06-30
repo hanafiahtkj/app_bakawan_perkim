@@ -18,7 +18,8 @@ class PageController extends Controller
     public function gallery()
     {
         $gallery = GalleryDirectory::get();
-        return view('gallery', compact('gallery'));
+        $video   = GalleryVideo::get();
+        return view('gallery', compact('gallery', 'video'));
     }
 
     public function video()

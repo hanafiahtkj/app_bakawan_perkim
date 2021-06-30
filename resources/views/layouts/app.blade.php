@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="id"> 
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -40,10 +40,10 @@
             <i class="fas fa-ellipsis-v"></i>
           </a>
           <ul class="navbar-nav">
-            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Beranda</a></li>
             <li class="nav-item"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
-            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Gallery</a></li>
-            <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li>
+            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Galeri</a></li>
+            <!-- <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li> -->
             <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
               <div class="dropdown-menu max-width" aria-labelledby="navbarDropdown">
                 @foreach ($posts as $post)
@@ -84,7 +84,7 @@
             <div class="dropdown-menu dropdown-menu-right">
               <!-- <div class="dropdown-title">Logged in 5 min ago</div> -->
               <a href="{{ url('/profile') }}" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
+                <i class="far fa-user"></i> Profil
               </a>
               <div class="dropdown-divider"></div>
               <!-- Authentication -->
@@ -104,7 +104,7 @@
         <div class="container">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a href="{{ url('/dashboard') }}" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
+              <a href="{{ url('/dashboard') }}" class="nav-link"><i class="fas fa-home"></i><span>Dasbor</span></a>
             </li>
             @hasanyrole('TFL|Konsultan')
             <li class="nav-item">
@@ -113,7 +113,7 @@
             @endrole
             @hasanyrole('General|Konsultan')
             <li class="nav-item">
-              <a href="{{ url('/create-rtlh') }}" class="nav-link"><i class="far fa-clone"></i><span>Tambah Rtlh</span></a>
+              <a href="{{ url('/create-rtlh') }}" class="nav-link"><i class="far fa-clone"></i><span>Tambah Data</span></a>
             </li>
             @endrole
           </ul>
@@ -125,7 +125,7 @@
 
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; BAKAWAN-RTLH 2021
+          Copyright &copy; Dinas Perumahan dan Kawasan Permukiman Kota Banjarmasin 2021
           <!-- <div class="bullet"></div>  -->
           <!-- Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a> -->
         </div>

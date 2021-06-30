@@ -45,9 +45,9 @@
                       @if (Route::has('login'))
                         @auth
                           @role('Admin')
-                            <a href="{{ route('admin.dashboard') }}" class="btn btn-warning btn-lg btn-icon icon-left mr-2"><i class="far fa-user"></i> Dashboad</a>
+                            <a href="{{ route('admin.dashboard') }}" class="btn btn-warning btn-lg btn-icon icon-left mr-2"><i class="far fa-user"></i> Dasbor</a>
                           @else
-                            <a href="{{ route('dashboard') }}" class="btn btn-warning btn-lg btn-icon icon-left mr-2"><i class="far fa-user"></i> Dashboad</a>
+                            <a href="{{ route('dashboard') }}" class="btn btn-warning btn-lg btn-icon icon-left mr-2"><i class="far fa-user"></i> Dasbor</a>
                           @endrole
                         @else
                         <a href="{{ route('login') }}" class="btn btn-warning btn-lg icon-left mr-2"><i class="far fa-user"></i> Login</a>

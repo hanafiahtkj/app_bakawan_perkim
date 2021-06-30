@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="id"> 
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -126,10 +126,10 @@
             <i class="fas fa-ellipsis-v"></i>
           </a> -->
           <ul class="navbar-nav">
-            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Beranda</a></li>
             <li class="nav-item"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
-            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Gallery</a></li>
-            <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li>
+            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Galeri</a></li>
+            <!-- <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li> -->
             <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
               <div class="dropdown-menu max-width" aria-labelledby="navbarDropdown">
                 @foreach ($posts as $post)
@@ -158,14 +158,14 @@
             <div class="dropdown-menu dropdown-menu-right">
               @role('Admin')
               <a href="{{ url('/admin/profile') }}" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
+                <i class="far fa-user"></i> Profil
               </a>
-              <a href="{{ route('admin.dashboard') }}" class="dropdown-item has-icon"><i class="fas fa-home"></i> Dashboad</a>
+              <a href="{{ route('admin.dashboard') }}" class="dropdown-item has-icon"><i class="fas fa-home"></i> Dasbor</a>
               @else
               <a href="{{ url('/profile') }}" class="dropdown-item has-icon">
-                <i class="far fa-user"></i> Profile
+                <i class="far fa-user"></i> Profil
               </a>
-              <a href="{{ route('dashboard') }}" class="dropdown-item has-icon"><i class="fas fa-home"></i> Dashboad</a>
+              <a href="{{ route('dashboard') }}" class="dropdown-item has-icon"><i class="fas fa-home"></i> Dasbor</a>
               @endrole
               <div class="dropdown-divider"></div>
               <form method="POST" action="{{ route('logout') }}">
@@ -186,10 +186,10 @@
       <nav class="navbar navbar-secondary navbar-expand-lg d-none">
         <div class="container">
           <ul class="navbar-nav">
-            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Beranda</a></li>
             <li class="nav-item"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
-            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Gallery</a></li>
-            <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li>
+            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Galeri</a></li>
+            <!-- <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li> -->
             <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link has-dropdown" data-toggle="dropdown">Pengumuman</a>
               <ul class="dropdown-menu">
                 @foreach ($posts as $post)
@@ -208,7 +208,7 @@
           border-radius: 10px;
       ">
         <div class="footer-left">
-          Copyright &copy; BAKAWAN-RTLH 2021
+        Copyright &copy; Dinas Perumahan dan Kawasan Permukiman Kota Banjarmasin 2021
         </div>
         <div class="footer-right">
           1.0.0
@@ -220,12 +220,13 @@
 
   <nav class="navbar fixed-bottom navbar-light bg-primary text-white d-md-none">
     <div class="container">
-      <div class="footer-left">
-          Copyright &copy; BAKAWAN-RTLH 2021
+      <div class="text-center">
+          <!-- Copyright &copy; BAKAWAN-RTLH 2021 -->
+          Copyright &copy; Dinas Perumahan dan Kawasan Permukiman Kota Banjarmasin 2021
         </div>
-        <div class="footer-right">
+        <!-- <div class="footer-right">
           1.0.0
-        </div>
+        </div> -->
     </div>
   </nav>
 

@@ -1,6 +1,6 @@
 <x-home-layout>
 
-  <x-slot name="title">Sarat & Ketentuan - Bakawan RTLH</x-slot>
+  <x-slot name="title">Syarat & Ketentuan - Bakawan RTLH</x-slot>
 
   <!-- Main Content -->
   <div class="main-content">
@@ -9,7 +9,7 @@
           <div class="section-header-back">
             <a href="{{ url('') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
           </div>
-          <h1>Sarat & Ketentuan</h1>
+          <h1>Syarat & Ketentuan</h1>
         </div>
 
         <div class="section-body">

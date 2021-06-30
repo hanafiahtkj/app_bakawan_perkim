@@ -1,6 +1,6 @@
 <x-home-layout>
 
-  <x-slot name="title">Gallery - Bakawan RTLH</x-slot>
+  <x-slot name="title">Galeri - Bakawan RTLH</x-slot>
 
   <x-slot name="extra_css">
     <link rel="stylesheet" href="{{ asset('plugins/chocolat/dist/css/chocolat.css') }}">
@@ -13,7 +13,7 @@
           <div class="section-header-back">
             <a href="{{ url('') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
           </div>
-          <h1>Gallery</h1>
+          <h1>Galeri</h1>
         </div>
 
         <div class="section-body">
@@ -21,6 +21,27 @@
           <p class="section-lead">
             On this page you can create a new post and fill in all fields.
           </p> -->    
+
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <!-- <div class="card-header">
+                  <h4>Basic DataTables</h4>
+                </div> -->
+                <div class="card-body">
+                  <div class="row">
+                    @foreach ($video as $gall)
+                    <div class="col-4">
+                      <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="{{ $gall->url }}" allowfullscreen></iframe>
+                      </div>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="row">
             <div class="col-12">

@@ -93,7 +93,7 @@
               Don't have an account? <a href="{{ route('register') }}">Create One</a>
             </div> -->
             <div class="simple-footer text-white">
-              Copyright &copy; BAKAWAN-RTLH 2021
+            Copyright &copy; Dinas Perumahan dan Kawasan Permukiman Kota Banjarmasin 2021
             </div>
           </div>
         </div>

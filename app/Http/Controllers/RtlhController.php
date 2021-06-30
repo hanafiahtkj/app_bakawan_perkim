@@ -266,7 +266,7 @@ class RtlhController extends Controller
         } else if (Auth::user()->hasRole(['TFL'])) {
             $rule_1 = [
                 'nik'            => 'required|unique:rtlh|min:16',
-                'no_kk'          => 'required|min:16',
+                //'no_kk'          => 'required|min:16',
                 'nama_lengkap'   => 'required',
                 'id_kecamatan'   => 'required',
                 'id_kelurahan'   => 'required',

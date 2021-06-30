@@ -2,9 +2,9 @@
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand sidebar-gone-show"><a href="{{ url('') }}">BAKAWAN-RTLH</a></div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
+            <li class="menu-header">Dasbor</li>
             <li class="nav-item {{ (request()->routeIs('admin.dashboard')) ? 'active' : '' }}">
-            <a href="{{ route('admin.dashboard') }}" class="nav-link active"><i class="fas fa-home"></i><span>Dashboard</span></a>
+            <a href="{{ route('admin.dashboard') }}" class="nav-link active"><i class="fas fa-home"></i><span>Dasbor</span></a>
             </li>
             <li class="nav-item {{ (request()->routeIs('admin.gis-rtlh')) ? 'active' : '' }}">
             <a href="{{ route('admin.gis-rtlh') }}" class="nav-link"><i class="fas fa-globe-asia"></i><span>GIS RTLH</span></a>
