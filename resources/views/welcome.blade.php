@@ -23,7 +23,7 @@
               On this page you can create a new post and fill in all fields.
             </p> -->
 
-            <div class="hero text-white px-0">
+            <div class="hero text-white p-0 pt-5">
               <div class="hero-inner">
                   <div class="row">
                     <div class="col-md-5 mb-5">
