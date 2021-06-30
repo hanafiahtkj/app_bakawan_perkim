@@ -26,19 +26,9 @@
             <div class="hero text-white px-0">
               <div class="hero-inner">
                   <div class="row">
-                    <div class="col-sm-5 mb-5">
-                    <h1 style="
-                          color: #fff;
-                          BACKGROUND-COLOR: #ffa429;
-                          PADDING: 10PX;
-                          BORDER-RADIUS: 10PX;
-                      ">Selamat Datang</h1>
-                      <h3 class="lead" style="
-                          color: #cfd1e3;
-                          PADDING: 9PX;
-                          BACKGROUND-COLOR: #212c82;
-                          BORDER-RADIUS: 10PX;
-                      "><b>BAKAWAN RTLH - Banjarmasin Aplikasi Wadah Pendataan Rumah Tidak Layak Huni</b></h3>
+                    <div class="col-md-5 mb-5">
+                    <h1 class="welcome1">Selamat Datang</h1>
+                      <h3 class="lead welcome2"><b>BAKAWAN RTLH - Banjarmasin Aplikasi Wadah Pendataan Rumah Tidak Layak Huni</b></h3>
                       <!-- <p style="
                           color: #fff;
                           PADDING: 9PX;
@@ -68,7 +58,7 @@
                       @endif
                       </div>
                     </div>
-                    <div class="col-sm-7 mb-4">
+                    <div class="col-md-7 mb-4">
                       <div class="image d-lg-block">
                         <img src="{{ asset('img/web4.png') }}" class="img-fluid" alt="Responsive image">
                       </div>

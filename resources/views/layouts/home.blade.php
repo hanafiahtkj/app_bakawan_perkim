@@ -59,6 +59,20 @@
           width: 100% !important;
       }
     }
+    @media (min-width: 768px) {
+      .welcome1 {
+        color: #fff;
+        BACKGROUND-COLOR: #ffa429;
+        PADDING: 10PX;
+        BORDER-RADIUS: 10PX;
+      }
+      .welcome2 {
+        color: #cfd1e3;
+        PADDING: 9PX;
+        BACKGROUND-COLOR: #212c82;
+        BORDER-RADIUS: 10PX;
+      }
+    }
     .navbar .dropdown-menu {
       width: auto;
     }
