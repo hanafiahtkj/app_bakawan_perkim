@@ -178,12 +178,12 @@
             <li class="nav-item"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
             <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Gallery</a></li>
             <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li>
-            <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link has-dropdown" data-toggle="dropdown">Pengumuman</a>
+              <ul class="dropdown-menu">
                 @foreach ($posts as $post)
-                <a class="dropdown-item" href="{{ url('post') }}/{{ $post->id }}">{{ $post->title }}</a>
+                <li><a class="dropdown-item" href="{{ url('post') }}/{{ $post->id }}">{{ $post->title }}</a></li>
                 @endforeach
-              </div>
+              </ul>
             </li>
           </ul>
         </div>
