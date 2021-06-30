@@ -59,6 +59,11 @@
           width: 100% !important;
       }
     }
+    @media (max-width: 575.98px) {
+      #app {
+        margin-bottom: 100px;
+      }
+    }
     @media (min-width: 768px) {
       .welcome1 {
         color: #fff;
