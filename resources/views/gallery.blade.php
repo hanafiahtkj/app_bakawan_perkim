@@ -31,7 +31,7 @@
                 <div class="card-body">
                   <div class="row">
                     @foreach ($video as $gall)
-                    <div class="col-4">
+                    <div class="col-md-4">
                       <div class="embed-responsive embed-responsive-16by9">
                         <iframe class="embed-responsive-item" src="{{ $gall->url }}" allowfullscreen></iframe>
                       </div>
