@@ -81,6 +81,7 @@
     }
     .main-sidebar .sidebar-menu li ul.dropdown-menu li a {
       padding-left: 20px;
+      overflow: auto;
     }
   </style>
   @if (!request()->routeIs('home'))
