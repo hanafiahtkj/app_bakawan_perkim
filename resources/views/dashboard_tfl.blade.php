@@ -85,7 +85,7 @@
                       <div class="col-sm-6">
                         <button type="button" id="button-filter" class="btn btn-primary pull-right mr-2 mb-2"><i class="fa fa-filter"></i> Filter</button>
                         <button type="submit" target="_blank" name="type" value="excel" id="button-excel" class="btn btn-success pull-right mr-2 mb-2"><i class="fa fa-file-excel"></i> Export Excel</button>
-                        <button type="submit" target="_blank" name="type" value="json" id="button-json" class="btn btn-success pull-right"><i class="far fa-copy"></i> Export JSON</button>
+                        <button type="submit" target="_blank" name="type" value="json" id="button-json" class="btn btn-success pull-right mb-2"><i class="far fa-copy"></i> Export JSON</button>
                       </div>
                     </div>
                     </div>
