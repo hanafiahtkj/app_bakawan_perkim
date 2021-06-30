@@ -3,7 +3,7 @@
 return [
     'name' => 'BAKAWAN-RTLH',
     'manifest' => [
-        'name' => env('APP_NAME', 'BAKAWAN-RTLH'),
+        'name' => 'BAKAWAN-RTLH',
         'short_name' => 'BAKAWAN-RTLH',
         'start_url' => '/',
         'background_color' => '#ffffff',
