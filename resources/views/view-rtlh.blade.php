@@ -35,7 +35,7 @@
                   </div>
                   <fieldset>
                     <div class="card-body">
-                      <ul class="nav nav-tabs justify-content-center" id="myTab5" role="tablist">
+                      <ul class="nav nav-tabs nav-justified" id="myTab5" role="tablist">
                         <li class="nav-item">
                           <a class="nav-link active" id="identitas-tab" data-toggle="tab" href="#identitas" role="tab" aria-controls="identitas" aria-selected="true">
                             1. Identitas Diri</a>
