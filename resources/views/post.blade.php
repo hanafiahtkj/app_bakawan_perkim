@@ -10,7 +10,7 @@
   <div class="main-content">
       <section class="section">
         <div class="section-header">
-          <div class="section-header-back">
+          <div class="section-header-back d-none d-md-inline">
             <a href="{{ url('') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
           </div>
           <h1>{{ $post->title }}</h1>
