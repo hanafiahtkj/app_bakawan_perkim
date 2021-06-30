@@ -37,7 +37,7 @@
               <!-- <div class="card-header">
                 <h4>Basic DataTables</h4>
               </div> -->
-              <div class="card-body">
+              <div class="card-body p-1">
                 <div id="mapid" style="height: 600px;"></div>
               </div>
             </div>
