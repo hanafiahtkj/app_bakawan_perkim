@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'name' => 'LaravelPWA',
+    'name' => 'BAKAWAN-RTLH',
     'manifest' => [
-        'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'name' => env('APP_NAME', 'BAKAWAN-RTLH'),
+        'short_name' => 'BAKAWAN-RTLH',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
