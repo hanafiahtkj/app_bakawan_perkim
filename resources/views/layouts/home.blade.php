@@ -92,6 +92,10 @@
     .fixed-bottom {
       position: fixed !important;
     }
+    .navbar .nav-link.nav-link-user img {
+      width: 30px;
+      height: 30px;
+    }
   </style>
   @if (!request()->routeIs('home'))
   <style>
