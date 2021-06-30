@@ -48,6 +48,12 @@
       background-image: url(img/web2.png);
       background-position: left;
     }
+    @media (max-width: 1024px) {
+      .navbar {
+        left: 0px !important;
+        right: 0;
+      }
+    }
   </style>
   @if (!request()->routeIs('home'))
   <style>
