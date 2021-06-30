@@ -115,7 +115,7 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
                 'kel.name as kelurahan',
                 'kel.id as kode_wilayah',
                 'setup_bukti.list_name as bukti_kepemilikan',
-                'stts_verif.name as ket_verif',
+                'stts_verif.name as ket_verif'
             );
         
         if ($id_kecamatan = $this->request->get('id_kecamatan')) {
