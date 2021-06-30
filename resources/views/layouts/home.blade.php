@@ -79,6 +79,9 @@
     .h1, h1 {
       font-size: 2.2rem;
     }
+    .main-sidebar .sidebar-menu li ul.dropdown-menu li a {
+      padding-left: 20px;
+    }
   </style>
   @if (!request()->routeIs('home'))
   <style>
