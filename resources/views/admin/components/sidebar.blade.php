@@ -1,6 +1,6 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
-        <div class="sidebar-brand sidebar-gone-show"><a href="index.html">BKWN-RTLH</a></div>
+        <div class="sidebar-brand sidebar-gone-show"><a href="{{ url('') }}">BKWN-RTLH</a></div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
             <li class="nav-item {{ (request()->routeIs('admin.dashboard')) ? 'active' : '' }}">
