@@ -73,6 +73,7 @@ return [
                 'url' => '/shortcutlink2'
             ]
         ],
-        'custom' => []
+        'custom' => [],
+        "gcm_sender_id" => "103953800507"
     ]
 ];
