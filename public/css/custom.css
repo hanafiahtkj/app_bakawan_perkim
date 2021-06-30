@@ -54,3 +54,13 @@ div.required .col-form-label:not(span):before, td.required:before {
     width: 30px;
     height: 30px;
 }
+.navbar {
+	left: 0px !important;
+  }
+@media (max-width: 1024px) {
+  .main-content {
+	  padding-left: 15px;
+	  padding-right: 15px;
+	  width: 100% !important;
+  }
+}
