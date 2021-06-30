@@ -59,6 +59,9 @@
           width: 100% !important;
       }
     }
+    .navbar .dropdown-menu {
+      width: auto;
+    }
   </style>
   @if (!request()->routeIs('home'))
   <style>
