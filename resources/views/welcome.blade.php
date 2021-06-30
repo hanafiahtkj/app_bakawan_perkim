@@ -26,7 +26,7 @@
             <div class="hero text-white px-0">
               <div class="hero-inner">
                   <div class="row">
-                    <div class="col-sm-5 mb-4">
+                    <div class="col-sm-5 mb-5">
                     <h1 style="
                           color: #fff;
                           BACKGROUND-COLOR: #ffa429;

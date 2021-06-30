@@ -53,6 +53,11 @@
         left: 0px !important;
         right: 0;
       }
+      .main-content {
+          padding-left: 15px;
+          padding-right: 15px;
+          width: 100% !important;
+      }
     }
   </style>
   @if (!request()->routeIs('home'))
@@ -80,8 +85,11 @@
         <div class="navbar-nav">
           <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
         </div>
-        <a href="{{ url('') }}" class="navbar-brand d-none d-md-block sidebar-gone-show">BAKAWAN-RTLH</a>
-        <div class="nav-collapse d-none d-md-block">
+        <!-- <a href="{{ url('') }}" class="navbar-brand d-none d-md-block sidebar-gone-show">BAKAWAN-RTLH</a> -->
+        <a class="navbar-brand d-none d-md-block sidebar-gone-show" href="{{ url('') }}">
+          <img src="{{ asset('img/bakawan-logo.png') }}" width="35" height="35" class="d-inline-block align-top" alt="">
+        </a>
+        <div class="nav-collapse">
           <!-- <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
             <i class="fas fa-ellipsis-v"></i>
           </a> -->
