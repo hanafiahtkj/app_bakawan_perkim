@@ -224,7 +224,7 @@
         <div class="container">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a href="/dashboard" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+              <a href="/dashboard" class="nav-link"><i class="fas fa-fire"></i><span>Dasbor</span></a>
             </li>
             <li class="nav-item">
               <a href="/create-new" class="nav-link"><i class="far fa-clone"></i><span>Ceate New</span></a>
@@ -242,7 +242,7 @@
             </div>
             <h1>Create New</h1>
             <div class="section-header-breadcrumb">
-              <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+              <div class="breadcrumb-item active"><a href="#">Dasbor</a></div>
               <div class="breadcrumb-item"><a href="#">Posts</a></div>
               <div class="breadcrumb-item">Create New Post</div>
             </div>

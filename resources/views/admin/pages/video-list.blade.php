@@ -19,7 +19,7 @@
           <button class="btn btn-primary" data-toggle="modal" data-target="#form"><i class="fa fa-plus"></i> TAMBAH</button>
         </div>
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="#">Dasbor</a></div>
           <div class="breadcrumb-item"><a href="#">Video</a></div>
         </div>
       </div>

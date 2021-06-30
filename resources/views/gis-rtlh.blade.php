@@ -20,7 +20,7 @@
           </div>
           <h1>GIS RTLH</h1>
           <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ url('/dashboard') }}">Dashboard</a></div>
+            <div class="breadcrumb-item active"><a href="{{ url('/dashboard') }}">Dasbor</a></div>
             <div class="breadcrumb-item">GIS RTLH</div>
           </div>
       </div>

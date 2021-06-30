@@ -20,7 +20,7 @@
           <a href="{{ route('admin.import-rtlh') }}" class="btn btn-success"><i class="fa fa-file-excel"></i> IMPORT EXCEL</a>
         </div>
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
           <div class="breadcrumb-item">RTLH</div>
         </div>
       </div>

@@ -187,7 +187,7 @@
         <div class="container">
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a href="/dashboard" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+              <a href="/dashboard" class="nav-link"><i class="fas fa-fire"></i><span>Dasbor</span></a>
             </li>
             <li class="nav-item">
               <a href="/create-new" class="nav-link"><i class="far fa-clone"></i><span>Ceate New</span></a>

@@ -16,7 +16,7 @@
           </div>
           <h1>Detail (Rumah Tidak Layak Huni)</h1>
           <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ url('/dashboard') }}">Dashboard</a></div>
+            <div class="breadcrumb-item active"><a href="{{ url('/dashboard') }}">Dasbor</a></div>
             <div class="breadcrumb-item">Detail (Rumah Tidak Layak Huni)</div>
           </div>
         </div>

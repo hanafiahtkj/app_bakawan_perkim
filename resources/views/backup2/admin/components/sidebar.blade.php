@@ -2,9 +2,9 @@
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand sidebar-gone-show"><a href="index.html">Stisla</a></div>
         <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
+            <li class="menu-header">Dasbor</li>
             <li class="nav-item active">
-            <a href="/admin/dashboard" class="nav-link active"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+            <a href="/admin/dashboard" class="nav-link active"><i class="fas fa-fire"></i><span>Dasbor</span></a>
             </li>
             <li class="menu-header">System</li>
             <li class="nav-item dropdown">

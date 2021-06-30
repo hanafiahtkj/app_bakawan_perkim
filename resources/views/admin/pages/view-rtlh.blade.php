@@ -14,7 +14,7 @@
           </div>
           <h1>Detail (Rumah Tidak Layak Huni)</h1>
           <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+            <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
             <div class="breadcrumb-item"><a href="{{ route('admin.rtlh') }}">RTLH</a></div>
             <div class="breadcrumb-item">Detail</div>
           </div>

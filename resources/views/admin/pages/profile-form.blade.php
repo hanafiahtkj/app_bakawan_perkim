@@ -21,7 +21,7 @@
         </div>
         <h1>My Profile</h1>
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
           <div class="breadcrumb-item">My Profile</div>
         </div>
       </div>

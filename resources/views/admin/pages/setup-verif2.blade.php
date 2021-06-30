@@ -16,7 +16,7 @@
           <a href="{{ route('users.create') }}" class="btn btn-primary">Add New</a>
         </div> -->
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
           <div class="breadcrumb-item">Setup Verifikasi Rtlh</div>
         </div>
       </div>

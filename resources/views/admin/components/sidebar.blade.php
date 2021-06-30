@@ -40,7 +40,7 @@
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-share"></i> <span>Lainnya</span></a>
             <ul class="dropdown-menu">
                 <li class="{{ (request()->routeIs('posts.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('posts.index') }}">Pengumuman</a></li>
-                <li class="{{ (request()->routeIs('gallery.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('gallery.index') }}">Gallery</a></li>
+                <li class="{{ (request()->routeIs('gallery.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('gallery.index') }}">Galeri</a></li>
                 <li class="{{ (request()->routeIs('video.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('video.index') }}">Video</a></li>
             </ul>
             </li>

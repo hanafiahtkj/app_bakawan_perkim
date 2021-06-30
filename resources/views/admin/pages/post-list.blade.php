@@ -17,7 +17,7 @@
           <a href="{{ route('posts.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> TAMBAH</a>
         </div>
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
           <div class="breadcrumb-item">Posts</div>
         </div>
       </div>

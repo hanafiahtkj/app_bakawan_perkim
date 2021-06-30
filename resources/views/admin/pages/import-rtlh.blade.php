@@ -19,7 +19,7 @@
         </div>
         <h1>Import (Rumah Tidak Layak Huni)</h1>
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
           <div class="breadcrumb-item">Import (Rumah Tidak Layak Huni)</div>
         </div>
       </div>
@@ -30,7 +30,7 @@
           <a href="{{ route('admin.create-rtlh') }}" class="btn btn-success"><i class="fa fa-file-excel"></i> IMPORT EXCEL</a>
         </div>
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
           <div class="breadcrumb-item">RTLH</div>
         </div>
       </div> -->

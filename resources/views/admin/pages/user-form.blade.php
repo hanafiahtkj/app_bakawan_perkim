@@ -20,7 +20,7 @@
         </div>
         <h1>Create New User</h1>
         <div class="section-header-breadcrumb">
-          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
+          <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
           <div class="breadcrumb-item"><a href="{{ url('/admin/users') }}">Users</a></div>
           <div class="breadcrumb-item">Create New Post</div>
         </div>
