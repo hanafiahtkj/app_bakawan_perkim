@@ -56,7 +56,12 @@ div.required .col-form-label:not(span):before, td.required:before {
 }
 .navbar {
 	left: 0px !important;
-  }
+}
+.main-navbar .nav-link:hover {
+	color: #fff;
+	/* font-weight: 700; */
+	background-color : #5a6be8;
+}
 @media (max-width: 1024px) {
   .main-content {
 	  padding-left: 15px;

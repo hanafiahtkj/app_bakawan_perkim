@@ -96,6 +96,11 @@
       width: 30px;
       height: 30px;
     }
+    .main-navbar .nav-link:hover {
+      color: #fff;
+      /* font-weight: 700; */
+      background-color : #5a6be8;
+    }
   </style>
   @if (!request()->routeIs('home'))
   <style>
@@ -131,11 +136,11 @@
             <i class="fas fa-ellipsis-v"></i>
           </a> -->
           <ul class="navbar-nav">
-            <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Beranda</a></li>
-            <li class="nav-item"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
-            <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Galeri</a></li>
+            <li class="nav-item {{ (request()->is('/')) ? 'active' : '' }}"><a href="{{ url('') }}" class="nav-link">Beranda</a></li>
+            <li class="nav-item {{ (request()->is('sarat-dan-kententuan')) ? 'active' : '' }}"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
+            <li class="nav-item {{ (request()->is('gallery')) ? 'active' : '' }}"><a href="{{ url('gallery') }}" class="nav-link">Galeri</a></li>
             <!-- <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li> -->
-            <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
+            <li class="nav-item dropdown {{ (request()->is('post*')) ? 'active' : '' }}"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
               <div class="dropdown-menu max-width" aria-labelledby="navbarDropdown">
                 @foreach ($posts as $post)
                 <a class="dropdown-item" href="{{ url('post') }}/{{ $post->id }}">{{ $post->title }}</a>

@@ -24,7 +24,7 @@
                 </div> -->
             <div class="card-body">
                 <div class="image d-lg-block">
-                  <img src="{{ asset('img/Penerima.jpg') }}" class="img-fluid" alt="Responsive image">
+                  <img src="{{ asset('img/bsps.jpg') }}" class="img-fluid" alt="Responsive image">
                 </div>
               </div>
           </div>
