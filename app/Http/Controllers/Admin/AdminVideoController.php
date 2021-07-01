@@ -116,8 +116,7 @@ class AdminVideoController extends Controller
     public function getDataTables(Request $request)
     {
         $query = DB::table('gallery_video')
-            ->select('gallery_video.*', 
-            );
+            ->select('gallery_video.*');
         
         return DataTables::of($query)->toJson();
     }

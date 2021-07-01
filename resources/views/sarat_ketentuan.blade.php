@@ -24,7 +24,11 @@
                 </div> -->
             <div class="card-body p-1">
                 <div class="image d-lg-block">
-                  <img src="{{ asset('img/bsps.jpg') }}" class="img-fluid" alt="Responsive image">
+                  <a href="{{ asset('img/bsps.jpg') }}" class="chocolat-image" title="Just an example">
+                      <div>
+                        <img alt="image" src="{{ asset('img/bsps.jpg') }}" class="img-fluid" alt="Responsive image">
+                      </div>
+                  </a>
                 </div>
               </div>
           </div>
@@ -36,7 +40,12 @@
                 </div> -->
             <div class="card-body p-1">
                 <div class="image d-lg-block">
-                  <img src="{{ asset('img/Penerima2.jpg') }}" class="img-fluid" alt="Responsive image">
+                  <a href="{{ asset('img/Penerima2.jpg') }}" class="chocolat-image" title="Just an example">
+                      <div>
+                        <img alt="image" src="{{ asset('img/Penerima2.jpg') }}" class="img-fluid" alt="Responsive image">
+                      </div>
+                  </a>
+                </div>
                 </div>
               </div>
           </div>
