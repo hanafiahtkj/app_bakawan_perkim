@@ -101,7 +101,7 @@
                   </div>
                   <div v-if="!is_directory" v-for="(file, index) in files" :key="index" class="col-sm-3 col-xs-6 text-center mb-3">
                     <a href="#" class="thumbnail"><img :src="'{{ url('') }}/' + file.path" :alt="file.file_name" :title="file.file_name" style="max-height: 6em;"/></a>
-				            <label><input type="checkbox" name="path[]" :value="file.path" class="flat-red" /> @{{ file.file_name.substring(0,15)+"..." }}</label>
+				            <label><input type="checkbox" name="path[]" :value="file.path" class="flat-red path" /> @{{ file.file_name.substring(0,15)+"..." }}</label>
                   </div>
               </div>
             </div>
@@ -298,7 +298,13 @@
       $('#file-manager #button-delete').on('click', function(e) {
         if (confirm('Are you sure')) {
           var formData = new FormData();
-          formData.append('path[]', $('input[name^=\'path\']:checked').val());
+          var selecteditems = [];
+          $('input[name^=\'path\']:checked').each(function (i, ob) { 
+            //selecteditems.push($(ob).val());
+            formData.append('path[]', $(ob).val());
+          });
+          
+          console.log(selecteditems);
           formData.append('_token', '{{ csrf_token() }}');
           $.ajax({
             url: '{{ route('admin.gallery.delete') }}',

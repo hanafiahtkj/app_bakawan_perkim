@@ -188,19 +188,24 @@ class AdminGalleryController extends Controller
 		}
 
 		if (!empty($paths)) {
+            //echo var_dump($paths); die;
 			foreach ($paths as $path) {
                 //echo $path; die;
 				if (is_file($path)) {
                     unlink($path);
                     GalleryFiles::where('path', $path)->delete();
 				} elseif (is_dir($path)) {
-                    // File::deleteDirectory(public_path($path));
-                    // Storage::deleteDirectory(public_path($path));
-					// delete_files($path, TRUE);
+                    $files = glob($path.'/*'); //get all file names
+                    foreach($files as $file){
+                        if(is_file($file))
+                        unlink($file); //delete file
+                    }
                     rmdir($path);
                     // echo $path; die;
                     // Storage::deleteDirectory($path);
-                    GalleryDirectory::where('path', $path)->delete();
+                    $directory = GalleryDirectory::where('path', $path)->first();
+                    GalleryFiles::where('id_directory', $directory->id)->delete();
+                    GalleryDirectory::where('id', $directory->id)->delete();
 				}
 			}
 		}
