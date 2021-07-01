@@ -22,7 +22,7 @@
                 <!-- <div class="card-header">
                   <h4>Basic DataTables</h4>
                 </div> -->
-            <div class="card-body">
+            <div class="card-body p-1">
                 <div class="image d-lg-block">
                   <img src="{{ asset('img/bsps.jpg') }}" class="img-fluid" alt="Responsive image">
                 </div>
@@ -34,7 +34,7 @@
                 <!-- <div class="card-header">
                   <h4>Basic DataTables</h4>
                 </div> -->
-            <div class="card-body">
+            <div class="card-body p-1">
                 <div class="image d-lg-block">
                   <img src="{{ asset('img/Penerima2.jpg') }}" class="img-fluid" alt="Responsive image">
                 </div>
