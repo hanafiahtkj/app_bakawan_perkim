@@ -12,7 +12,7 @@
           <div class="section-header-back">
             <a href="{{ route('admin.rtlh') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
           </div>
-          <h1>Detail (Rumah Tidak Layak Huni)</h1>
+          <h1>Detail Data</h1>
           <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
             <div class="breadcrumb-item"><a href="{{ route('admin.rtlh') }}">RTLH</a></div>

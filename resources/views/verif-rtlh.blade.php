@@ -1,6 +1,6 @@
 <x-app-layout>
 
-  <x-slot name="title">Verifikasi (Rumah Tidak Layak Huni)</x-slot>
+  <x-slot name="title">Verifikasi Data</x-slot>
 
   <x-slot name="extra_css">
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
@@ -14,10 +14,10 @@
           <div class="section-header-back">
             <a href="{{ url('/dashboard') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
           </div>
-          <h1>Verifikasi (Rumah Tidak Layak Huni)</h1>
+          <h1>Verifikasi Data</h1>
           <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ url('/dashboard') }}">Dasbor</a></div>
-            <div class="breadcrumb-item">Verifikasi (Rumah Tidak Layak Huni)</div>
+            <div class="breadcrumb-item">Verifikasi Data</div>
           </div>
         </div>
 

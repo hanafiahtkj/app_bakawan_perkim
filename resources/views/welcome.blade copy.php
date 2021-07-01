@@ -260,7 +260,7 @@
                   <div class="hero bg-primary rounded-3 text-center text-white">
                     <div class="hero-inner">
                       <h1>Selamat Datang</h1>
-                      <h3 class="lead">Bakawan RTLH (Rumah Tidak Layak Huni)</h3>
+                      <h3 class="lead">Bakawan RTLH Data</h3>
                       <div class="mt-4">
                       @if (Route::has('login'))
                         @auth

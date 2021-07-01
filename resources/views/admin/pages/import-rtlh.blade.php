@@ -17,10 +17,10 @@
         <div class="section-header-back">
           <a href="{{ route('admin.rtlh') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
         </div>
-        <h1>Import (Rumah Tidak Layak Huni)</h1>
+        <h1>Import Data</h1>
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
-          <div class="breadcrumb-item">Import (Rumah Tidak Layak Huni)</div>
+          <div class="breadcrumb-item">Import Data</div>
         </div>
       </div>
       <!-- <div class="section-header">
