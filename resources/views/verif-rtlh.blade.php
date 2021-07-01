@@ -5,6 +5,7 @@
   <x-slot name="extra_css">
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/leaflet/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/leaflet-locatecontrol/dist/L.Control.Locate.min.css') }}" />
   </x-slot>
 
   <!-- Main Content -->
@@ -789,6 +790,7 @@
     <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
     <script src="{{ asset('plugins/leaflet/leaflet.js') }}"></script>
+    <script src="{{ asset('plugins/leaflet-locatecontrol/dist/L.Control.Locate.min.js') }}" charset="utf-8"></script>
     <script>
 
     function printErrorMsg (msg) {
@@ -858,6 +860,11 @@
       }
 
       var map = L.map('mapid').setView(pointStart, 13);
+
+      L.control.locate().addTo(map);
+
+      map.on('locationfound', onMapClick);
+
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaGFuYWZpMDciLCJhIjoiY2tubmNiY2N6MDV3ZDJvcGdrMXh3aTh3eSJ9.gHOs5sTl8lPwP-IzHYgH_g', {
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
           maxZoom: 18,
