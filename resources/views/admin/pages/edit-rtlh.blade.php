@@ -737,7 +737,11 @@
 
       var map = L.map('mapid').setView(pointStart, 13);
 
-      L.control.locate().addTo(map);
+      L.control.locate({
+        strings: {
+          title: "Tampilkan Lokasi Anda"
+        }
+      }).addTo(map);
 
       map.on('locationfound', onMapClick);
       

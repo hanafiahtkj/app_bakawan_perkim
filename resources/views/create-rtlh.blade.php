@@ -731,7 +731,11 @@
       // banjarmasin = -3.317219,114.524172
       var map = L.map('mapid').setView([-3.317219,114.524172], 13);
 
-      L.control.locate().addTo(map);
+      L.control.locate({
+        strings: {
+          title: "Tampilkan Lokasi Anda"
+        }
+      }).addTo(map);
 
       map.on('locationfound', onMapClick);
 
