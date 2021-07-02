@@ -1,4 +1,7 @@
 <x-guest-layout>
+
+    <x-slot name="title">Login</x-slot>
+
     <section class="section">
       <div class="container mt-5">
         <div class="row">
