@@ -193,6 +193,10 @@ class RtlhController extends Controller
         if ($id = $request->input('id_rtlh')) {
             // $validasi['nik'] = 'required|unique:rtlh,nik,'.$id;
             $validasi['nik'] = 'required';
+            $rtlh = Rtlh::find($id);
+            if ($rtlh->foto_bangunan != null) {
+                $validasi['foto_bangunan'] = 'mimes:jpg,bmp,png';
+            }
         }
 
         $validator = Validator::make($request->all(), $validasi);

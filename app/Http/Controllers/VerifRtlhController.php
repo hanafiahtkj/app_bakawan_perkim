@@ -92,7 +92,10 @@ class VerifRtlhController extends Controller
 
         if ($id = $request->input('id_rtlh')) {
             $validasi['nik'] = 'required|unique:rtlh,nik,'.$id;
-            //$validasi['foto_bangunan'] = '';
+            $rtlh = Rtlh::find($id);
+            if ($rtlh->foto_bangunan != null) {
+                $validasi['foto_bangunan'] = 'mimes:jpg,bmp,png';
+            }
         }
 
         $validator = Validator::make($request->all(), $validasi);
@@ -111,7 +114,6 @@ class VerifRtlhController extends Controller
             $tgl_lahir = $arr_tgl[2].'-'.$arr_tgl[1].'-'.$arr_tgl[0];
 
             $id_rtlh = $request->input('id_rtlh');
-            $rtlh = Rtlh::find($id_rtlh);
             $rtlh->update([
                 //'id_user'        => Auth::user()->id,
                 'nik'            => $request->input('nik'),
