@@ -695,7 +695,9 @@ class AdminRtlhController extends Controller
                 'kel.id as kode_wilayah',
                 DB::raw("DATE_FORMAT(rtlh.created_at, '%d-%m-%Y') as tanggal"),
                 'stts_verif.name as ket_verif',
-                'stts_realisasi.name as ket_realisasi'
+                'stts_realisasi.name as ket_realisasi',
+                'rtlh.stts_verif',
+                'rtlh.stts_realisasi'
             );
         
         if ($id_kecamatan = $request->get('id_kecamatan')) {

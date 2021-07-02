@@ -222,7 +222,8 @@
              // var url1 = "{{ url('/edit-rtlh') }}/" + row['id'];
               var url2 = "{{ url('/admin/report/view-rtlh') }}/" + row['id'];
               var url3 = "{{ url('/admin/report/edit-rtlh') }}/" + row['id'];
-              var item = 
+              var item = (row['stts_verif'] != null) ? '<a class="dropdown-item btn-realisasi" data-id="'+row['id']+'" href="#">Realisasi</a>' : '';
+              item += 
                 '<a class="dropdown-item" href="'+url2+'">Lihat</a>'+
                 '<a class="dropdown-item" href="'+url3+'">Edit</a>'+
                 '<a class="dropdown-item btn-hapus" href="#" data-id="'+row['id']+'">Hapus</a>';
