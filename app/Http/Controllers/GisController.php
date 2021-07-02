@@ -22,6 +22,7 @@ class GisController extends Controller
             ->select('rtlh.*', 
                 'rtlh_kondisi_rumah.koordinat_rumah'
             )
+            ->where('rtlh.stts_verif', 1)
             ->where('rtlh.stts_realisasi', null)
             ->get();
 

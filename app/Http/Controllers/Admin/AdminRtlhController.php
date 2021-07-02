@@ -52,6 +52,8 @@ class AdminRtlhController extends Controller
             'setups'    => $setups2,
         ];
 
+        $data['stts_realisasi'] = DB::table('stts_realisasi')->get();
+
         return view('admin/pages/rtlh-list', $data);
     }
 
@@ -845,6 +847,19 @@ class AdminRtlhController extends Controller
 
         return response()->json([
             'rtlh' => $rtlh,
+        ]);
+    }
+
+    public function realisasi(Request $request)
+    {
+        $id   = $request->input('id_rtlh');
+        $stts = $request->input('stts_realisasi');
+        $rtlh = Rtlh::find($id);
+        $rtlh->update([
+            'stts_realisasi' => $stts,
+        ]);
+        return response()->json([
+            'status' => true,
         ]);
     }
 }

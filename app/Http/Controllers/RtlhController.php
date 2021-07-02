@@ -82,7 +82,7 @@ class RtlhController extends Controller
             $arr_tgl = explode("/", $tgl);
             $tgl_lahir = $arr_tgl[2].'-'.$arr_tgl[1].'-'.$arr_tgl[0];
 
-            $rtlh = Rtlh::create([
+            $dataRtlh = [
                 'id_user'        => Auth::user()->id,
                 'nik'            => $request->input('nik'),
                 'no_kk'          => $request->input('no_kk'),
@@ -99,7 +99,14 @@ class RtlhController extends Controller
                 'pendidikan'     => $request->input('pendidikan'),
                 'kawasan_rumah'  => $request->input('kawasan_rumah'),
                 'is_old'         => $request->input('is_old'),
-            ]);
+            ];
+
+            // jika Konsultan tidak perlu diverifikasi
+            if (Auth::user()->hasRole(['Konsultan'])) {
+                $dataRtlh['stts_verif'] = 1;
+            }
+
+            $rtlh = Rtlh::create($dataRtlh);
 
             // Upload foto bangunan
             $foto_bangunan = '';

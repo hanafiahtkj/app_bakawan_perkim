@@ -381,6 +381,7 @@ class RtlhImport2 implements ToCollection, WithHeadingRow
                 'pendidikan'     => $pendidikan, //$temp[37],
                 'kawasan_rumah'  => $kawasan_rumah, //$temp[36],
                 'is_old'         => 0,
+                'stts_verif'     => 1,
             ];
 
             //var_dump($data1); die;

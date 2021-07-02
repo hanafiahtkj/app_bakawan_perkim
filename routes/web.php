@@ -306,6 +306,9 @@ Route::group(['middleware' => ['role:Admin']], function () {
             Route::post('import-rtlh/upload', [ImportRtlhController::class, 'upload'])
                 ->middleware(['auth'])->name('admin.import-rtlh-upload');
 
+            Route::post('/real-rtlh', [AdminRtlhController::class, 'realisasi'])
+                ->middleware(['auth'])->name('admin.real-rtlh');
+
         });
     });
 

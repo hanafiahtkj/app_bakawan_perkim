@@ -650,25 +650,24 @@
 
     function cek_length(obj) {
       console.log('ok');
-      var url = '{{ route("rtlh-by-nik", ":id") }}';
-      var value = $(obj).val();
-      url = url.replace(':id', value);
+      // var url = '{{ route("rtlh-by-nik", ":id") }}';
+      // var value = $(obj).val();
+      // url = url.replace(':id', value);
 
-      $.getJSON(url, function(result){
-        $(".is-invalid").removeClass("is-invalid");
-        $('#lihat-rtlh').hide();
-        if (result.status == true) {
-          //$(obj).prop('readonly', true);
-          $('#is_old').val(1);
-          //populateForm($('#form-rtlh'), result.rtlh);
-          $('[name="nik"]').addClass('is-invalid');
-          $('.feedback-nik').text('Nik sudah ada di data RTLH');
-          $('#lihat-rtlh').show();
-          var url2 = "{{ url('/view-rtlh') }}/" + result.rtlh['id'];
-          $('#lihat-rtlh a').attr("href", url2);
-        }
-      });
-
+      // $.getJSON(url, function(result){
+      //   $(".is-invalid").removeClass("is-invalid");
+      //   $('#lihat-rtlh').hide();
+      //   if (result.status == true) {
+      //     //$(obj).prop('readonly', true);
+      //     $('#is_old').val(1);
+      //     //populateForm($('#form-rtlh'), result.rtlh);
+      //     $('[name="nik"]').addClass('is-invalid');
+      //     $('.feedback-nik').text('Nik sudah ada di data RTLH');
+      //     $('#lihat-rtlh').show();
+      //     var url2 = "{{ url('/view-rtlh') }}/" + result.rtlh['id'];
+      //     $('#lihat-rtlh a').attr("href", url2);
+      //   }
+      // });
     }
 
     function printErrorMsg (msg) {

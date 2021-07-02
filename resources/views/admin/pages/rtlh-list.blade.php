@@ -62,8 +62,8 @@
                         <label class="control-label" for="input-date-added">Status Verifikasi</label>
                         <select class="form-control selectric" id="stts_verif" name="stts_verif">  
                           <option value="">Pilih....</option>
-                          <option value="1">Terima</option>
-                          <option value="2">Tolak</option>
+                          <option value="1">Diterima</option>
+                          <option value="2">Ditolak</option>
                           <option value="3">Perlu Perbaikan</option>
                         </select>
                         <!-- <input type="text" name="jml_kk" value="" id="jml_kk" class="form-control numeric"> -->
@@ -149,6 +149,37 @@
     </div>
   </div>
   </form>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form id="form-realisasi" method="POST" action="{{ route('real-rtlh') }}" novalidate>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Realisasi</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">Status Realisasi</label>
+              <select class="form-control" name="stts_realisasi" id="stts_realisasi">
+              @foreach ($stts_realisasi as $setup)
+              <option value="{{ $setup->id }}">{{ $setup->name }}</option>
+              @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer pt-0">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            <input type="hidden" name="id_rtlh" id="id_rtlh" value="">
+            <button type="submit" class="btn btn-success">Simpan</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <x-slot name="extra_js">
     <script src="{{ asset('plugins/DataTables/datatables.min.js') }}"></script>
@@ -300,6 +331,51 @@
         var column = dataTable.column( $(this).attr('data-column') );
         // Toggle the visibility
         column.visible( $(this).is(':checked') );
+      });
+
+      $('#table-rtlh tbody').on( 'click', '.btn-realisasi', function (e) {
+        e.preventDefault();
+        $('#id_rtlh').val($(this).data('id'));
+        $('#exampleModal').modal('show');
+        //alert('ok');
+      });
+
+      $("form#form-realisasi").submit(function(e){
+        e.preventDefault();
+        //$('.loader').show();
+        var formData = new FormData($(this)[0]);
+        formData.append('_token', '{{ csrf_token() }}');
+        $.ajax({
+            type: "POST",
+            url: "{{ route('admin.real-rtlh') }}",
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: "json",
+            success: function(data, textStatus, jqXHR) {
+              //process data
+              $(".is-invalid").removeClass("is-invalid");
+              if (data['status'] == true) {
+                swal({
+                  title: "Tersimpan!", 
+                  icon: "success",
+                })
+                .then((value) => {
+                  dataTable.ajax.reload();
+                  $('#exampleModal').modal('hide');
+                  //window.location = "{{ route('dashboard') }}";
+                });
+              }
+              else {
+                printErrorMsg(data.errors);
+              }
+            },
+            error: function(data, textStatus, jqXHR) {
+              //process error msg
+              //$('.loader').hide();
+              alert(jqXHR + ' , Proses Dibatalkan!');
+            },
+        });
       });
 
     });
