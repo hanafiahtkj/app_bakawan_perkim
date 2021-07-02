@@ -120,29 +120,31 @@
     }
 
     function deleteToken() {
+      setTokenSentToServer(false);
+      console.log('Token deleted.');
       // Delete registration token.
-      messaging.getToken({vapidKey: 'BENTla6ksF_pKiQouN5STIJrvnGtrkPedMLheyYQ7VSlz8VBdMZ4rrJcMevftCcIHG06KOZOSPcIk1S66bYeiL0'}).then((currentToken) => {
-        //console.log(currentToken);
-        if (currentToken) {
-          console.log(currentToken);
-          messaging.deleteToken(currentToken).then(() => {
-            console.log('Token deleted.');
-            setTokenSentToServer(false);
-            // Once token is deleted update UI.
-            // resetUI();
-          }).catch((err) => {
-            console.log('Unable to delete token. ', err);
-          });
-        } else {
-          // Show permission request.
-          console.log('No registration token available. Request permission to generate one.');
-          // Show permission UI.
-        }
+      // messaging.getToken({vapidKey: 'BENTla6ksF_pKiQouN5STIJrvnGtrkPedMLheyYQ7VSlz8VBdMZ4rrJcMevftCcIHG06KOZOSPcIk1S66bYeiL0'}).then((currentToken) => {
+      //   //console.log(currentToken);
+      //   if (currentToken) {
+      //     console.log(currentToken);
+      //     messaging.deleteToken(currentToken).then(() => {
+      //       console.log('Token deleted.');
+      //       setTokenSentToServer(false);
+      //       // Once token is deleted update UI.
+      //       // resetUI();
+      //     }).catch((err) => {
+      //       console.log('Unable to delete token. ', err);
+      //     });
+      //   } else {
+      //     // Show permission request.
+      //     console.log('No registration token available. Request permission to generate one.');
+      //     // Show permission UI.
+      //   }
         
-      }).catch((err) => {
-        console.log('Error retrieving registration token. ', err);
-        showToken('Error retrieving registration token. ', err);
-      });
+      // }).catch((err) => {
+      //   console.log('Error retrieving registration token. ', err);
+      //   showToken('Error retrieving registration token. ', err);
+      // });
     }
 
     // Add a message to the messages element.
