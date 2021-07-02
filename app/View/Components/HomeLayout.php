@@ -14,7 +14,7 @@ class HomeLayout extends Component
      */
     public function render()
     {
-        $posts = Posts::where('status','Publish')->get();
+        $posts = Posts::where('status','Publish')->where('id', '<>', 6)->get();
         return view('layouts.home', compact('posts'));
     }
 }

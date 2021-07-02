@@ -42,6 +42,7 @@
                 <li class="{{ (request()->routeIs('posts.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('posts.index') }}">Pengumuman</a></li>
                 <li class="{{ (request()->routeIs('gallery.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('gallery.index') }}">Galeri</a></li>
                 <li class="{{ (request()->routeIs('video.index')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('video.index') }}">Video</a></li>
+                <li class="{{ (request()->routeIs('admin.syarat-ketentuan')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.syarat-ketentuan') }}">Sarat & Ketentuan</a></li>
             </ul>
             </li>
         </ul>

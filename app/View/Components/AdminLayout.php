@@ -16,7 +16,7 @@ class AdminLayout extends Component
     public function render()
     {
         $setups = DB::table('setup_rtlh')->where('parent_id',0)->get();
-        $posts = Posts::where('status','Publish')->get();
+        $posts = Posts::where('status','Publish')->where('id', '<>', 6)->get();
         return view('admin.layouts.app', ['setups' => $setups, 'posts' => $posts]);
     }
 }

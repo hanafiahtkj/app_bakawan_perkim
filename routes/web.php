@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\SetupVerifController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UsersDataTabeController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\SyaratController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -255,6 +256,12 @@ Route::group(['middleware' => ['role:Admin']], function () {
                 ->middleware(['auth'])->name('admin.getVideoDataTables');
 
             Route::resource('video', AdminVideoController::class)->middleware(['auth']);
+
+            Route::get('syarat-ketentuan', SyaratController::class)
+                ->middleware(['auth'])->name('admin.syarat-ketentuan');
+
+            Route::post('syarat-ketentuan/update', [SyaratController::class, 'update'])
+                ->middleware(['auth'])->name('admin.syarat-ketentuan.update');
 
         });
 

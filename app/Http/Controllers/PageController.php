@@ -12,7 +12,8 @@ class PageController extends Controller
 {
     public function saratKetentuan()
     {
-        return view('sarat_ketentuan');
+        $post = Posts::find(6);
+        return view('sarat_ketentuan', compact('post'));
     }
 
     public function gallery()

@@ -9,7 +9,7 @@
           <div class="section-header-back">
             <a href="{{ url('') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
           </div>
-          <h1>Syarat & Ketentuan</h1>
+          <h1>{{ $post->title }}</h1>
         </div>
 
         <div class="section-body">
@@ -22,32 +22,11 @@
                 <!-- <div class="card-header">
                   <h4>Basic DataTables</h4>
                 </div> -->
-            <div class="card-body p-1">
-                <div class="image d-lg-block">
-                  <a href="{{ asset('img/bsps.jpg') }}" class="chocolat-image" title="Just an example">
-                      <div>
-                        <img alt="image" src="{{ asset('img/bsps.jpg') }}" class="img-fluid" alt="Responsive image">
-                      </div>
-                  </a>
+                <div class="card-body">
+        
+                  {!! $post->content !!}
+                  
                 </div>
-              </div>
-          </div>
-            
-
-          <div class="card">
-                <!-- <div class="card-header">
-                  <h4>Basic DataTables</h4>
-                </div> -->
-            <div class="card-body p-1">
-                <div class="image d-lg-block">
-                  <a href="{{ asset('img/Penerima2.jpg') }}" class="chocolat-image" title="Just an example">
-                      <div>
-                        <img alt="image" src="{{ asset('img/Penerima2.jpg') }}" class="img-fluid" alt="Responsive image">
-                      </div>
-                  </a>
-                </div>
-                </div>
-              </div>
           </div>
 
 
