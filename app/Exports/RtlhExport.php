@@ -126,9 +126,13 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
             $query->where('rtlh.id_kelurahan', $id_kelurahan);
         }
 
-        if ($jml_kk = $this->request->get('jml_kk')) {
-            $query->where('rtlh_kondisi_rumah.jml_kk', $jml_kk);
+        if ($stts_verif = $request->get('stts_verif')) {
+            $query->where('rtlh.stts_verif', $stts_verif);
         }
+
+        // if ($jml_kk = $this->request->get('jml_kk')) {
+        //     $query->where('rtlh_kondisi_rumah.jml_kk', $jml_kk);
+        // }
 
         $rtlh = $query->get();
         $this->rowCount = $rtlh->count() + 1;

@@ -706,9 +706,13 @@ class AdminRtlhController extends Controller
             $query->where('rtlh.id_kelurahan', $id_kelurahan);
         }
 
-        if ($jml_kk = $request->get('jml_kk')) {
-            $query->where('kondisi.jml_kk', $jml_kk);
+        if ($stts_verif = $request->get('stts_verif')) {
+            $query->where('rtlh.stts_verif', $stts_verif);
         }
+
+        // if ($jml_kk = $request->get('jml_kk')) {
+        //     $query->where('kondisi.jml_kk', $jml_kk);
+        // }
 
         return DataTables::of($query)->toJson();
     }
@@ -827,9 +831,13 @@ class AdminRtlhController extends Controller
             $query->where('rtlh.id_kelurahan', $id_kelurahan);
         }
 
-        if ($jml_kk = $request->get('jml_kk')) {
-            $query->where('rtlh_kondisi_rumah.jml_kk', $jml_kk);
+        if ($stts_verif = $request->get('stts_verif')) {
+            $query->where('rtlh.stts_verif', $stts_verif);
         }
+
+        // if ($jml_kk = $request->get('jml_kk')) {
+        //     $query->where('rtlh_kondisi_rumah.jml_kk', $jml_kk);
+        // }
 
         $rtlh = $query->get();
 

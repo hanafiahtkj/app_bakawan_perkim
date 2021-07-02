@@ -59,8 +59,14 @@
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label class="control-label" for="input-date-added">Jumlah KK</label>
-                        <input type="text" name="jml_kk" value="" id="jml_kk" class="form-control numeric">
+                        <label class="control-label" for="input-date-added">Status Verifikasi</label>
+                        <select class="form-control selectric" id="stts_verif" name="stts_verif">  
+                          <option value="">Pilih....</option>
+                          <option value="1">Terima</option>
+                          <option value="2">Tolak</option>
+                          <option value="3">Perlu Perbaikan</option>
+                        </select>
+                        <!-- <input type="text" name="jml_kk" value="" id="jml_kk" class="form-control numeric"> -->
                       </div>
                       <button type="button" id="button-filter" class="btn btn-primary pull-right mr-2 mb-2"><i class="fa fa-filter"></i> Filter</button>
                       <button type="button" target="_blank" name="type" value="json" id="button-show" class="btn btn-dark pull-right mr-2 mb-2" data-toggle="modal" data-target="#form">Show / Hide</button>
@@ -173,7 +179,8 @@
             data: function (d) {
                 d.id_kecamatan = $('#id_kecamatan').val();
                 d.id_kelurahan = $('#id_kelurahan').val();
-                d.jml_kk = $('#jml_kk').val();
+                //d.jml_kk = $('#jml_kk').val();
+                d.stts_verif = $('#stts_verif').val();
             }
         },
         columns: [
@@ -198,7 +205,9 @@
           {
             targets: 5,
             render: function ( data, type, row ) {
-              return (row['stts_verif'] == null) ? 'Menunggu' : row['ket_verif'];
+              var ket_verif = (row['stts_verif'] == null) ? 'Menunggu' : row['ket_verif'];
+              ket_verif += (row['catatan'] == null) ? '' : ',<br> Catatan : ' + row['catatan'];
+              return ket_verif;
             },
           },
           {
