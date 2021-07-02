@@ -8,6 +8,7 @@ use App\Models\Posts;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class AdminPostController extends Controller
 {
@@ -141,5 +142,33 @@ class AdminPostController extends Controller
             ->where('posts.id', '<>', 6);
         
         return DataTables::of($query)->toJson();
+    }
+
+    public function upload(Request $request)
+	{   
+        $validasi = [
+            'file'  => 'required|mimes:jpg,bmp,png',
+        ];
+
+        $validator = Validator::make($request->all(), $validasi);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json([
+                'status' => false,
+                'error'  => $errors->first('file')
+            ]);
+        }
+
+        $upload = $request->file('file');
+        if($upload) {
+            $upload_path = 'uploads/posts';
+            $filename = time().'_'.$upload->getClientOriginalName();
+            $upload->move($upload_path, $filename);
+            $path = $upload_path.'/'.$filename;
+            $json['url'] = $path;
+        }
+
+		return response()->json($json);
     }
 }

@@ -100,7 +100,7 @@ class AdminGalleryController extends Controller
         if ($validator->fails()) {
             return response()->json([
                 'status' => false,
-                'errors' => $validator->errors()
+                'error' => $validator->errors()
             ]);
         }
 		
@@ -132,6 +132,20 @@ class AdminGalleryController extends Controller
     
     public function upload(Request $request)
 	{   
+        $validasi = [
+            'file'  => 'required|mimes:jpg,bmp,png',
+        ];
+
+        $validator = Validator::make($request->all(), $validasi);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json([
+                'status' => false,
+                'error'  => $errors->first('file')
+            ]);
+        }
+
         $id_directory = $request->input('id_directory');
         //echo $id_directory; die;
         $directory = GalleryDirectory::where('id', $id_directory)->first();

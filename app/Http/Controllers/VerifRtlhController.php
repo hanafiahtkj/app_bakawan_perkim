@@ -301,7 +301,7 @@ class VerifRtlhController extends Controller
             // 'stts_tanah_lain'   => 'required',
             'stts_rumah_lain'   => 'required',
             // 'bukti_kepemilikan' => 'required',
-            'foto_bangunan'     => 'required',
+            'foto_bangunan'     => 'required|mimes:jpg,bmp,png',
             'koordinat_rumah'   => 'required',
         ];
 

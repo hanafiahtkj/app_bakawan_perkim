@@ -28,6 +28,7 @@ class AdminProfileController extends AdminController
             'username'   => 'required|unique:users,username,'.$id,
             //'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
+            'foto'       => 'mimes:jpg,bmp,png',
             //'roles' => 'required'
         ]);
     

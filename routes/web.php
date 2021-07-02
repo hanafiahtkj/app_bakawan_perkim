@@ -230,6 +230,9 @@ Route::group(['middleware' => ['role:Admin']], function () {
 
         Route::prefix('lainnya')->group(function () {
 
+            Route::post('posts/upload', [AdminPostController::class, 'upload'])
+                ->middleware(['auth'])->name('admin.posts.upload');
+
             Route::resource('posts', AdminPostController::class)->middleware(['auth']);
 
             Route::get('getPostsDataTables', [AdminPostController::class, 'getDataTables'])

@@ -59,7 +59,7 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
                   <div class="col-sm-12 col-md-7">
-                    <textarea class="summernote" name="content">{{ old('content', isset($posts) ? $posts->content : '') }}</textarea>
+                    <textarea id="summernote" name="content">{{ old('content', isset($posts) ? $posts->content : '') }}</textarea>
                     @if($errors->has('content'))
                       <div class="invalid-feedback">{{$errors->first('content')}}</div>
                     @endif
@@ -101,8 +101,40 @@
     <script src="{{ asset('plugins/summernote-0.8.18/summernote-bs4.js') }}"></script>
 
     <script> 
-    
-      
+    $(function() {
+
+    $('#summernote').summernote({
+        dialogsInBody: true,
+        minHeight: 250,
+        callbacks: {
+          onImageUpload: function(image) {
+            uploadImage(image[0]);
+          }
+        }
+    });
+
+    function uploadImage(image) {
+      var data = new FormData();
+      data.append("file", image);
+      data.append('_token', '{{ csrf_token() }}');
+      $.ajax({
+          url: '{{ route("admin.posts.upload") }}',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: data,
+          type: "post",
+          success: function(data, textStatus, jqXHR) {
+              var image = $('<img>').attr('src', '{{ url('') }}/' + data['url']).addClass('img-fluid');
+              $('#summernote').summernote("insertNode", image[0]);
+          },
+          error: function(data) {
+              console.log(data);
+          }
+      });
+    }
+
+    });   
     </script>
   </x-slot>
 </x-app-layout>

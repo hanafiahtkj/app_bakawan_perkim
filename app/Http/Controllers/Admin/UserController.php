@@ -56,6 +56,7 @@ class UserController extends AdminController
             'name'       => 'required|string|max:255',
             'username'   => 'required|min:5|unique:users',
             'password'   => 'required|string|confirmed|min:8',
+            'foto'       => 'mimes:jpg,bmp,png',
         ];
 
         $id_role = $request->id_role;
@@ -146,6 +147,7 @@ class UserController extends AdminController
             'name'       => 'required|string|max:255',
             'username'   => 'required|unique:users,username,'.$id,
             'password'   => 'same:confirm-password',
+            'foto'       => 'mimes:jpg,bmp,png',
         ];
 
         $id_role = $request->id_role;

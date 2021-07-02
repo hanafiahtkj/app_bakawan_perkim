@@ -58,13 +58,13 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
                   <div class="col-sm-12 col-md-7">
-                    <textarea class="summernote" name="content">{{ old('content', isset($posts) ? $posts->content : '') }}</textarea>
+                    <textarea id="summernote" class="summernote" name="content">{{ old('content', isset($posts) ? $posts->content : '') }}</textarea>
                     @if($errors->has('content'))
                       <div class="invalid-feedback">{{$errors->first('content')}}</div>
                     @endif
                   </div>
                 </div>
-                <div class="form-group row mb-4">
+                <div class="form-group row mb-4 d-none">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Status</label>
                   <div class="col-sm-12 col-md-7">
                     <select class="form-control selectric" name="status">
@@ -110,6 +110,37 @@
           position: 'topRight'
         });
       @endif
+
+      $('#summernote').summernote({
+          dialogsInBody: true,
+          minHeight: 250,
+          callbacks: {
+            onImageUpload: function(image) {
+              uploadImage(image[0]);
+            }
+          }
+      });
+
+      function uploadImage(image) {
+        var data = new FormData();
+        data.append("file", image);
+        data.append('_token', '{{ csrf_token() }}');
+        $.ajax({
+            url: '{{ route("admin.posts.upload") }}',
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: data,
+            type: "post",
+            success: function(data, textStatus, jqXHR) {
+                var image = $('<img>').attr('src', '{{ url('') }}/' + data['url']).addClass('img-fluid');
+                $('#summernote').summernote("insertNode", image[0]);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+      }
 
     });
     </script>

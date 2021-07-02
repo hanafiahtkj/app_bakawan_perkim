@@ -30,6 +30,7 @@ class ProfileController extends Controller
             'name' => 'required',
             'username'   => 'required|unique:users,username,'.$id,
             'password' => 'same:confirm-password',
+            'foto'       => 'mimes:jpg,bmp,png',
             //'roles' => 'required'
         ]);
     
