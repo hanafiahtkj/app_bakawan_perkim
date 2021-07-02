@@ -232,7 +232,7 @@ class RtlhController extends Controller
                 // 'stts_tanah_lain'   => 'required',
                 'stts_rumah_lain'   => 'required',
                 // 'bukti_kepemilikan' => 'required',
-                // 'foto_bangunan'     => 'required',
+                'foto_bangunan'     => 'mimes:jpg,bmp,png',
                 // 'koordinat_rumah'   => 'required',
             ];
 
@@ -349,7 +349,7 @@ class RtlhController extends Controller
                 // 'stts_tanah_lain'   => 'required',
                 // 'stts_rumah_lain'   => 'required',
                 // 'bukti_kepemilikan' => 'required',
-                // 'foto_bangunan'     => 'required|mimes:jpg,bmp,png',
+                'foto_bangunan'     => 'mimes:jpg,bmp,png',
                 // 'koordinat_rumah'   => 'required',
             ];
 
@@ -939,8 +939,13 @@ class RtlhController extends Controller
     public function getAllValidasi(Request $request)
     {
         $validasi = $this->_validasi();
+
+        $filter_validasi = array_filter($validasi, function($v) {
+            return strpos($v, 'required') !== false;
+        });
+
         return response()->json([
-            'validasi' => $validasi,
+            'validasi' => $filter_validasi,
         ]);
     }
 }
