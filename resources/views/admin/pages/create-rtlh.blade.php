@@ -650,17 +650,17 @@
 
     function cek_length(obj) {
       console.log('ok');
-      var url = '{{ route("rtlh-by-nik", ":id") }}';
-      var value = $(obj).val();
-      url = url.replace(':id', value);
+      // var url = '{{ route("rtlh-by-nik", ":id") }}';
+      // var value = $(obj).val();
+      // url = url.replace(':id', value);
 
-      $.getJSON(url, function(result){
-        if (result.status == true) {
-          //$(obj).prop('readonly', true);
-          $('#is_old').val(1);
-          populateForm($('#form-rtlh'), result.rtlh);
-        }
-      });
+      // $.getJSON(url, function(result){
+      //   if (result.status == true) {
+      //     //$(obj).prop('readonly', true);
+      //     $('#is_old').val(1);
+      //     populateForm($('#form-rtlh'), result.rtlh);
+      //   }
+      // });
 
     }
 
