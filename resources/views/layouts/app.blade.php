@@ -43,6 +43,7 @@
             <li class="nav-item active"><a href="{{ url('') }}" class="nav-link">Beranda</a></li>
             <li class="nav-item"><a href="{{ url('sarat-dan-kententuan') }}" class="nav-link">Syarat & Ketentuan</a></li>
             <li class="nav-item"><a href="{{ url('gallery') }}" class="nav-link">Galeri</a></li>
+            <li class="nav-item"><a href="{{ url('panduan') }}" class="nav-link">Panduan</a></li>
             <!-- <li class="nav-item"><a href="{{ url('video') }}" class="nav-link">Video</a></li> -->
             <li class="nav-item dropdown"><a href="#" id="navbarDropdown" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pengumuman</a>
               <div class="dropdown-menu max-width" aria-labelledby="navbarDropdown">

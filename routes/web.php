@@ -44,6 +44,8 @@ Route::get('/sarat-dan-kententuan', [PageController::class, 'saratKetentuan']);
 
 Route::get('/gallery', [PageController::class, 'gallery']);
 
+Route::get('/panduan', [PageController::class, 'panduan']);
+
 Route::get('/video', [PageController::class, 'video']);
 
 Route::get('/post/{id}', [PageController::class, 'post']);

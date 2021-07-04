@@ -1,6 +1,6 @@
 <x-home-layout>
 
-      <x-slot name="title">Selamat Datang - Bakawan RTLH</x-slot>  
+      <x-slot name="title">Bakawan RTLH - Banjarmasin Aplikasi Wadah Pendataan Rumah Tidak Layak Huni</x-slot>  
 
       <!-- Main Content -->
       <div class="main-content">

@@ -34,4 +34,9 @@ class PageController extends Controller
         $post = Posts::find($id);
         return view('post', compact('post'));
     }
+
+    public function panduan()
+    {
+        return view('panduan');
+    }
 }
