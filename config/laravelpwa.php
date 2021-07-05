@@ -73,7 +73,11 @@ return [
                 'url' => '/shortcutlink2'
             ]
         ],
-        'custom' => [],
-        "gcm_sender_id" => "103953800507"
+        'custom' => [
+            "//_comment1"   => "Some browsers will use this to enable push notifications.",
+            "//_comment2"   => "It is the same for all projects, this is not your project's sender ID",
+            "gcm_sender_id" => "103953800507",
+        ],
+        // "gcm_sender_id" => "103953800507"
     ]
 ];

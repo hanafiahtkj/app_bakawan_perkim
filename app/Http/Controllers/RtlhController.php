@@ -25,6 +25,13 @@ class RtlhController extends Controller
 {
     public function create()
     {
+        $this->_notify(
+            'RTLH BARU',
+            'RTLH dengan No Nik : '
+        );
+
+        die;
+
         $data = [
             'kecamatan'         => Kecamatan::where('city_id', 6371)->pluck('name', 'id'),
             'jenis_kel'         => SetupRtlh::where('parent_id', 4)->get(),
@@ -794,6 +801,8 @@ class RtlhController extends Controller
     {
         $users = User::role(['Admin', 'TFL'])
             ->pluck('fcm_token', 'id')->toArray();
+
+        //dd($users); die;
         
         $recipients = array();
         foreach ($users as $key => $value) 
@@ -820,7 +829,7 @@ class RtlhController extends Controller
             ])
             ->send();
 
-        //dd($respons); die;
+        dd($respons); die;
     }
 
     public function export(Request $request)
