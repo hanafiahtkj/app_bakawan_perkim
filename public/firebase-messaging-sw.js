@@ -13,6 +13,7 @@ messaging.onBackgroundMessage(function(payload) {
   const { title, body } = payload.notification;
     const notificationOptions = {
         body,
+        icon: '/images/icons/icon-72x72.png'
     };
 
     self.registration.showNotification(title,
