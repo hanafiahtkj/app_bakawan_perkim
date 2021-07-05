@@ -34,22 +34,22 @@
                       <tr>
                         
                         <td>Panduan Untuk Admin</td>
-                        <td class="text-right"><a href="{{ url('pdf/manual_admin.pdf') }}" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button></a>
+                        <td class="text-right p-2"><a href="{{ url('pdf/manual_admin.pdf') }}" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button></a>
                       </tr>
                       <tr>
                         
                         <td>Panduan Untuk Petugas Kelurahan</td>
-                        <td  class="text-right"><a href="{{ url('pdf/manual_petugas_kelurahan.pdf') }}" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button></td>
+                        <td  class="text-right p-2"><a href="{{ url('pdf/manual_petugas_kelurahan.pdf') }}" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button></td>
                       </tr>
                       <tr>
                         
                         <td>Panduan Untuk TFL</td>
-                        <td  class="text-right"><a href="{{ url('pdf/manual_tfl.pdf') }}" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button></td>
+                        <td  class="text-right p-2"><a href="{{ url('pdf/manual_tfl.pdf') }}" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button></td>
                       </tr>
                       <tr>
                         
                         <td>Panduan Untuk Konsultan</td>
-                        <td  class="text-right"><a href="{{ url('pdf/manual_konsultan.pdf') }}" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button></td>
+                        <td  class="text-right p-2"><a href="{{ url('pdf/manual_konsultan.pdf') }}" target="_blank" class="btn btn-primary"><i class="fas fa-download"></i> Download PDF</button></td>
                       </tr>
                     </tbody>
                   </table>
