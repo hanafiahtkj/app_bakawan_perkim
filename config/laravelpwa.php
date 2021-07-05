@@ -74,7 +74,7 @@ return [
             ]
         ],
         'custom' => [
-            "gcm_sender_id" => "103953800507",
+            "gcm_sender_id" => "218524513016",
         ],
         // "gcm_sender_id" => "103953800507"
     ]
