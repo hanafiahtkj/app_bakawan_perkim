@@ -93,7 +93,8 @@ class VerifRtlhController extends Controller
         if ($id = $request->input('id_rtlh')) {
             $validasi['nik'] = 'required|unique:rtlh,nik,'.$id;
             $rtlh = Rtlh::find($id);
-            if ($rtlh->foto_bangunan != null) {
+            $kondisiRumah = DB::table('rtlh_kondisi_rumah')->where('id_rtlh', $id)->first();
+            if ($kondisiRumah->foto_bangunan != null) {
                 $validasi['foto_bangunan'] = 'mimes:jpg,bmp,png';
             }
         }
@@ -266,6 +267,11 @@ class VerifRtlhController extends Controller
         if ($id = $request->input('id_rtlh')) {
             // $validasi['nik'] = 'required|unique:rtlh,nik,'.$id;
             $validasi['nik'] = 'required';
+            $rtlh = Rtlh::find($id);
+            $kondisiRumah = DB::table('rtlh_kondisi_rumah')->where('id_rtlh', $id)->first();
+            if ($kondisiRumah->foto_bangunan != null) {
+                $validasi['foto_bangunan'] = 'mimes:jpg,bmp,png';
+            }
         }
 
         $validator = Validator::make($request->all(), $validasi);
@@ -279,7 +285,7 @@ class VerifRtlhController extends Controller
     {
         $rule_1 = [
             'nik'            => 'required|unique:rtlh|min:16',
-            'no_kk'          => 'required|min:16',
+            //'no_kk'          => 'min:16',
             'nama_lengkap'   => 'required',
             'id_kecamatan'   => 'required',
             'id_kelurahan'   => 'required',

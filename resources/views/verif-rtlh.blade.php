@@ -310,10 +310,10 @@
                               <div class="input-group">
                                 <div class="custom-file">
                                   <input type="file" class="custom-file-input" id="inputGroupFile04" name="foto_bangunan">
-                                  <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+                                  <label class="custom-file-label" for="inputGroupFile04">@php echo ( $kondisiRumah->foto_bangunan != null ) ? str_replace('uploads/rtlh/'.$rtlh->id.'/', '', $kondisiRumah->foto_bangunan) : 'Choose file'; @endphp</label>
                                 </div>
                                 <div class="input-group-append">
-                                  <a class="btn btn-secondary btn-img" href="{{ url($kondisiRumah->foto_bangunan) }}" target="_blank"><i class="fas fa-image"></i></a>
+                                  <a class="btn btn-secondary btn-img" href="{{ ( $kondisiRumah->foto_bangunan != null ) ? url($kondisiRumah->foto_bangunan) : asset('img/no_img.jpg') }}" target="_blank"><i class="fas fa-image"></i></a>
                                 </div>
                               </div>
                               <div class="invalid-feedback feedback-foto_bangunah"></div>
@@ -790,6 +790,7 @@
     <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
     <script src="{{ asset('plugins/leaflet/leaflet.js') }}"></script>
+    <script src="{{ asset('js/plugin.js') }}"></script>
     <script src="{{ asset('plugins/leaflet-locatecontrol/dist/L.Control.Locate.min.js') }}" charset="utf-8"></script>
     <script>
 

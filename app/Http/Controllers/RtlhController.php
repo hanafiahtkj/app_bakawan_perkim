@@ -201,7 +201,8 @@ class RtlhController extends Controller
             // $validasi['nik'] = 'required|unique:rtlh,nik,'.$id;
             $validasi['nik'] = 'required';
             $rtlh = Rtlh::find($id);
-            if ($rtlh->foto_bangunan != null) {
+            $kondisiRumah = DB::table('rtlh_kondisi_rumah')->where('id_rtlh', $id)->first();
+            if ($kondisiRumah->foto_bangunan != null) {
                 $validasi['foto_bangunan'] = 'mimes:jpg,bmp,png';
             }
         }
@@ -820,7 +821,7 @@ class RtlhController extends Controller
             ])
             ->send();
 
-        dd($respons); die;
+        //dd($respons); die;
     }
 
     public function export(Request $request)
