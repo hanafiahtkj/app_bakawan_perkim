@@ -126,7 +126,7 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
             $query->where('rtlh.id_kelurahan', $id_kelurahan);
         }
 
-        if ($stts_verif = $request->get('stts_verif')) {
+        if ($stts_verif = $this->request->get('stts_verif')) {
             $query->where('rtlh.stts_verif', $stts_verif);
         }
 
