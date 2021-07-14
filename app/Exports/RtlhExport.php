@@ -64,12 +64,14 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
             ->leftJoin('setup_rtlh as setup27', 'setup27.id', '=', 'kelayakan.kondisi_balok')
             ->leftJoin('setup_rtlh as setup28', 'setup28.id', '=', 'kelayakan.kondisi_sloof')
             ->leftJoin('setup_rtlh as setup29', 'setup29.id', '=', 'rtlh.kawasan_rumah')
+            ->leftJoin('setup_rtlh as setup30', 'setup30.id', '=', 'kelayakan.fungsi_ruang')
             ->leftJoin('indonesia_districts as kec', 'kec.id', '=', 'rtlh.id_kecamatan')
             ->leftJoin('indonesia_villages as kel', 'kel.id', '=', 'rtlh.id_kelurahan')
             ->leftJoin('stts_verif', 'rtlh.stts_verif', '=', 'stts_verif.id')
             ->leftJoin(DB::raw($bukti), 'setup_bukti.id_rtlh', '=', 'rtlh.id')
             ->select(
                 'rtlh.nik',
+                'rtlh.no_kk',
                 'rtlh.nama_lengkap',
                 DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d-%m-%Y') as tgl_lahir"),
                 'rtlh.alamat_lengkap', 
@@ -84,6 +86,7 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
                 'kondisi.jml_kk',
                 'kondisi.panjang',
                 'kondisi.lebar',
+                DB::raw("(kondisi.panjang * kondisi.lebar) as luas1"),
                 'setup4.name as stts_tanah',
                 'setup5.name as stts_rumah',
                 'setup6.name as stts_tanah_lain',
@@ -111,6 +114,10 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
                 'setup27.name as kondisi_balok',
                 'setup28.name as kondisi_sloof',
                 'setup29.name as kawasan_rumah',
+                'setup30.name as fungsi_ruang',
+                'kelayakan.panjang as panjang2',
+                'kelayakan.lebar as lebar2',
+                DB::raw("(kelayakan.panjang * kelayakan.lebar) as luas2"),
                 'kec.name as kecamatan',
                 'kel.name as kelurahan',
                 'kel.id as kode_wilayah',
@@ -146,7 +153,7 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
     {
         return [
             AfterSheet::class    => function(AfterSheet $event) {
-                $cellRange = 'A1:AS1';
+                $cellRange = 'A1:AW1';
                 $event->sheet->getDelegate()->getStyle($cellRange)->getFont()
                     ->setSize(12)
                     ->setBold(true);
@@ -161,7 +168,7 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
                     ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER)
                     ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
-                $event->sheet->getStyle('A1:AS'.$this->rowCount)->applyFromArray([
+                $event->sheet->getStyle('A1:AW'.$this->rowCount)->applyFromArray([
                     'borders' => [
                         'allBorders' => [
                             'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,

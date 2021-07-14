@@ -8,6 +8,7 @@ table, th, td {
     <thead>
     <tr>
         <th>NIK / No.KTP</th>
+        <th>No KK</th>
         <th>Nama Lengkap</th>
         <th>Kecamatan</th>
         <th>Kelurahan</th>
@@ -22,7 +23,8 @@ table, th, td {
         <th>Jika Pernah dapat bantuan, dari</th>
         <th>Jumlah KK dalam rumah</th>
         <th>Jumlah Penghuni</th>
-        <th>Luas Rumah (Panjang x Lebar) M2</th>
+        <th>Luas Rumah (Panjang x Lebar) M<sup>2</sup></th>
+        <th>Luas Rumah M<sup>2</sup></th>
         <th>Status Kepemilikan tanah</th>
         <th>Status Kepemilikan rumah</th>
         <th>Aset tanah di tempat lain</th>
@@ -40,7 +42,8 @@ table, th, td {
         <th>Jenis TPA</th>
         <th>Sumbe Air Minum</th>
         <th>Sumber Listrik</th>
-        <th>Luas Rumah (Panjang x Lebar)</th>
+        <th>Luas Rumah (Panjang x Lebar) M<sup>2</sup></th>
+        <th>Luas Rumah M<sup>2</sup></th>
         <th>Material Atap</th>
         <th>Kondisi Atap</th>
         <th>Material Dinding Terluas</th>
@@ -51,6 +54,7 @@ table, th, td {
         <th>Kondisi Balok</th>
         <th>Kondisi Sloof</th>
         <th>Kawasan Rumah</th>
+        <th>Fungsi Ruang</th>
         <th>Status Verifikasi</th>
     </tr>
     </thead>
@@ -58,6 +62,7 @@ table, th, td {
         @foreach ($rtlh as $key => $value)
             <tr>
                 <td>{{ $value->nik }}</td>
+                <td>{{ $value->no_kk }}</td>
                 <td>{{ $value->nama_lengkap }}</td>
                 <td>{{ $value->kecamatan }}</td>
                 <td>{{ $value->kelurahan }}</td>
@@ -72,7 +77,8 @@ table, th, td {
                 <td>{{ $value->bantuan_dari }}</td>
                 <td>{{ $value->jml_kk }}</td>
                 <td>{{ $value->jml_penghuni }}</td>
-                <td>{{ $value->panjang }} x {{ $value->lebar }}</td>
+                <td>{{ $value->panjang }} m x {{ $value->lebar }} m</td>
+                <td>{{ $value->luas1 }}</td>
                 <td>{{ $value->stts_tanah }}</td>
                 <td>{{ $value->stts_rumah }}</td>
                 <td>{{ $value->stts_tanah_lain }}</td>
@@ -90,7 +96,8 @@ table, th, td {
                 <td>{{ $value->jenis_tpa }}</td>
                 <td>{{ $value->sumber_air_minum }}</td>
                 <td>{{ $value->sumber_listrik }}</td>
-                <td>{{ $value->panjang }} x {{ $value->lebar }}</td>
+                <td>{{ $value->panjang2 }} m x {{ $value->lebar2 }} m</td>
+                <td>{{ $value->luas2 }}</td>
                 <td>{{ $value->material_atap }}</td>
                 <td>{{ $value->kondisi_atap }}</td>
                 <td>{{ $value->material_dinding }}</td>
@@ -101,6 +108,7 @@ table, th, td {
                 <td>{{ $value->kondisi_balok }}</td>
                 <td>{{ $value->kondisi_sloof }}</td>
                 <td>{{ $value->kawasan_rumah }}</td>
+                <td>{{ $value->fungsi_ruang }}</td>
                 <td>{{ ($value->ket_verif == '') ? 'Menunggu' : $value->ket_verif }}</td>
             </tr>
         @endforeach
