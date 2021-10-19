@@ -136,5 +136,5 @@
 
     });   
     </script>
-  </x-slot>
+  </x-slot>   
 </x-app-layout>
