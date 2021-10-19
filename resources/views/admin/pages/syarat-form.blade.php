@@ -133,8 +133,8 @@
             data: data,
             type: "post",
             success: function(data, textStatus, jqXHR) {
-                var image = $('<img>').attr('src', '{{ url('') }}/' + data['url']).addClass('img-fluid');
-                $('#summernote').summernote("insertNode", image[0]);
+              var image = $('<img>').attr('src', '{{ url('') }}/' + data['url']).addClass('img-fluid');
+              $('#summernote').summernote("insertNode", '<a href="{{ url('') }}/' + data['url'] + '" target="_blank">' +image[0]+ '</a>');
             },
             error: function(data) {
                 console.log(data);
