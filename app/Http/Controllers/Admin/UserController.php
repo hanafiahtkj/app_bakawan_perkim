@@ -60,7 +60,7 @@ class UserController extends AdminController
         ];
 
         $id_role = $request->id_role;
-        if ($id_role == 2) {
+        if ($id_role == 'General') {
             $validasi['id_kecamatan'] = 'required';
             $validasi['id_kelurahan'] = 'required';
         }
