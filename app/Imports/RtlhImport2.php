@@ -65,11 +65,10 @@ class RtlhImport2 implements ToCollection, WithHeadingRow
 
             //echo $id_kecamatan; die;
 
-            if (isset($temp[45])) {
-                // $tgl = $temp[45];
-                // $arr_tgl = explode("/", $tgl);
-                // $tgl_lahir = $arr_tgl[2].'-'.$arr_tgl[1].'-'.$arr_tgl[0];
-                $tgl_lahir = null;
+            if ($temp[45] != null && $temp[45] != '') {
+                $tgl = $temp[45];
+                $arr_tgl = explode("/", $tgl);
+                $tgl_lahir = $arr_tgl[2].'-'.$arr_tgl[1].'-'.$arr_tgl[0];
             }
             else {
                 $tgl_lahir = null;
@@ -364,9 +363,26 @@ class RtlhImport2 implements ToCollection, WithHeadingRow
                 $lebar2 = 0;
             }
 
+            if ($temp[19] != null && $temp[19] != '') {
+                $fungsi_ruang = SetupRtlh::where('parent_id', 2752)
+                    ->where('name', $temp[19])->value('id');
+                $fungsi_ruang = ($fungsi_ruang) ? $fungsi_ruang : 2654;
+            }
+            else {
+                $fungsi_ruang = 2654;
+            }
+
+            $bukti_kepemilikan = [];
+            if ($temp[49] != null && $temp[49] != '') {
+                $bukti = explode(",",$temp[49]);
+                $bukti_kepemilikan = SetupRtlh::where('parent_id', 11)
+                    ->whereIn('name', $bukti)->pluck('id')->toArray();
+            }
+
             $data1 = [
                 'id_user'        => Auth::user()->id,
-                'nik'            => ($temp[3]) ? $temp[3] : $temp[4],
+                'nik'            => ($temp[4]) ? $temp[4] : 1,
+                'no_kk'          => ($temp[3]) ? $temp[3] : null,
                 'nama_lengkap'   => $temp[2],
                 'id_kecamatan'   => $id_kecamatan,
                 'id_kelurahan'   => $id_kelurahan,
@@ -375,8 +391,8 @@ class RtlhImport2 implements ToCollection, WithHeadingRow
                 'jenis_kelamin'  => $jenis_kel, //$temp[9],
                 'jenis_pekerjaan'=> $jenis_pek, //$temp[10],
                 'jml_penghasilan'=> $jml_penghasilan, //$temp[11],
-                'pernah_dibantu' => 0,
-                'bantuan_dari'   => '-',
+                'pernah_dibantu' => ($temp[17] == 'Ya') ? 1 : 0,
+                'bantuan_dari'   => ($temp[48] != '') ? $temp[48] : '-',
                 'umur'           => (int) $temp[7],
                 'pendidikan'     => $pendidikan, //$temp[37],
                 'kawasan_rumah'  => $kawasan_rumah, //$temp[36],
@@ -398,9 +414,8 @@ class RtlhImport2 implements ToCollection, WithHeadingRow
                 'stts_rumah'        => $stts_rumah,
                 'stts_tanah_lain'   => $stts_tanah_lain,
                 'stts_rumah_lain'   => $stts_rumah_lain,
-                //'bukti_kepemilikan' => $request->input('bukti_kepemilikan'),
                 'foto_bangunan'     => '',
-                'koordinat_rumah'   => ($temp[43] != '') ? $temp[43].','.$temp[44] : '',
+                'koordinat_rumah'   => (($temp[43] != '') && ($temp[44] != '')) ? $temp[44].','.$temp[43] : '',
             ];
 
             //var_dump($data2); die;
@@ -411,10 +426,10 @@ class RtlhImport2 implements ToCollection, WithHeadingRow
                 'id_rtlh'            => $rtlh->id,
                 'pondasi'            => $pondasi,
                 'kondisi_kolom'      => $kondisi_kolom,
-                'kondisi_konstruksi' => $kondisi_konstruksi, //$kondisi_konstruksi,
+                'kondisi_konstruksi' => $kondisi_konstruksi,
                 'jendela'            => $jendela,
                 'ventilasi'          => $ventilasi,
-                'stts_wc'            => $stts_wc, //$stts_wc,
+                'stts_wc'            => $stts_wc,
                 'jarak_air_tpa'      => $jarak_air_tpa,
                 'sumber_air_minum'   => $sumber_air_minum,
                 'sumber_listrik'     => $sumber_listrik,
@@ -431,11 +446,19 @@ class RtlhImport2 implements ToCollection, WithHeadingRow
                 'kondisi_plafon'     => $kondisi_plafon,
                 'kondisi_balok'      => $kondisi_balok,
                 'kondisi_sloof'      => $kondisi_sloof,
+                'fungsi_ruang'       => $fungsi_ruang,
             ];
 
             //var_dump($data3); die;
 
             $rtlhKelayakanRumah = RtlhKelayakanRumah::create($data3);
+
+            foreach ($bukti_kepemilikan as $key => $value) {
+                RtlhBukti::create([
+                    'id_rtlh'           => $rtlh->id,
+                    'id_setup_bukti'    => $value
+                ]);
+            }
         }
     }
 

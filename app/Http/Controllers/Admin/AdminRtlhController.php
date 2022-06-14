@@ -119,6 +119,7 @@ class AdminRtlhController extends Controller
             $rtlh = Rtlh::create([
                 'id_user'        => Auth::user()->id,
                 'nik'            => $request->input('nik'),
+                'no_kk'          => $request->input('no_kk'),
                 'nama_lengkap'   => $request->input('nama_lengkap'),
                 'id_kecamatan'   => $request->input('id_kecamatan'),
                 'id_kelurahan'   => $request->input('id_kelurahan'),
@@ -475,6 +476,7 @@ class AdminRtlhController extends Controller
             $rtlh->update([
                 //'id_user'        => Auth::user()->id,
                 'nik'            => $request->input('nik'),
+                'no_kk'          => $request->input('no_kk'),
                 'nama_lengkap'   => $request->input('nama_lengkap'),
                 'id_kecamatan'   => $request->input('id_kecamatan'),
                 'id_kelurahan'   => $request->input('id_kelurahan'),
