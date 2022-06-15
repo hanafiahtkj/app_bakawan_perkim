@@ -106,7 +106,7 @@ class UserController extends AdminController
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -146,7 +146,7 @@ class UserController extends AdminController
         $validasi = [
             'name'       => 'required|string|max:255',
             'username'   => 'required|unique:users,username,'.$id,
-            'password'   => 'same:confirm-password',
+            'password'   => 'same:password_confirmation',
             'foto'       => 'mimes:jpg,bmp,png',
         ];
 
