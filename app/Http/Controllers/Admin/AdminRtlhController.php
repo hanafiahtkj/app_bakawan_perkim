@@ -263,7 +263,7 @@ class AdminRtlhController extends Controller
             // 'stts_tanah_lain'   => 'required',
             // 'stts_rumah_lain'   => 'required',
             // 'bukti_kepemilikan' => 'required',
-            // 'foto_bangunan'     => 'required',
+            'foto_bangunan'     => 'mimes:jpg,bmp,png|max:2048',
             // 'koordinat_rumah'   => 'required',
         ];
 

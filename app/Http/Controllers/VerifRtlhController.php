@@ -309,7 +309,7 @@ class VerifRtlhController extends Controller
             // 'stts_tanah_lain'   => 'required',
             'stts_rumah_lain'   => 'required',
             // 'bukti_kepemilikan' => 'required',
-            'foto_bangunan'     => 'required|mimes:jpg,bmp,png',
+            'foto_bangunan'     => 'required|mimes:jpg,bmp,png|max:2048',
             'koordinat_rumah'   => 'required',
         ];
 
@@ -341,6 +341,11 @@ class VerifRtlhController extends Controller
         ];
 
         $rule_4 = [];
+        $uploads = SetupVerifField::where('id_setup', 1)->get();
+        foreach ($uploads as $key => $value) 
+        {
+            $rule_4['uploads_'.$value->id] = 'mimes:pdf,jpg,bmp,png|max:2048';
+        }
 
         $rule_5 = [
             'stts_verif'            => 'required',

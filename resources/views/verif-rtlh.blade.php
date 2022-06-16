@@ -794,12 +794,18 @@
     <script src="{{ asset('plugins/leaflet-locatecontrol/dist/L.Control.Locate.min.js') }}" charset="utf-8"></script>
     <script>
 
-    function printErrorMsg (msg) {
+    function printErrorMsg (msg, idForm = '') {
       var focus = '';
       $.each( msg, function( key, value ) {
         console.log(key);
-        $('[name="'+key+'"]').addClass('is-invalid');
-        $('.feedback-'+key).text(value);
+        // $('[name="'+key+'"]').addClass('is-invalid');
+        // $('.feedback-'+key).text(value);
+
+        var obj = $(((idForm != '') ? idForm + ' ' : '') + '[name="'+key+'"]');
+        obj.removeClass('is-invalid');
+        obj.addClass('is-invalid');
+        obj.siblings('.invalid-feedback').text(value);
+        obj.removeClass('is-valid');
 
         if (focus == '') {
           focus = '1';
