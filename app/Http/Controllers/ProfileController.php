@@ -29,7 +29,7 @@ class ProfileController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'username'   => 'required|unique:users,username,'.$id,
-            'password' => 'same:confirm-password',
+            'password' => 'same:password_confirmation',
             'foto'       => 'mimes:jpg,bmp,png',
             //'roles' => 'required'
         ]);
