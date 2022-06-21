@@ -136,4 +136,18 @@ class GisController extends Controller
             'data'   => json_decode($jsonString),
         ]);
     }
+
+    public function geojsonKumuh2022(Request $request)
+    {
+        $jsonString = file_get_contents(public_path('geojson/kumuh2022.geojson'));
+
+        // $data = json_decode($jsonString, true);
+
+        // dd($data);
+
+        return response()->json([
+            'status' => true,
+            'data'   => json_decode($jsonString),
+        ]);
+    }
 }

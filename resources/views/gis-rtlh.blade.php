@@ -324,6 +324,56 @@
         kumuh.addData(response.data);
       });
 
+      /*DELINIASI KUMUH*/
+      let kumuh2022Layer = L.geoJson(null);
+      let kumuh2022 = L.geoJson(null, {
+        style: function (feature) {
+          return {
+            color: "grey",
+            fillColor: "#c10d0d",
+            fillOpacity: 0.5,
+            opacity: 0.5,
+            width: 0.001,
+            clickable: true,
+            title: feature.properties.NAMOBJ,
+            riseOnHover: true
+          };
+        },
+        onEachFeature: function (feature, layer) {
+          if (feature.properties) {
+            let content = "<table class='table table-sm table-striped table-bordered table-condensed'>" + "<tr><th>LOKASI</th><td>" + feature.properties.NAMOBJ + "</td></tr><table>";
+            layer.on({
+              click: function (e) {
+                $("#feature-title").html(feature.properties.NAMOBJ);
+                $("#feature-info").html(content);
+                $("#featureModal").modal("show");
+
+              }
+            });
+          }
+          layer.on({
+            mouseover: function (e) {
+              let layer = e.target;
+              layer.setStyle({
+                weight: 3,
+                color: "#00FFFF",
+                opacity: 1
+              });
+              if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+              }
+            },
+            mouseout: function (e) {
+              kumuh2022.resetStyle(e.target);
+            }
+          });
+        }
+      });
+
+      $.getJSON("{{ route('gis-kumuh-2022-geojson') }}", function ( response ) {
+        kumuh2022.addData(response.data);
+      });
+
       // Overlay layers are grouped
       var groupedOverlays = {
         "UTILITAS KOTA & BATAS ADMINISTRASI": {
@@ -336,6 +386,7 @@
         },
         "TEMATIK": {
           "Deliniasi Kumuh 2015": kumuhLayer,
+          "Deliniasi Kumuh 2022": kumuh2022Layer,
         }
       };
 
@@ -369,6 +420,10 @@
           markerClusters.addLayer(kumuh);
           //console.log(gRtlh2);
         }
+        if (e.layer === kumuh2022Layer) {
+          markerClusters.addLayer(kumuh2022);
+          //console.log(gRtlh2);
+        }
       });
 
       map.on("overlayremove", function(e) {
@@ -387,6 +442,10 @@
         }
         if (e.layer === kumuhLayer) {
           markerClusters.removeLayer(kumuh);
+        }
+        if (e.layer === kumuh2022Layer) {
+          markerClusters.addLayer(kumuh2022);
+          //console.log(gRtlh2);
         }
       });
 
