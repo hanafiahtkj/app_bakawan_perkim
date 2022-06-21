@@ -5,6 +5,9 @@
   <x-slot name="extra_css">
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/leaflet/leaflet.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/leaflet-locatecontrol/dist/L.Control.Locate.min.css') }}" />
   </x-slot>
 
@@ -790,6 +793,9 @@
     <script src="{{ asset('plugins/inputmask/jquery.inputmask.min.js') }}"></script>
     <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
     <script src="{{ asset('plugins/leaflet/leaflet.js') }}"></script>
+    <script src="{{ asset('plugins/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.js') }}"></script>
+    <script src="{{ asset('plugins/leaflet-groupedlayercontrol/example/exampledata.js') }}"></script>
+    <script src="{{ asset('plugins/Leaflet.markercluster-1.4.1/dist/leaflet.markercluster.js') }}"></script>
     <script src="{{ asset('js/plugin.js') }}"></script>
     <script src="{{ asset('plugins/leaflet-locatecontrol/dist/L.Control.Locate.min.js') }}" charset="utf-8"></script>
     <script>
@@ -865,69 +871,6 @@
         // banjarmasin = -3.317219,114.524172
         pointStart = [-3.317219,114.524172];
       }
-
-      var map = L.map('mapid').setView(pointStart, 13);
-
-      L.control.locate({
-        strings: {
-          title: "Tampilkan Lokasi Anda"
-        }
-      }).addTo(map);
-
-      map.on('locationfound', onMapClick);
-
-      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaGFuYWZpMDciLCJhIjoiY2tubmNiY2N6MDV3ZDJvcGdrMXh3aTh3eSJ9.gHOs5sTl8lPwP-IzHYgH_g', {
-          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-          maxZoom: 18,
-          id: 'mapbox/streets-v11',
-          tileSize: 512,
-          zoomOffset: -1,
-          accessToken: 'your.mapbox.access.token'
-      }).addTo(map);
-
-      map.on('click', onMapClick);
-      var markers = [];
-
-      if (koordinat.length == 2) {
-        var marker = new L.Marker([koordinat[0], koordinat[1]], {
-            riseOnHover: true,
-            draggable: true,
-        });
-        marker.addTo(map);
-        markers.push(marker);
-      }
-
-      function onMapClick(e) {
-          var geojsonFeature = {
-              "type": "Feature",
-              "properties": {},
-              "geometry": {
-                  "type": "Point",
-                  "coordinates": [e.latlng.lat, e.latlng.lng]
-              }
-          }
-          if (markers.length > 0) {
-              map.removeLayer(markers.pop());
-          }
-          var marker;
-          $('#koordinat_rumah').val(e.latlng.lat + ',' + e.latlng.lng);
-          L.geoJson(geojsonFeature, {
-              pointToLayer: function (feature, latlng) {
-                  marker = L.marker(e.latlng, {
-                      riseOnHover: true,
-                      draggable: true,
-                  });
-                  markers.push(marker);
-                  return marker;
-              }
-          }).addTo(map);
-      }
-      
-      $('#exampleModal').on('shown.bs.modal', function(){
-          setTimeout(function() {
-              map.invalidateSize();
-          }, 10);
-      });
 
       getKelurahan('{{ $rtlh->id_kecamatan }}');
 
@@ -1024,6 +967,386 @@
             },
         });
       });
+
+      var osmStreet = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiaGFuYWZpMDciLCJhIjoiY2tubmNiY2N6MDV3ZDJvcGdrMXh3aTh3eSJ9.gHOs5sTl8lPwP-IzHYgH_g', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+      });
+
+      var markerClusters = new L.MarkerClusterGroup({
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        disableClusteringAtZoom: 17
+      });
+
+      var map = L.map(document.getElementById('mapid'), {
+        zoom: 13,
+        center: pointStart,
+        layers: [osmStreet, markerClusters],
+        zoomControl: false,
+        attributionControl: false
+      });
+
+      var greenIcon = new L.Icon({
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      var blueIcon = new L.Icon({
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      let kelurahanLayer = L.geoJson(null);
+      let Kelurahan = L.geoJson(null, {
+        style: function (feature) {
+          return {
+            color: "#42a7f5",
+            fill: true,
+            fillOpacity: 0,
+            opacity: 0.3,
+            width: 0.01,
+            clickable: false,
+            riseOnHover: true
+          };
+        },
+
+        onEachFeature: function (feature, layer) {
+         
+          layer.on({
+            mouseover: function (e) {
+              let layer = e.target;
+              layer.setStyle({
+                weight: 3,
+                color: "#00FFFF",
+                fillOpacity: 0.05,
+                opacity: 1
+              });
+
+              if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+              }
+            },
+            mouseout: function (e) {
+              Kelurahan.resetStyle(e.target);
+            }
+          });
+        }
+      });
+
+      $.getJSON("{{ route('gis-kelurahan-geojson') }}", function ( response ) {
+        Kelurahan.addData(response.data);
+      });
+
+      let kecamatanColors = {"Banjarmasin Barat":"#ffb400",
+        "Banjarmasin Selatan":"#70a1d7",
+        "Banjarmasin Tengah":"#a1de93",
+        "Banjarmasin Timur":"#f47c7c",
+        "Banjarmasin Utara":"#f7f48b"};
+      
+      let kecamatanLayer = L.geoJson(null);
+      let Kecamatan = L.geoJson(null, {
+        style: function (feature) {
+          return {
+            name: Kecamatan,
+            color: "white",
+            fillColor: kecamatanColors[feature.properties.KECAMATAN],
+            fillOpacity: 0.7,
+            opacity: 1,
+            width: 1,
+            dashArray: '3',
+            clickable: true,
+            riseOnHover: true
+          };
+        },
+
+        onEachFeature: function (feature, layer) {
+
+          if (feature.properties) {
+              let content = "<table class='table table-sm table-striped table-bordered table-condensed'>" + "<tr><th>KODE KEC.</th><td>" + feature.properties.KODE_KEC +
+              "<tr><th>LUAS (KM<sup>2</sup>)</th><td>" + feature.properties.LUAS +
+              "</td></tr>" + "<tr><th>JUMLAH KELURAHAN</th><td>" + feature.properties.JUMLAH_KEL + 
+              "</td></tr>" + "<tr><th>JUMLAH PENDUDUK (JIWA)</th><td>" + feature.properties.JUMLAH_JIWA + 
+              "</td></tr>" + "<tr><th>KEPADATAN PENDUDUK (JIWA/KM<sup>2</sup>)</th><td>" + feature.properties.KEPADATAN + 
+              // "</td></tr>" + "<tr><th>AKSES AMAN (%)</th><td>" + feature.properties.AKSES_AMAN + 
+              // "</td></tr>" + "<tr><th>AKSES DASAR/CUBLUK (%)</th><td>" + feature.properties.AKSES_DASAR + 
+              // "</td></tr>" + "<tr><th>TANPA AKSES/ PENGGUNA JAMBAN DI PINGGIR SUNGAI (%)</th><td>" + feature.properties.TANPA_AKSES + 
+              "</td></tr>" +  "</td></tr>" + "<table>" ;
+
+              layer.on({
+                click: function (e) {
+                  $("#feature-title").html(feature.properties.KECAMATAN);
+                  $("#feature-info").html(content);
+                  $("#featureModal").modal("show");
+                    
+                }
+              });
+          }
+
+          layer.on({
+            mouseover: function (e) {
+              
+              let layer = e.target;
+              layer.setStyle({
+                weight: 4,
+                color: "#666",
+                fillOpacity: 0.1,
+                dashArray: '',
+                opacity: 1
+              });
+
+
+              if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+              }
+
+            },
+            mouseout: function (e) {
+              Kecamatan.resetStyle(e.target);
+            }
+          });
+        }
+      });
+
+      $.getJSON("{{ route('gis-kecamatan-geojson') }}", function ( response ) {
+        Kecamatan.addData(response.data);
+      });
+
+      //Legenda Kecamatan//
+      let kecLegend = L.control({
+        name: 'kecLegend',
+        position: 'bottomleft'
+      });
+
+      kecLegend.onAdd = function (map) {
+          let divKec = L.DomUtil.create("divKec", "info legend");
+          divKec.innerHTML += "<h6><b>Legenda :</b> Kecamatan</h6>";
+          divKec.innerHTML += '<p><i style="background: #ffb400"></i><span>Banjarmasin Barat</span><br></p>';
+          divKec.innerHTML += '<p><i style="background: #70a1d7"></i><span>Banjarmasin Selatan</span><br></p>';
+          divKec.innerHTML += '<p><i style="background: #a1de93"></i><span>Banjarmasin Tengah</span><br></p>';
+          divKec.innerHTML += '<p><i style="background: #f47c7c"></i><span>Banjarmasin Timur</span><br></p>';
+          divKec.innerHTML += '<p><i style="background: #f7f48b"></i><span>Banjarmasin Utara</span><br></p>';
+            
+          return divKec;
+      };
+
+      /*DELINIASI KUMUH*/
+      let kumuhLayer = L.geoJson(null);
+      let kumuh = L.geoJson(null, {
+        style: function (feature) {
+          return {
+            color: "grey",
+            fillColor: "magenta",
+            fillOpacity: 0.5,
+            opacity: 0.5,
+            width: 0.001,
+            clickable: true,
+            title: feature.properties.KATEGORI,
+            riseOnHover: true
+          };
+        },
+        onEachFeature: function (feature, layer) {
+          if (feature.properties) {
+            let content = "<table class='table table-sm table-striped table-bordered table-condensed'>" + "<tr><th>KRITERIA KUMUH</th><td>" + feature.properties.KRITERIA_KUMUH + "<tr><th>LUASAN KUMUH (M<SUP>2</SUP>)</th><td>" + feature.properties.LUAS + "</td></tr>" + "<tr><th>KELURAHAN</th><td>" + feature.properties.KELURAHAN + "</td></tr>" + "<tr><th>RT</th><td>" + feature.properties.RT+ "</td></tr>" +  "</td></tr>" + "<table>";
+            layer.on({
+              click: function (e) {
+                $("#feature-title").html(feature.properties.KATEGORI);
+                $("#feature-info").html(content);
+                $("#featureModal").modal("show");
+
+              }
+            });
+          }
+          layer.on({
+            mouseover: function (e) {
+              let layer = e.target;
+              layer.setStyle({
+                weight: 3,
+                color: "#00FFFF",
+                opacity: 1
+              });
+              if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+              }
+            },
+            mouseout: function (e) {
+              kumuh.resetStyle(e.target);
+            }
+          });
+        }
+      });
+
+      $.getJSON("{{ route('gis-kumuh-geojson') }}", function ( response ) {
+        kumuh.addData(response.data);
+      });
+
+      /*DELINIASI KUMUH*/
+      let kumuh2022Layer = L.geoJson(null);
+      let kumuh2022 = L.geoJson(null, {
+        style: function (feature) {
+          return {
+            color: "grey",
+            fillColor: "#c10d0d",
+            fillOpacity: 0.5,
+            opacity: 0.5,
+            width: 0.001,
+            clickable: true,
+            title: feature.properties.NAMOBJ,
+            riseOnHover: true
+          };
+        },
+        onEachFeature: function (feature, layer) {
+          if (feature.properties) {
+            let content = "<table class='table table-sm table-striped table-bordered table-condensed'>" + "<tr><th>LOKASI</th><td>" + feature.properties.NAMOBJ + "</td></tr><table>";
+            layer.on({
+              click: function (e) {
+                $("#feature-title").html(feature.properties.NAMOBJ);
+                $("#feature-info").html(content);
+                $("#featureModal").modal("show");
+
+              }
+            });
+          }
+          layer.on({
+            mouseover: function (e) {
+              let layer = e.target;
+              layer.setStyle({
+                weight: 3,
+                color: "#00FFFF",
+                opacity: 1
+              });
+              if (!L.Browser.ie && !L.Browser.opera) {
+                layer.bringToFront();
+              }
+            },
+            mouseout: function (e) {
+              kumuh2022.resetStyle(e.target);
+            }
+          });
+        }
+      });
+
+      $.getJSON("{{ route('gis-kumuh-2022-geojson') }}", function ( response ) {
+        kumuh2022.addData(response.data);
+      });
+
+      // Overlay layers are grouped
+      var groupedOverlays = {
+        "UTILITAS KOTA & BATAS ADMINISTRASI": {
+          "Kelurahan": kelurahanLayer,
+          "Kecamatan": kecamatanLayer,
+        },
+        "TEMATIK": {
+          "Deliniasi Kumuh 2015": kumuhLayer,
+          "Deliniasi Kumuh 2022": kumuh2022Layer,
+        }
+      };
+
+      // Use the custom grouped layer control, not "L.control.layers"
+      L.control.groupedLayers(ExampleData.Basemaps, groupedOverlays).addTo(map);
+
+      /* Layer control listeners that allow for a single markerClusters layer */
+      map.on("overlayadd", function(e) {
+        if (e.layer === kelurahanLayer) {
+          markerClusters.addLayer(Kelurahan);
+          //console.log(gRtlh);
+        }
+        if (e.layer === kecamatanLayer) {
+          kecLegend.addTo(this);
+          markerClusters.addLayer(Kecamatan);
+          //console.log(gRtlh);
+        }
+        if (e.layer === kumuhLayer) {
+          markerClusters.addLayer(kumuh);
+          //console.log(gRtlh2);
+        }
+        if (e.layer === kumuh2022Layer) {
+          markerClusters.addLayer(kumuh2022);
+          //console.log(gRtlh2);
+        }
+      });
+
+      map.on("overlayremove", function(e) {
+        if (e.layer === kelurahanLayer) {
+          markerClusters.removeLayer(Kelurahan);
+        }
+        if (e.layer === kecamatanLayer) {
+          this.removeControl(kecLegend);
+          markerClusters.removeLayer(Kecamatan);
+        }
+        if (e.layer === kumuhLayer) {
+          markerClusters.removeLayer(kumuh);
+        }
+        if (e.layer === kumuh2022Layer) {
+          markerClusters.addLayer(kumuh2022);
+          //console.log(gRtlh2);
+        }
+      });
+
+      map.on('click', onMapClick);
+      var markers = [];
+
+      if (koordinat.length == 2) {
+        var marker = new L.Marker([koordinat[0], koordinat[1]], {
+            riseOnHover: true,
+            draggable: true,
+        });
+        marker.addTo(map);
+        markers.push(marker);
+      }
+      
+      function onMapClick(e) {
+          var geojsonFeature = {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                  "type": "Point",
+                  "coordinates": [e.latlng.lat, e.latlng.lng]
+              }
+          }
+          if (markers.length > 0) {
+              map.removeLayer(markers.pop());
+          }
+          var marker;
+          $('#koordinat_rumah').val(e.latlng.lat + ',' + e.latlng.lng);
+          L.geoJson(geojsonFeature, {
+              pointToLayer: function (feature, latlng) {
+                  marker = L.marker(e.latlng, {
+                      riseOnHover: true,
+                      draggable: true,
+                  });
+                  markers.push(marker);
+                  return marker;
+              }
+          }).addTo(map);
+      }
+
+      $('#exampleModal').on('shown.bs.modal', function(){
+          setTimeout(function() {
+              map.invalidateSize();
+          }, 10);
+      });
+
+      L.control.locate({
+        strings: {
+          title: "Tampilkan Lokasi Anda"
+        }
+      }).addTo(map);
+
+      map.on('locationfound', onMapClick);
+
     });
     </script>
   </x-slot>
