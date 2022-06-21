@@ -94,6 +94,9 @@ Route::group(['middleware' => ['role:General|TFL|Konsultan']], function () {
     Route::get('gis-kumuh-geojson', [GisController::class, 'geojsonKumuh'])
         ->middleware(['auth'])->name('gis-kumuh-geojson');
 
+    Route::get('gis-kumuh-2022-geojson', [GisController::class, 'geojsonKumuh2022'])
+        ->middleware(['auth'])->name('gis-kumuh-2022-geojson');
+
     Route::get('/create-rtlh', [RtlhController::class, 'create'])
         ->middleware(['auth'])->name('create-rtlh');
 
@@ -166,6 +169,9 @@ Route::group(['middleware' => ['role:Admin']], function () {
 
         Route::get('gis-kumuh-geojson', [AdminGisController::class, 'geojsonKumuh'])
             ->middleware(['auth'])->name('admin.gis-kumuh-geojson');
+
+        Route::get('gis-kumuh-2022-geojson', [AdminGisController::class, 'geojsonKumuh2022'])
+            ->middleware(['auth'])->name('admin.gis-kumuh-2022-geojson');
 
         Route::get('profile', [AdminProfileController::class, 'index'])
             ->middleware(['auth'])->name('admin.profile');
