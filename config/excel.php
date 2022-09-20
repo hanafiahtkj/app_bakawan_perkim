@@ -207,6 +207,7 @@ return [
     */
     'value_binder' => [
         'default' => Maatwebsite\Excel\DefaultValueBinder::class,
+        'default' => PhpOffice\PhpSpreadsheet\Cell\StringValueBinder::class,
     ],
 
     'cache' => [
