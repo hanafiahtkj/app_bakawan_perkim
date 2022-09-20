@@ -7,13 +7,15 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Events\AfterSheet;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 use App\Models\Rtlh;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Illuminate\Http\Request;
 use DB;
 
-class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSize
+class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSize, WithColumnFormatting
 {
     protected $request;
 
@@ -184,6 +186,14 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
     {
         return [
             'F' => 50,        
+        ];
+    }
+
+    public function columnFormats(): array
+    {
+        return [
+            'A' => NumberFormat::FORMAT_NUMBER,
+            'B' => NumberFormat::FORMAT_NUMBER
         ];
     }
 }
