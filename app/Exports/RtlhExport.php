@@ -148,7 +148,7 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
 
         // dd($rtlh);
 
-        echo view('excel.rtlh', compact('rtlh')); die();
+        // echo view('excel.rtlh', compact('rtlh')); die();
 
         return view('excel.rtlh', compact('rtlh'));
     }
