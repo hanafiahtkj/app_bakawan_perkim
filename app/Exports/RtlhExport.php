@@ -146,6 +146,8 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
         $rtlh = $query->get();
         $this->rowCount = $rtlh->count() + 1;
 
+        dd($rtlh);
+
         //echo view('excel.rtlh', compact('rtlh')); die();
 
         return view('excel.rtlh', compact('rtlh'));
