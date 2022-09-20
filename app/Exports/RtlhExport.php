@@ -146,7 +146,7 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
         $rtlh = $query->get();
         $this->rowCount = $rtlh->count() + 1;
 
-        dd($rtlh);
+        // dd($rtlh);
 
         //echo view('excel.rtlh', compact('rtlh')); die();
 
@@ -157,29 +157,29 @@ class RtlhExport implements FromView, WithEvents, WithColumnWidths, ShouldAutoSi
     {
         return [
             AfterSheet::class    => function(AfterSheet $event) {
-                $cellRange = 'A1:AW1';
-                $event->sheet->getDelegate()->getStyle($cellRange)->getFont()
-                    ->setSize(12)
-                    ->setBold(true);
+                // $cellRange = 'A1:AW1';
+                // $event->sheet->getDelegate()->getStyle($cellRange)->getFont()
+                //     ->setSize(12)
+                //     ->setBold(true);
 
-                $event->sheet->getDelegate()->getStyle($cellRange)->getFill()
-                    ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
-                    ->getStartColor()->setARGB('E0E0E0');
+                // $event->sheet->getDelegate()->getStyle($cellRange)->getFill()
+                //     ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+                //     ->getStartColor()->setARGB('E0E0E0');
 
-                $event->sheet->getDelegate()->getRowDimension('1')->setRowHeight(50);
+                // $event->sheet->getDelegate()->getRowDimension('1')->setRowHeight(50);
 
-                $event->sheet->getDelegate()->getStyle($cellRange)
-                    ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER)
-                    ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                // $event->sheet->getDelegate()->getStyle($cellRange)
+                //     ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER)
+                //     ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
 
-                $event->sheet->getStyle('A1:AW'.$this->rowCount)->applyFromArray([
-                    'borders' => [
-                        'allBorders' => [
-                            'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
-                            'color' => ['argb' => '000000'],
-                        ],
-                    ],
-                ]);
+                // $event->sheet->getStyle('A1:AW'.$this->rowCount)->applyFromArray([
+                //     'borders' => [
+                //         'allBorders' => [
+                //             'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN,
+                //             'color' => ['argb' => '000000'],
+                //         ],
+                //     ],
+                // ]);
             },
         ];
     }
