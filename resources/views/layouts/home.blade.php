@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id"> 
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -7,9 +7,9 @@
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-5.7.2/css/all.min.css') }}">
   <!-- <link rel="manifest" href="{{ asset('manifest.json') }}"> -->
-  
+
   <!-- Extra CSS -->
   @isset($extra_css)
     {{ $extra_css }}
@@ -181,7 +181,7 @@
               <div class="dropdown-divider"></div>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <a href="route('logout')" class="dropdown-item has-icon text-danger" 
+                <a href="route('logout')" class="dropdown-item has-icon text-danger"
                     onclick="event.preventDefault(); this.closest('form').submit();">
                     <i class="fas fa-sign-out-alt"></i> {{ __('Log out') }}
                 </a>

@@ -7,9 +7,9 @@
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap-4.6.0/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-5.7.2/css/all.min.css') }}">
   <!-- <link rel="manifest" href="{{ asset('manifest.json') }}"> -->
-  
+
   <!-- Extra CSS -->
   @isset($extra_css)
     {{ $extra_css }}
@@ -18,14 +18,14 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('css/components.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/custom-admin.css') }}">
 
   @laravelPWA
 </head>
 
-<body class="layout-2">
+<body>
   <div id="app">
-    <div class="main-wrapper">
+    <div class="main-wrapper main-wrapper-1">
 
       <!-- Main Navbar -->
       @include('admin.components.navbar')

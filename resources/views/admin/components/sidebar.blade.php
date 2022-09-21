@@ -1,6 +1,16 @@
-<div class="main-sidebar">
-    <aside id="sidebar-wrapper">
-        <div class="sidebar-brand sidebar-gone-show"><a href="{{ url('') }}">BAKAWAN-RTLH</a></div>
+<div class="main-sidebar bg-gradasi">
+    <aside id="sidebar-wrapper" class="bg-gradasi">
+        <!-- <div class="sidebar-brand sidebar-gone-show"><a href="{{ url('') }}">BAKAWAN-RTLH</a></div> -->
+        <div class="sidebar-brand">
+            <a href="{{ url('/') }}">
+               BAKAwAN-RTLH
+            </a>
+            </div>
+            <div class="sidebar-brand sidebar-brand-sm">
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('img/bakawan-logo.png') }}" class="d-inline-block" alt="" style="height: 35px;">
+            </a>
+        </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dasbor</li>
             <li class="nav-item {{ (request()->routeIs('admin.dashboard')) ? 'active' : '' }}">
