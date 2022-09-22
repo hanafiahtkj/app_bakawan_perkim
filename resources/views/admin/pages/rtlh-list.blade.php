@@ -1,5 +1,5 @@
 <x-admin-layout>
-  
+
   <x-slot name="title">
     Report RTLH
   </x-slot>
@@ -16,8 +16,8 @@
       <div class="section-header">
         <h1 class="mb-2">RTLH</h1>
         <div class="section-header-button">
-          <a href="{{ route('admin.create-rtlh') }}" class="btn btn-primary mr-2 mb-2"><i class="fa fa-plus"></i> TAMBAH</a>
-          <a href="{{ route('admin.import-rtlh') }}" class="btn btn-success mb-2"><i class="fa fa-file-excel"></i> IMPORT EXCEL</a>
+          <a href="{{ route('admin.create-rtlh') }}" class="btn btn-primary mr-2"><i class="fa fa-plus"></i> TAMBAH</a>
+          <a href="{{ route('admin.import-rtlh') }}" class="btn btn-success"><i class="fa fa-file-excel"></i> IMPORT EXCEL</a>
         </div>
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
@@ -35,7 +35,7 @@
             <div class="col-12">
               <div class="card">
                 <!-- <div class="card-header">
-                  <h4>Card Title</h4> 
+                  <h4>Card Title</h4>
                 </div> -->
                 <div class="card-body p-4">
                   <div class="jumbotron m-0 p-4">
@@ -60,7 +60,7 @@
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label class="control-label" for="input-date-added">Status Verifikasi</label>
-                        <select class="form-control selectric" id="stts_verif" name="stts_verif">  
+                        <select class="form-control selectric" id="stts_verif" name="stts_verif">
                           <option value="">Pilih....</option>
                           <option value="1">Diterima</option>
                           <option value="2">Ditolak</option>
@@ -254,7 +254,7 @@
               var url2 = "{{ url('/admin/report/view-rtlh') }}/" + row['id'];
               var url3 = "{{ url('/admin/report/edit-rtlh') }}/" + row['id'];
               var item = (row['stts_verif'] != null) ? '<a class="dropdown-item btn-realisasi" data-id="'+row['id']+'" href="#">Realisasi</a>' : '';
-              item += 
+              item +=
                 '<a class="dropdown-item" href="'+url2+'">Lihat</a>'+
                 '<a class="dropdown-item" href="'+url3+'">Edit</a>'+
                 '<a class="dropdown-item btn-hapus" href="#" data-id="'+row['id']+'">Hapus</a>';
@@ -357,7 +357,7 @@
               $(".is-invalid").removeClass("is-invalid");
               if (data['status'] == true) {
                 swal({
-                  title: "Tersimpan!", 
+                  title: "Tersimpan!",
                   icon: "success",
                 })
                 .then((value) => {

@@ -323,14 +323,15 @@ body.sidebar-mini .navbar {
 }
 
 .main-wrapper-1 .navbar {
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid #e3eaef;
     box-shadow: 0 4px 8px rgb(0 0 0 / 3%);
 }
 
 .main-wrapper-1 .section .section-header {
     background-color: transparent;
     box-shadow: unset;
-    padding-bottom: 0px;;
+    padding-bottom: 0px;
+    margin-bottom: 25px;
     /* border-bottom: 1px solid #dee2e6; */
     /* padding: 15px 20px !important; */
 }

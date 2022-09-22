@@ -56,7 +56,7 @@ class AdminDashboardController extends AdminController
     function _queryRtlh()
     {
         $query = DB::table('rtlh');
-        
+
         return $query;
     }
 
@@ -64,9 +64,9 @@ class AdminDashboardController extends AdminController
     {
         $label = [];
         $total = [];
-        for ($i = 0; $i <= 5; $i++)  {
+        for ($i = 0; $i <= 7; $i++)  {
             array_unshift($label, date("M-Y", strtotime( date( 'Y-m-01' )." -$i months")));
-            
+
             $count = DB::table('rtlh')->whereYear('created_at', '=', date("Y", strtotime( date( 'Y-m-01' )." -$i months")))
                ->whereMonth('created_at', '=', date("m", strtotime( date( 'Y-m-01' )." -$i months")))
                ->count();
@@ -78,7 +78,7 @@ class AdminDashboardController extends AdminController
             'total'     => $total,
       		'label_all' => $label,
         );
-        
+
         return $chart;
     }
 
@@ -91,7 +91,7 @@ class AdminDashboardController extends AdminController
         $setups = DB::table('setup_rtlh')->where('parent_id', $id_setup)->get();
         foreach ($setups as $key => $setup) {
             $label[] = $setup->name;
-            
+
             $count = DB::table('rtlh')
                 ->join('rtlh_kondisi_rumah', 'rtlh_kondisi_rumah.id_rtlh', '=', 'rtlh.id')
                 ->join('rtlh_kelayakan_rumah', 'rtlh_kelayakan_rumah.id_rtlh', '=', 'rtlh.id')

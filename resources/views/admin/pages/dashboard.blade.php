@@ -1,5 +1,5 @@
 <x-admin-layout>
-  
+
   <x-slot name="title">Dasbor</x-slot>
 
   <!-- Main Content -->
@@ -141,7 +141,7 @@
               </div> -->
             </div>
             <div class="card-body">
-              
+
                 <!-- <div class="row">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -166,7 +166,7 @@
                     <button type="button" id="button-filter" class="btn btn-primary pull-right "><i class="fa fa-filter"></i> Filter</button>
                   </div>
                 </div>
-              
+
               <div id="chart"><canvas id="myChart2" height="182"></canvas></div>
             </div>
           </div>
@@ -190,11 +190,11 @@
           success: function(res, textStatus, jqXHR) {
             $('#list-notification').html('');
             $.each(res.data, function (key, value) {
-              var html = 
+              var html =
                 '<li class="media">'+
                   '<img class="mr-3 rounded-circle" width="50" src="{{ asset('img/notification.png') }}" alt="avatar">'+
                   '<div class="media-body">'+
-                    
+
                     // '<div class="media-title">'+ value['title'] +'</div>'+
                     '<span class="text-small text-muted">'+ value['body'] +'</span>'+
                     '<div class="float-right text-primary">'+value['tgl_notif']+'</div>'+
@@ -220,11 +220,11 @@
           success: function(res, textStatus, jqXHR) {
             $('#list-notification').html('');
             $.each(res.data, function (key, value) {
-              var html = 
+              var html =
                 '<li class="media">'+
                   '<img class="mr-3 rounded-circle" width="50" src="{{ asset('img/notification.png') }}" alt="avatar">'+
                   '<div class="media-body">'+
-                    
+
                     // '<div class="media-title">'+ value['title'] +'</div>'+
                     '<span class="text-small text-muted">'+ value['body'] +'</span>'+
                     '<div class="float-right text-primary">'+value['tgl_notif']+'</div>'+
@@ -265,8 +265,8 @@
           scales: {
             yAxes: [{
               gridLines: {
-                display: false,
-                drawBorder: false,
+                color: '#ffdedc',
+                lineWidth: 1
               },
               ticks: {
                 //stepSize: 5
@@ -274,8 +274,8 @@
             }],
             xAxes: [{
               gridLines: {
-                color: '#fbfbfb',
-                lineWidth: 2
+                color: '#ffdedc',
+                lineWidth: 1
               }
             }]
           },
@@ -294,13 +294,13 @@
           dataType: 'json',
           data: {id_setup:id_setup},
           beforeSend: function() {
-            
+
           },
           complete: function() {
-          
+
           },
           success: function(res) {
-            
+
             var data = res.data;
             $("#myChart2").remove();
             $("#chart").append('<canvas id="myChart2" height="188"></canvas>');
@@ -314,8 +314,8 @@
                   label: 'Statistics',
                   data: data["total"],
                   borderWidth: 5,
-                  borderColor: '#6777ef',
-                  backgroundColor: '#6777ef',
+                  borderColor: '#055e6c',
+                  backgroundColor: '#17a2b8',
                   pointBackgroundColor: '#fff',
                   pointBorderColor: '#6777ef',
                   pointRadius: 4
@@ -328,8 +328,8 @@
                 scales: {
                   yAxes: [{
                     gridLines: {
-                      display: false,
-                      drawBorder: false,
+                      color: '#ffdedc',
+                      lineWidth: 1
                     },
                     ticks: {
                       //stepSize: 5
@@ -337,8 +337,8 @@
                   }],
                   xAxes: [{
                     gridLines: {
-                      color: '#fbfbfb',
-                      lineWidth: 2
+                      color: '#ffdedc',
+                      lineWidth: 1
                     }
                   }]
                 },
@@ -351,7 +351,7 @@
       })
 
       $('#button-filter').trigger( "click" );
-      
+
     });
     </script>
   </x-slot>
