@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <div class="btn-toolbar d-block" role="toolbar" aria-label="Toolbar with buttons">
-                        <a ihref="{{ route('admin.create-rtlh') }}" class="btn btn-primary" data-toggle="tooltip" title="Tambah Data">
+                        <a href="{{ route('admin.create-rtlh') }}" class="btn btn-primary" data-toggle="tooltip" title="Tambah Data">
                             <i class="fas fa-plus-circle"></i>
                         </a>
                         <div class="btn-group">
