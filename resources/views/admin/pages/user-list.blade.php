@@ -32,7 +32,7 @@
           <div class="col-12">
             <div class="card">
               <!-- <div class="card-header">
-                <h4>Card Title</h4> 
+                <h4>Card Title</h4>
               </div> -->
               <div class="card-body p-4">
                 <div class="jumbotron m-0 p-4">
@@ -74,8 +74,8 @@
               </div> -->
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-striped table-bordered" id="table-users">
-                    <thead>
+                  <table class="table table-striped table-bordered" id="table-users" style="width: 100%;">
+                    <thead class="bg-primary">
                       <tr>
                         <th class="text-center" style="width: 30px;">
                           #
@@ -223,7 +223,7 @@
             })
         });
       });
-    
+
     });
     </script>
   </x-slot>

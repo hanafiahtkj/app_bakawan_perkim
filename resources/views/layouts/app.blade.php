@@ -109,7 +109,7 @@
             </li>
             @hasanyrole('TFL|Konsultan')
             <li class="nav-item">
-              <a href="{{ url('/gis-rtlh') }}" class="nav-link"><i class="fas fa-globe-asia"></i><span>GIS RTLH</span></a>
+              <a href="{{ route('gis') }}" target="_blank" class="nav-link"><i class="fas fa-globe-asia"></i><span>WebGIS</span></a>
             </li>
             @endrole
             @hasanyrole('General|Konsultan')

@@ -1,70 +1,69 @@
-<x-app-layout>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>WebGIS SIP-KAWAN</title>
 
-  <x-slot name="title">
-    Gis Rtlh
-  </x-slot>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap-4.6.0/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-5.7.2/css/all.min.css') }}">
+    <!-- <link rel="manifest" href="{{ asset('manifest.json') }}"> -->
 
-  <x-slot name="extra_css">
     <link rel="stylesheet" href="{{ asset('plugins/leaflet/leaflet.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/Leaflet.markercluster-1.4.1/dist/MarkerCluster.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/Leaflet.markercluster-1.4.1/dist/MarkerCluster.Default.css') }}">
-  </x-slot>
 
-  <!-- Main Content -->
-  <div class="main-content">
-    <section class="section">
-      <div class="section-header">
-        <div class="section-header-back">
-            <a href="{{ url('/dashboard') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
-          </div>
-          <h1>GIS RTLH</h1>
-          <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ url('/dashboard') }}">Dasbor</a></div>
-            <div class="breadcrumb-item">GIS RTLH</div>
-          </div>
-      </div>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        #mapid {
+            height: 100%;
+            margin-top: 55px;
+        }
+        .bg-gradasi {
+            background-image: linear-gradient(to right, #3f51b5, #2196f3);
+        }
+    </style>
+</head>
 
-      <div class="section-body">
-        <!-- <h2 class="section-title">Users</h2>
-        <p class="section-lead">
-          We use 'DataTables' made by @SpryMedia. You can check the full documentation <a href="https://datatables.net/">here</a>.
-        </p> -->
+<body>
 
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <!-- <div class="card-header">
-                <h4>Basic DataTables</h4>
-              </div> -->
-              <div class="card-body p-1">
-                <div id="mapid" style="height: 600px;"></div>
-              </div>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-gradasi">
+            <a class="navbar-brand" href="#">WebGIS SIP-KAWAN</a>
+        </nav>
+    </header>
+
+    <div id="mapid"></div>
+
+    <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="feature-title"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+            <div class="modal-body" id="feature-info"></div>
+            <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+            </div> -->
+        </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
-  <div class="modal fade" id="featureModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="feature-title"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body" id="feature-info"></div>
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-        </div> -->
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+    <!-- General JS Scripts -->
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="{{ asset('plugins/bootstrap-4.6.0/js/bootstrap.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
-  <x-slot name="extra_js">
     <script src="{{ asset('plugins/leaflet/leaflet.js') }}"></script>
     <script src="{{ asset('plugins/leaflet-groupedlayercontrol/dist/leaflet.groupedlayercontrol.min.js') }}"></script>
     <script src="{{ asset('plugins/leaflet-groupedlayercontrol/example/exampledata.js') }}"></script>
@@ -152,7 +151,7 @@
         }
       });
 
-      $.getJSON("{{ route('gis-kelurahan-geojson') }}", function ( response ) {
+      $.getJSON("{{ route('admin.gis-kelurahan-geojson') }}", function ( response ) {
         Kelurahan.addData(response.data);
       });
 
@@ -226,7 +225,7 @@
         }
       });
 
-      $.getJSON("{{ route('gis-kecamatan-geojson') }}", function ( response ) {
+      $.getJSON("{{ route('admin.gis-kecamatan-geojson') }}", function ( response ) {
         Kecamatan.addData(response.data);
       });
 
@@ -444,12 +443,12 @@
           markerClusters.removeLayer(kumuh);
         }
         if (e.layer === kumuh2022Layer) {
-          markerClusters.addLayer(kumuh2022);
-          //console.log(gRtlh2);
+          markerClusters.removeLayer(kumuh2022);
         }
       });
 
     });
     </script>
-  </x-slot>
-</x-app-layout>
+</body>
+
+</html>

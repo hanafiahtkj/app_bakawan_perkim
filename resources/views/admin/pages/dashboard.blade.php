@@ -196,7 +196,7 @@
                   '<div class="media-body">'+
 
                     // '<div class="media-title">'+ value['title'] +'</div>'+
-                    '<span class="text-small text-muted">'+ value['body'] +'</span>'+
+                    '<span class="text-small">'+ value['body'] +'</span>'+
                     '<div class="float-right text-primary">'+value['tgl_notif']+'</div>'+
                   '</div>'+
                 '</li>';

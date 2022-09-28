@@ -25,7 +25,7 @@ class AdminGisController extends Controller
     {
         $rtlh = DB::table('rtlh')
             ->join('rtlh_kondisi_rumah', 'rtlh_kondisi_rumah.id_rtlh', '=', 'rtlh.id')
-            ->select('rtlh.*', 
+            ->select('rtlh.*',
                 'rtlh_kondisi_rumah.koordinat_rumah'
             )
             ->where('rtlh.stts_verif', 1)
@@ -39,10 +39,10 @@ class AdminGisController extends Controller
         foreach ($rtlh as $key => $value) {
 			$string  = $value->koordinat_rumah;
 			$pos 	 = strpos($string, ',');
-			if ($pos) 
+			if ($pos)
 			{
                 $loc  = explode(",", $string);
-                $value->map_popup_content = '<div class="my-2"><strong>Nama Lengkap:</strong><br>'.$value->nama_lengkap.'</div><div><strong>Alamat Lengkap:</strong><br> '.$value->alamat_lengkap.'</div><div class="my-2"><strong>Koordinat:</strong><br>'.$loc[0].', '.$loc[1].'</div><div><a href="'. url('/admin/report/view-rtlh/'.$value->id).'" target="_blank" title="Lihat detail RTLH">Lihat detail.....</a></div>';
+                $value->map_popup_content = '<div class="my-2"><strong>Nama Lengkap:</strong><br>'.$value->nama_lengkap.'</div><div><strong>Alamat Lengkap:</strong><br> '.$value->alamat_lengkap.'</div><div class="my-2"><strong>Koordinat:</strong><br>'.$loc[0].', '.$loc[1].'</div><div><a href="'. url('/admin/pemukiman/view-rtlh/'.$value->id).'" target="_blank" title="Lihat detail RTLH">Lihat detail.....</a></div>';
                 $json['features'][] = array(
                     'type'       => 'Feature',
                     'id'         => $value->id,
@@ -66,7 +66,7 @@ class AdminGisController extends Controller
     {
         $rtlh = DB::table('rtlh')
             ->join('rtlh_kondisi_rumah', 'rtlh_kondisi_rumah.id_rtlh', '=', 'rtlh.id')
-            ->select('rtlh.*', 
+            ->select('rtlh.*',
                 'rtlh_kondisi_rumah.koordinat_rumah'
             )
             ->where('rtlh.stts_realisasi', 1)
@@ -79,10 +79,10 @@ class AdminGisController extends Controller
         foreach ($rtlh as $key => $value) {
 			$string  = $value->koordinat_rumah;
 			$pos 	 = strpos($string, ',');
-			if ($pos) 
+			if ($pos)
 			{
                 $loc  = explode(",", $string);
-                $value->map_popup_content = '<div class="my-2"><strong>Nama Lengkap:</strong><br>'.$value->nama_lengkap.'</div><div><strong>Alamat Lengkap:</strong><br> '.$value->alamat_lengkap.'</div><div class="my-2"><strong>Koordinat:</strong><br>'.$loc[0].', '.$loc[1].'</div><div><a href="'. url('/admin/report/view-rtlh/'.$value->id).'" target="_blank" title="Lihat detail RTLH">Lihat detail.....</a></div>';
+                $value->map_popup_content = '<div class="my-2"><strong>Nama Lengkap:</strong><br>'.$value->nama_lengkap.'</div><div><strong>Alamat Lengkap:</strong><br> '.$value->alamat_lengkap.'</div><div class="my-2"><strong>Koordinat:</strong><br>'.$loc[0].', '.$loc[1].'</div><div><a href="'. url('/admin/pemukiman/view-rtlh/'.$value->id).'" target="_blank" title="Lihat detail RTLH">Lihat detail.....</a></div>';
                 $json['features'][] = array(
                     'type'       => 'Feature',
                     'id'         => $value->id,

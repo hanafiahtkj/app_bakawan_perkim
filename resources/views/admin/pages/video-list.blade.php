@@ -1,5 +1,5 @@
 <x-admin-layout>
-  
+
   <x-slot name="title">
     Gallery
   </x-slot>
@@ -38,8 +38,8 @@
               </div> -->
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table table-striped table-bordered" id="table-users">
-                    <thead>
+                  <table class="table table-striped table-bordered" id="table-users" style="width: 100%;">
+                    <thead class="bg-primary">
                       <tr>
                         <th class="text-center" style="width: 30px;">
                           #

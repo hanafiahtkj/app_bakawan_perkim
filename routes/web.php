@@ -25,6 +25,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UsersDataTabeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SyaratController;
+use App\Http\Controllers\Admin\KawasanKumuhController;
+use App\Http\Controllers\Admin\BantaranSungaiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,18 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/get-all-validasi', [RtlhController::class, 'getAllValidasi'])->name('get-all-validasi');
 
-});
-
-// ===================== //
-
-Route::group(['middleware' => ['auth', 'role:General|TFL|Konsultan']], function () {
-
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-
-    Route::post('profile-update', [ProfileController::class, 'update'])
-        ->name('profile-update');
-
-    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    Route::get('webgis', GisController::class)->name('gis');
 
     Route::get('gis-rtlh', GisController::class)->name('gis-rtlh');
 
@@ -90,6 +81,19 @@ Route::group(['middleware' => ['auth', 'role:General|TFL|Konsultan']], function 
     Route::get('gis-kumuh-geojson', [GisController::class, 'geojsonKumuh'])->name('gis-kumuh-geojson');
 
     Route::get('gis-kumuh-2022-geojson', [GisController::class, 'geojsonKumuh2022'])->name('gis-kumuh-2022-geojson');
+
+});
+
+// ===================== //
+
+Route::group(['middleware' => ['auth', 'role:General|TFL|Konsultan']], function () {
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+    Route::post('profile-update', [ProfileController::class, 'update'])
+        ->name('profile-update');
+
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::get('/create-rtlh', [RtlhController::class, 'create'])->name('create-rtlh');
 
@@ -148,6 +152,17 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
 
         Route::post('profile-update', [AdminProfileController::class, 'update'])->name('admin.profile-update');
 
+        Route::prefix('pemukiman')->group(function () {
+
+            Route::get('kawasan-kumuh/getDataTables', [KawasanKumuhController::class, 'getDataTables'])->name('admin.kawasan-kumuh.getDataTables');
+
+            Route::resource('kawasan-kumuh', KawasanKumuhController::class, ['as' => 'admin']);
+
+            Route::get('bantaran-sungai/getDataTables', [BantaranSungaiController::class, 'getDataTables'])->name('admin.bantaran-sungai.getDataTables');
+
+            Route::resource('bantaran-sungai', BantaranSungaiController::class, ['as' => 'admin']);
+
+        });
 
         Route::prefix('setup')->group(function () {
 
@@ -221,7 +236,7 @@ Route::group(['middleware' => ['auth', 'role:Admin']], function () {
 
         });
 
-        Route::prefix('report')->group(function () {
+        Route::prefix('pemukiman')->group(function () {
 
             Route::get('rtlh', [AdminRtlhController::class, 'index'])->name('admin.rtlh');
 

@@ -1,7 +1,7 @@
 <x-admin-layout>
 
   <x-slot name="title">
-    Report RTLH
+    Data RTLH
   </x-slot>
 
   <x-slot name="extra_css">
@@ -13,15 +13,11 @@
   <!-- Main Content -->
   <div class="main-content">
     <section class="section">
-      <div class="section-header">
-        <h1 class="mb-2">RTLH</h1>
-        <div class="section-header-button">
-          <a href="{{ route('admin.create-rtlh') }}" class="btn btn-primary mr-2"><i class="fa fa-plus"></i> TAMBAH</a>
-          <a href="{{ route('admin.import-rtlh') }}" class="btn btn-success"><i class="fa fa-file-excel"></i> IMPORT EXCEL</a>
-        </div>
+      <div class="section-header customs">
         <div class="section-header-breadcrumb">
           <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dasbor</a></div>
-          <div class="breadcrumb-item">RTLH</div>
+          <div class="breadcrumb-item">Pemukiman</div>
+          <div class="breadcrumb-item">Data Rumah Tidak Layak Huni (RTLH)</div>
         </div>
       </div>
 
@@ -31,14 +27,11 @@
           We use 'DataTables' made by @SpryMedia. You can check the full documentation <a href="https://datatables.net/">here</a>.
         </p> -->
         <form method="GET" action="{{ route('admin.export-rtlh') }}" target="_blank">
-          <div class="row">
+          <div class="row mb-2">
             <div class="col-12">
-              <div class="card">
-                <!-- <div class="card-header">
-                  <h4>Card Title</h4>
-                </div> -->
+              <!-- <div class="card">
                 <div class="card-body p-4">
-                  <div class="jumbotron m-0 p-4">
+                  <div class="jumbotron m-0 p-4"> -->
                   <div class="row">
                     <div class="col-sm-6">
                       <div class="form-group">
@@ -69,14 +62,14 @@
                         <!-- <input type="text" name="jml_kk" value="" id="jml_kk" class="form-control numeric"> -->
                       </div>
                       <button type="button" id="button-filter" class="btn btn-primary pull-right mr-2 mb-2"><i class="fa fa-filter"></i> Filter</button>
-                      <button type="button" target="_blank" name="type" value="json" id="button-show" class="btn btn-dark pull-right mr-2 mb-2" data-toggle="modal" data-target="#form">Show / Hide</button>
+                      <!-- <button type="button" target="_blank" name="type" value="json" id="button-show" class="btn btn-dark pull-right mr-2 mb-2" data-toggle="modal" data-target="#form">Show / Hide</button> -->
                       <button type="submit" target="_blank" name="type" value="excel" id="button-excel" class="btn btn-success pull-right mr-2 mb-2"><i class="fa fa-file-excel"></i> Export Excel</button>
                       <button type="submit" target="_blank" name="type" value="json" id="button-json" class="btn btn-success pull-right mb-2"><i class="far fa-copy"></i> Export JSON</button>
                     </div>
                   </div>
-                  </div>
+                  <!-- </div>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </form>
@@ -88,9 +81,40 @@
                 <h4>Basic DataTables</h4>
               </div> -->
               <div class="card-body">
+                <div class="d-flex justify-content-between mb-4">
+                    <div>
+                        <h4 class="card-title mb-0">Basis Data</h4>
+                        <div class="small text-medium-emphasis">
+                            Rumah Tidak Layak Huni (RTLH)
+                        </div>
+                    </div>
+                    <div class="btn-toolbar d-block" role="toolbar" aria-label="Toolbar with buttons">
+                        <a ihref="{{ route('admin.create-rtlh') }}" class="btn btn-primary" data-toggle="tooltip" title="Tambah Data">
+                            <i class="fas fa-plus-circle"></i>
+                        </a>
+                        <div class="btn-group">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a id="button-show" class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#form">
+                                        <i class="fas fa-eye-slash"></i> Show / Hide
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('admin.import-rtlh') }}">
+                                        <i class="fa fa-file-excel"></i> Import Excel
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="table-responsive">
-                  <table class="table table-striped table-bordered display" id="table-rtlh">
-                      <thead>
+                  <table class="table table-striped table-bordered display" id="table-rtlh" style="width: 100%;">
+                      <thead class="bg-primary">
                       <tr>
                           <th class="align-middle" style="width:30px;">
                           #
@@ -141,9 +165,6 @@
               </div>
             @endforeach
           </div>
-          <!-- <div class="modal-footer border-top-0 d-flex justify-content-center">
-            <button type="submit" id="btn-simpan" class="btn btn-success">Simpan</button>
-          </div> -->
         </form>
       </div>
     </div>
@@ -251,8 +272,8 @@
             targets: {{ count($setups) + 8 }},
             render: function ( data, type, row ) {
              // var url1 = "{{ url('/edit-rtlh') }}/" + row['id'];
-              var url2 = "{{ url('/admin/report/view-rtlh') }}/" + row['id'];
-              var url3 = "{{ url('/admin/report/edit-rtlh') }}/" + row['id'];
+              var url2 = "{{ url('/admin/pemukiman/view-rtlh') }}/" + row['id'];
+              var url3 = "{{ url('/admin/pemukiman/edit-rtlh') }}/" + row['id'];
               var item = (row['stts_verif'] != null) ? '<a class="dropdown-item btn-realisasi" data-id="'+row['id']+'" href="#">Realisasi</a>' : '';
               item +=
                 '<a class="dropdown-item" href="'+url2+'">Lihat</a>'+
