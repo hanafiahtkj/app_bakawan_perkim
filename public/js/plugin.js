@@ -4,9 +4,9 @@ function numeric($format)
 	$(".numeric").keydown(function(event) {
 		keys = event.keyCode;
 		// Allow: backspace, delete, tab, escape, and enter
-        if (event.keyCode == 116 || event.keyCode == 46 || event.keyCode == 188 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
+        if (event.keyCode == 116 || event.keyCode == 46 || event.keyCode == 188 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
              // Allow: Ctrl+A
-            (event.keyCode == 65 && event.ctrlKey === true) ||
+            (event.keyCode == 65 && event.ctrlKey === true) || 
              // Allow: home, end, left, right
             (event.keyCode >= 35 && event.keyCode <= 39) || event.keyCode == 190 || event.keyCode == 110|| event.keyCode == 188) {
                  // let it happen, don't do anything
@@ -15,8 +15,8 @@ function numeric($format)
         else {
             // Ensure that it is a number and stop the keypress
             if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
-                event.preventDefault();
-            }
+                event.preventDefault(); 
+            }   
         }
     });
 }
@@ -38,23 +38,22 @@ function populateForm($form, data)
                 if (this.value == value)
                     this.selected = true;
             });
-        }
-        else if ($ctrls.is('textarea'))
+        } 
+        else if ($ctrls.is('textarea')) 
         {
             $ctrls.val(value);
-        }
-        else
+        } 
+        else 
         {
             switch($ctrls.attr("type"))   //input type
             {
                 case "text":
-                case "number":
                 case "hidden":
-                    $ctrls.val(value);
+                    $ctrls.val(value);   
                     break;
                 case "radio":
-                    if ($ctrls.length >= 1)
-                    {
+                    if ($ctrls.length >= 1) 
+                    {   
                         //console.log("$ctrls.length: " + $ctrls.length + " value.length: " + value.length);
                         $.each($ctrls,function(index)
                         {  // every individual element
@@ -70,11 +69,11 @@ function populateForm($form, data)
                     }
                     break;
                 case "checkbox":
-                    if ($ctrls.length > 1)
-                    {
+                    if ($ctrls.length > 1) 
+                    {   
                         //console.log("$ctrls.length: " + $ctrls.length + " value.length: " + value.length);
                         $.each($ctrls,function(index) // every individual element
-                        {
+                        {  
                             var elemValue = $(this).attr("value");
                             var elemValueInData = undefined;
                             var singleVal;

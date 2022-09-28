@@ -331,27 +331,7 @@ body.sidebar-mini .navbar {
     background-color: transparent;
     box-shadow: unset;
     padding-bottom: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     /* border-bottom: 1px solid #dee2e6; */
     /* padding: 15px 20px !important; */
-}
-
-.sidebar-mini .user-panel {
-    display: none!important;
-}
-
-.user-panel.border-bottom {
-    border-bottom: 1px solid #1b8ded!important;
-}
-
-.list-unstyled-border li {
-    border-bottom: 1px solid #dee2e6;
-}
-
-.section .section-header.customs .section-header-breadcrumb {
-    margin-left: unset;
-}
-
-.table-bordered {
-    border: 1px solid #fff;
 }
