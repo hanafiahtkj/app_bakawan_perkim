@@ -34,7 +34,7 @@
     <header>
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-gradasi">
-            <a class="navbar-brand" href="#">WebGIS SIP-KAWAN</a>
+            <a class="navbar-brand" href="#">WebGIS BAKAWAN-RTLH</a>
         </nav>
     </header>
 
