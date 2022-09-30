@@ -3,7 +3,7 @@
         <!-- <div class="sidebar-brand sidebar-gone-show"><a href="{{ url('') }}">BAKAWAN-RTLH</a></div> -->
         <div class="sidebar-brand">
             <a href="{{ url('/') }}">
-               SIP KAWAN
+               BAKAWAN-RTLH
             </a>
             </div>
             <div class="sidebar-brand sidebar-brand-sm">
@@ -27,8 +27,11 @@
             <li class="nav-item {{ (request()->routeIs('admin.gis-rtlh')) ? 'active' : '' }}">
             <a href="{{ route('gis') }}" target="_blank" class="nav-link"><i class="fas fa-globe-asia"></i><span>WebGIS</span></a>
             </li>
+            <li class="nav-item {{ (request()->routeIs('admin.rtlh')) ? 'active' : '' }}">
+            <a href="{{ route('admin.rtlh') }}"class="nav-link"><i class="fas fa-city"></i> <span>Data RTLH</span></a>
+            </li>
             <!-- <li class="menu-header">Data</li> -->
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-store"></i> <span>Perumahan</span></a>
             <ul class="dropdown-menu">
                 <li class=""><a class="nav-link" href="">Data SPM</a></li>
@@ -49,7 +52,7 @@
             <ul class="dropdown-menu">
                 <li class=""><a class="nav-link" href="">Data Pertanahan</a></li>
             </ul>
-            </li>
+            </li> -->
             <li class="menu-header">System</li>
             <li class="nav-item dropdown {{ (request()->is('admin/setup*')) ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i> <span>Setup</span></a>
