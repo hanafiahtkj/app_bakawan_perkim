@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/DataTables/DataTables-1.10.24/css/dataTables.bootstrap4.min.css') }}">
     <!-- <link rel="stylesheet" href="{{ asset('plugins/DataTables-1.10.24/css/select.bootstrap4.min.css') }}"> -->
   </x-slot>
-  
+
   <!-- Main Content -->
   <div class="main-content">
       <section class="section">
@@ -58,7 +58,7 @@
               <div class="col-12">
                 <div class="card">
                   <!-- <div class="card-header">
-                    <h4>Card Title</h4> 
+                    <h4>Card Title</h4>
                   </div> -->
                   <div class="card-body p-4">
                     <div class="jumbotron m-0 p-4">
@@ -232,7 +232,8 @@
             render: function ( data, type, row ) {
               var url1 = "{{ url('/verif-rtlh') }}/" + row['id'];
               var url2 = "{{ url('/view-rtlh') }}/" + row['id'];
-              var item = ((row['stts_verif'] == null)) ? '<a class="dropdown-item" href="'+url2+'">Lihat</a><a class="dropdown-item" href="'+url1+'">Verifikasi</a>' : '<a class="dropdown-item btn-batal" data-id="'+row['id']+'" href="'+url2+'">Batal Verif</a><a class="dropdown-item btn-realisasi" data-id="'+row['id']+'" href="'+url2+'">Realisasi</a>';
+              var url3 = "{{ url('/edit-rtlh') }}/" + row['id'];
+              var item = ((row['stts_verif'] == null)) ? '<a class="dropdown-item" href="'+url2+'">Lihat</a><a class="dropdown-item" href="'+url3+'">Edit</a><a class="dropdown-item" href="'+url1+'">Verifikasi</a>' : '<a class="dropdown-item btn-batal" data-id="'+row['id']+'" href="'+url2+'">Batal Verif</a><a class="dropdown-item btn-realisasi" data-id="'+row['id']+'" href="'+url2+'">Realisasi</a>';
               html = '<div class="dropdown">' +
                         '<button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Aksi</button>'+
                         '<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">'+
@@ -288,7 +289,7 @@
             }
           });
       });
-    
+
       $('#stts-tab .nav-link').on('click', function (e) {
         e.preventDefault();
         $('#stts-verif').val($(this).data('stts'));
@@ -315,7 +316,7 @@
               $(".is-invalid").removeClass("is-invalid");
               if (data['status'] == true) {
                 swal({
-                  title: "Tersimpan!", 
+                  title: "Tersimpan!",
                   icon: "success",
                 })
                 .then((value) => {
@@ -354,7 +355,7 @@
         dataTable.ajax.reload();
       });
 
-    }); 
+    });
     </script>
   </x-slot>
 </x-app-layout>
