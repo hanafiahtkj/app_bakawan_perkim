@@ -95,7 +95,7 @@ class AdminRtlhController extends Controller
             'profile'           => Auth::user(),
         ];
         return view('admin/pages/create-rtlh', $data);
-    } 
+    }
 
     public function store(Request $request)
     {
@@ -108,7 +108,7 @@ class AdminRtlhController extends Controller
                 'errors' => $validator->errors()
             ]);
         }
-        
+
         try{
             DB::beginTransaction();
 
@@ -159,7 +159,7 @@ class AdminRtlhController extends Controller
                 'foto_bangunan'     => $foto_bangunan,
                 'koordinat_rumah'   => $request->input('koordinat_rumah'),
             ]);
-            
+
             if ($bukti = $request->input('bukti_kepemilikan')) {
                 foreach ($bukti as $key => $value) {
                     $rtlhBukti = RtlhBukti::create([
@@ -168,7 +168,7 @@ class AdminRtlhController extends Controller
                     ]);
                 }
             }
-        
+
             $rtlhKelayakanRumah = RtlhKelayakanRumah::create([
                 'id_rtlh'            => $rtlh->id,
                 'pondasi'            => $request->input('pondasi'),
@@ -202,7 +202,7 @@ class AdminRtlhController extends Controller
             // );
 
             DB::commit();
-            
+
         }catch(\Exception $e){
             //dd($e);
             DB::rollback();
@@ -222,7 +222,7 @@ class AdminRtlhController extends Controller
     {
         $type = $request->input('type');
         $validasi = $this->_validasi($type);
-        
+
         // jika update
         if ($id = $request->input('id_rtlh')) {
             // $validasi['nik'] = 'required|unique:rtlh,nik,'.$id.',id';
@@ -239,7 +239,7 @@ class AdminRtlhController extends Controller
     public function _validasi($type = 'all')
     {
         $rule_1 = [
-            'nik'            => 'required|unique:rtlh|min:16',
+            'nik'            => 'required|unique:rtlh|min:16|max:16',
             'nama_lengkap'   => 'required',
             'id_kecamatan'   => 'required',
             'id_kelurahan'   => 'required',
@@ -311,7 +311,7 @@ class AdminRtlhController extends Controller
     {
         $rtlh = DB::table('rtlh')
             ->select(
-                'rtlh.*', 
+                'rtlh.*',
                 DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d/%m/%Y') as tgl_lahir2")
             )
             ->where('rtlh.id', $id)->first();
@@ -389,7 +389,7 @@ class AdminRtlhController extends Controller
     {
         $rtlh = DB::table('rtlh')
             ->select(
-                'rtlh.*', 
+                'rtlh.*',
                 DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d/%m/%Y') as tgl_lahir2")
             )
             ->where('rtlh.id', $id)->first();
@@ -463,10 +463,10 @@ class AdminRtlhController extends Controller
                 'errors' => $validator->errors()
             ]);
         }
-        
+
         try{
             DB::beginTransaction();
-            
+
             $id  = $request->input('id_rtlh');
             $tgl = $request->input('tgl_lahir');
             $arr_tgl = explode("/", $tgl);
@@ -516,7 +516,7 @@ class AdminRtlhController extends Controller
 
             $rtlhKondisiRumah = RtlhKondisiRumah::where('id_rtlh', $id);
             $rtlhKondisiRumah->update($reqKondisi);
-            
+
             DB::table('rtlh_bukti')->where('id_rtlh', $id)->delete();
             if ($bukti = $request->input('bukti_kepemilikan')) {
                 foreach ($bukti as $key => $value) {
@@ -526,7 +526,7 @@ class AdminRtlhController extends Controller
                     ]);
                 }
             }
-            
+
             $rtlhKelayakanRumah = RtlhKelayakanRumah::where('id_rtlh', $id);
             $rtlhKelayakanRumah->update([
                 'id_rtlh'            => $id,
@@ -561,7 +561,7 @@ class AdminRtlhController extends Controller
             // );
 
             DB::commit();
-            
+
         }catch(\Exception $e){
             DB::rollback();
 
@@ -595,7 +595,7 @@ class AdminRtlhController extends Controller
             RtlhVerifFiles::where('id_rtlh', $id)->delete();
 
             DB::commit();
-            
+
         }catch(\Exception $e){
             DB::rollback();
 
@@ -654,7 +654,7 @@ class AdminRtlhController extends Controller
                 'rtlh.nik',
                 'rtlh.nama_lengkap',
                 DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d-%m-%Y') as tgl_lahir"),
-                'rtlh.alamat_lengkap', 
+                'rtlh.alamat_lengkap',
                 'setup1.name as jenis_kelamin',
                 'setup2.name as jenis_pekerjaan',
                 'setup3.name as jml_penghasilan',
@@ -703,11 +703,11 @@ class AdminRtlhController extends Controller
                 'rtlh.stts_verif',
                 'rtlh.stts_realisasi'
             );
-        
+
         if ($id_kecamatan = $request->get('id_kecamatan')) {
             $query->where('rtlh.id_kecamatan', $id_kecamatan);
         }
-        
+
         if ($id_kelurahan = $request->get('id_kelurahan')) {
             $query->where('rtlh.id_kelurahan', $id_kelurahan);
         }
@@ -728,17 +728,17 @@ class AdminRtlhController extends Controller
         $type= '_export_'.$request->get('type');
         return $this->{$type}($request);
     }
-    
+
     function _export_excel($request)
 	{
         return Excel::download(new RtlhExport($request), 'rtlh.xlsx');
     }
-    
+
     function _export_json($request)
 	{
-        $bukti = 
-            "(SELECT GROUP_CONCAT(setup_rtlh.name) as list_name, id_rtlh 
-            FROM rtlh_bukti join setup_rtlh on setup_rtlh.id = rtlh_bukti.id_setup_bukti 
+        $bukti =
+            "(SELECT GROUP_CONCAT(setup_rtlh.name) as list_name, id_rtlh
+            FROM rtlh_bukti join setup_rtlh on setup_rtlh.id = rtlh_bukti.id_setup_bukti
             GROUP BY rtlh_bukti.id_rtlh) AS setup_bukti";
 
         $query = DB::table('rtlh')
@@ -782,7 +782,7 @@ class AdminRtlhController extends Controller
                 'rtlh.nik',
                 'rtlh.nama_lengkap',
                 DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d-%m-%Y') as tgl_lahir"),
-                'rtlh.alamat_lengkap', 
+                'rtlh.alamat_lengkap',
                 'setup1.name as jenis_kelamin',
                 'setup2.name as jenis_pekerjaan',
                 'setup3.name as jml_penghasilan',
@@ -828,11 +828,11 @@ class AdminRtlhController extends Controller
                 'setup_bukti.list_name as bukti_kepemilikan',
                 'stts_verif.name as ket_verif'
             );
-        
+
         if ($id_kecamatan = $request->get('id_kecamatan')) {
             $query->where('rtlh.id_kecamatan', $id_kecamatan);
         }
-        
+
         if ($id_kelurahan = $request->get('id_kelurahan')) {
             $query->where('rtlh.id_kelurahan', $id_kelurahan);
         }

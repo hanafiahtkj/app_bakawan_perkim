@@ -140,7 +140,7 @@
       //     console.log('No registration token available. Request permission to generate one.');
       //     // Show permission UI.
       //   }
-        
+
       // }).catch((err) => {
       //   console.log('Error retrieving registration token. ', err);
       //   showToken('Error retrieving registration token. ', err);
@@ -189,13 +189,14 @@
             success: function(res, textStatus, jqXHR) {
               $('#notification').html('');
               $.each(res.data, function (key, value) {
-                var html = 
+                var encodedBody = encodeURIComponent(value['body']);
+                var html =
                   '<a href="#" class="dropdown-item">'+
                       '<div class="dropdown-item-icon bg-info text-white">'+
                         '<i class="fas fa-bell"></i>'+
                       '</div>'+
                       '<div class="dropdown-item-desc">'+
-                        value['body'] +
+                        encodedBody +
                         '<div class="time">'+value['tgl_notif']+'</div>'+
                       '</div>'+
                   '</a>';
@@ -207,10 +208,10 @@
             },
         });
     }
-    
+
     @auth
-      resetUI();  
-      getNotification();          
+      resetUI();
+      getNotification();
     @else
       //requestPermission();
       deleteToken();

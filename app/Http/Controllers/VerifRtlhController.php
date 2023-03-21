@@ -41,7 +41,7 @@ class VerifRtlhController extends Controller
         $uploads = SetupVerifField::where('id_setup', 1)->get();
 
         $dataVerif = SetupVerifField::where('id_setup', 2)->get();
-            
+
         $data = [
             'kecamatan'         => Kecamatan::where('city_id', 6371)->pluck('name', 'id'),
             'jenis_kel'         => SetupRtlh::where('parent_id', 4)->get(),
@@ -82,7 +82,7 @@ class VerifRtlhController extends Controller
             'uploads'           => $uploads,
             'dataVerif'         => $dataVerif,
         ];
-        
+
         return view('verif-rtlh', $data);
     }
 
@@ -158,7 +158,7 @@ class VerifRtlhController extends Controller
 
             $rtlhKondisiRumah = RtlhKondisiRumah::where('id_rtlh', $id_rtlh);
             $rtlhKondisiRumah->update($reqKondisi);
-            
+
             DB::table('rtlh_bukti')->where('id_rtlh', $id_rtlh)->delete();
             if ($bukti = $request->input('bukti_kepemilikan')) {
                 foreach ($bukti as $key => $value) {
@@ -196,7 +196,7 @@ class VerifRtlhController extends Controller
                 'kondisi_sloof'      => $request->input('kondisi_sloof'),
                 'fungsi_ruang'       => $request->input('fungsi_ruang'),
             ]);
-            
+
             DB::table('rtlh_verif')->where('id_rtlh', $id_rtlh)->delete();
             $rtlhVerif = RtlhVerif::create([
                 'id_rtlh'               => $id_rtlh,
@@ -214,7 +214,7 @@ class VerifRtlhController extends Controller
 
             DB::table('rtlh_verif_files')->where('id_rtlh', $id_rtlh)->delete();
             $uploads = SetupVerifField::where('id_setup', 1)->get();
-            foreach ($uploads as $key => $value) 
+            foreach ($uploads as $key => $value)
             {
                 $upload = $request->file('uploads_'.$value->id);
                 if ($upload) {
@@ -243,7 +243,7 @@ class VerifRtlhController extends Controller
             );
 
             DB::commit();
-            
+
         }catch(\Exception $e){
             DB::rollback();
 
@@ -262,7 +262,7 @@ class VerifRtlhController extends Controller
     {
         $type = $request->input('type');
         $validasi = $this->_validasi($type);
-        
+
         // jika update
         if ($id = $request->input('id_rtlh')) {
             // $validasi['nik'] = 'required|unique:rtlh,nik,'.$id;
@@ -284,7 +284,7 @@ class VerifRtlhController extends Controller
     public function _validasi($type = 'all')
     {
         $rule_1 = [
-            'nik'            => 'required|unique:rtlh|min:16',
+            'nik'            => 'required|unique:rtlh|min:16|max:16',
             //'no_kk'          => 'min:16',
             'nama_lengkap'   => 'required',
             'id_kecamatan'   => 'required',
@@ -342,7 +342,7 @@ class VerifRtlhController extends Controller
 
         $rule_4 = [];
         $uploads = SetupVerifField::where('id_setup', 1)->get();
-        foreach ($uploads as $key => $value) 
+        foreach ($uploads as $key => $value)
         {
             $rule_4['uploads_'.$value->id] = 'mimes:pdf,jpg,bmp,png|max:2048';
         }
@@ -398,9 +398,9 @@ class VerifRtlhController extends Controller
     {
         $users = User::where('id', $id_user)
             ->pluck('fcm_token', 'id')->toArray();
-        
+
         $recipients = array();
-        foreach ($users as $key => $value) 
+        foreach ($users as $key => $value)
         {
             $recipients[]   = $value;
             $notif = new PushNotification();
@@ -409,7 +409,7 @@ class VerifRtlhController extends Controller
             $notif->body    = $body;
             $notif->save();
         }
-        
+
         $respons = fcm()
             ->to(array_filter($recipients))
             ->priority('high')
@@ -429,9 +429,9 @@ class VerifRtlhController extends Controller
     {
         $users = User::role(['Admin', 'TFL'])
             ->pluck('fcm_token', 'id')->toArray();
-        
+
         $recipients = array();
-        foreach ($users as $key => $value) 
+        foreach ($users as $key => $value)
         {
             $recipients[]   = $value;
             $notif = new PushNotification();
@@ -440,7 +440,7 @@ class VerifRtlhController extends Controller
             $notif->body    = $body;
             $notif->save();
         }
-        
+
         $respons = fcm()
             ->to(array_filter($recipients))
             ->priority('high')

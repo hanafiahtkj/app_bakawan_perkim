@@ -25,7 +25,7 @@ class DashboardController extends Controller
             'tot_perbaikan' => $this->_queryRtlh()->where('rtlh.stts_verif', 3)->count(),
             'kecamatan'     => Kecamatan::where('city_id', 6371)->pluck('name', 'id'),
         ];
-        
+
         if (Auth::user()->hasRole(['General', 'Konsultan'])) {
             return view('dashboard', $data);
         } else {
@@ -39,7 +39,7 @@ class DashboardController extends Controller
         $query = DB::table('rtlh')
             ->leftJoin('stts_verif', 'rtlh.stts_verif', '=', 'stts_verif.id')
             ->select('rtlh.*', 'stts_verif.stts_verif', 'stts_verif.name ket_verif');
-        
+
         $user = Auth::user();
         if ($user->hasRole(['General', 'Konsultan'])) {
             $query->where('rtlh.id_user', $user->id);

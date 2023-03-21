@@ -219,7 +219,7 @@ class RtlhController extends Controller
         if (Auth::user()->hasRole(['Konsultan'])) {
 
             $rule_1 = [
-                'nik'            => 'required|unique:rtlh|min:16',
+                'nik'            => 'required|unique:rtlh|min:16|max:16',
                 //'no_kk'          => 'required|min:16',
                 'nama_lengkap'   => 'required',
                 'id_kecamatan'   => 'required',
@@ -277,7 +277,7 @@ class RtlhController extends Controller
 
         } else if (Auth::user()->hasRole(['TFL'])) {
             $rule_1 = [
-                'nik'            => 'required|unique:rtlh|min:16',
+                'nik'            => 'required|unique:rtlh|min:16|max:16',
                 //'no_kk'          => 'required|min:16',
                 'nama_lengkap'   => 'required',
                 'id_kecamatan'   => 'required',
@@ -336,7 +336,7 @@ class RtlhController extends Controller
         } else {
 
             $rule_1 = [
-                'nik'            => 'required|unique:rtlh|min:16',
+                'nik'            => 'required|unique:rtlh|min:16|max:16',
                 'no_kk'          => 'required|min:16',
                 'nama_lengkap'   => 'required',
                 'id_kecamatan'   => 'required',
