@@ -177,6 +177,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
         Kawankoding\Fcm\FcmServiceProvider::class,
+        MasterRO\LaravelXSSFilter\XSSFilterServiceProvider::class,
     ],
 
     /*
@@ -230,6 +231,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Fcm' => Kawankoding\Fcm\FcmFacade::class,
+        'XSSCleaner' => MasterRO\LaravelXSSFilter\XSSCleanerFacade::class,
     ],
 
 ];
