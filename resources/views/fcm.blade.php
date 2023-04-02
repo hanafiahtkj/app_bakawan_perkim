@@ -196,7 +196,7 @@
                         '<i class="fas fa-bell"></i>'+
                       '</div>'+
                       '<div class="dropdown-item-desc">'+
-                        encodedBody +
+                        value['body'] +
                         '<div class="time">'+value['tgl_notif']+'</div>'+
                       '</div>'+
                   '</a>';
