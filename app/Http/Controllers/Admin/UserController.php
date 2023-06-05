@@ -14,6 +14,7 @@ use Illuminate\Support\Arr;
 use Laravolt\Indonesia\Models\Kecamatan;
 use Laravolt\Indonesia\Models\Kelurahan;
 use DB;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends AdminController
 {
@@ -65,14 +66,16 @@ class UserController extends AdminController
             $validasi['id_kelurahan'] = 'required';
         }
 
-        // Upload 
+        // Upload
         $foto = '';
         $upload = $request->file('foto');
         if($upload) {
             $upload_path = 'uploads/foto/';
-            $filename = time().'_'.$upload->getClientOriginalName();
-            $upload->move($upload_path, $filename);
-            $foto = $upload_path.'/'.$filename;
+            $file = $request->file('foto');
+            $imageName = time().'_'.$file->getClientOriginalName();
+            $image = Image::make($file);
+            $image->save(public_path($upload_path . $imageName));
+            $input['foto'] = $upload_path . $imageName;
         }
 
         $request->validate($validasi);
@@ -90,7 +93,7 @@ class UserController extends AdminController
         ]);
 
         // event(new Registered($user));
-        
+
         // Role
         $user->assignRole($id_role);
 
@@ -106,7 +109,7 @@ class UserController extends AdminController
      */
     public function show($id)
     {
-        
+
     }
 
     /**
@@ -159,29 +162,31 @@ class UserController extends AdminController
         $request->validate($validasi);
 
         $input = $request->all();
-        if(!empty($input['password'])){ 
+        if(!empty($input['password'])){
             $input['password'] = Hash::make($input['password']);
         }else{
-            $input = Arr::except($input,array('password'));    
+            $input = Arr::except($input,array('password'));
         }
 
         // Upload foto bangunan
         $upload = $request->file('foto');
         if ($upload) {
             $upload_path = 'uploads/foto/';
-            $filename = time().'_'.$upload->getClientOriginalName();
-            $upload->move($upload_path, $filename);
-            $input['foto'] = $upload_path.'/'.$filename;
+            $file = $request->file('foto');
+            $imageName = time().'_'.$file->getClientOriginalName();
+            $image = Image::make($file);
+            $image->save(public_path($upload_path . $imageName));
+            $input['foto'] = $upload_path . $imageName;
         }
-    
+
         $user = User::find($id);
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
-    
+
         // Role
         $id_role = $request->id_role;
         $user->assignRole($id_role);
-    
+
         return redirect()->route('users.index')
                         ->with('success','User updated successfully');
     }
@@ -209,7 +214,7 @@ class UserController extends AdminController
         if ($id_kecamatan = $request->get('id_kecamatan')) {
             $users->where('id_kecamatan', $id_kecamatan);
         }
-        
+
         if ($id_kelurahan = $request->get('id_kelurahan')) {
             $users->where('id_kelurahan', $id_kelurahan);
         }
