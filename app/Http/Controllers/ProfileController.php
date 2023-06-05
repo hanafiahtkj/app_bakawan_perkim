@@ -49,6 +49,7 @@ class ProfileController extends Controller
             $file = $request->file('foto');
             $imageName = time().'_'.$file->getClientOriginalName();
             $image = Image::make($file);
+            $image->exif()->encode();
             $image->save(public_path($upload_path . $imageName));
             $input['foto'] = $upload_path . $imageName;
         }
