@@ -47,7 +47,7 @@ class AdminProfileController extends AdminController
             $file = $request->file('foto');
             $imageName = time().'_'.$file->getClientOriginalName();
             $image = Image::make($file);
-            $image->exif()->encode();
+            $image->exif()->reset();
             $image->save(public_path($upload_path . $imageName));
             $input['foto'] = $upload_path . $imageName;
         }
