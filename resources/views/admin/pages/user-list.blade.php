@@ -147,9 +147,9 @@
           {data: 'id', "searchable": false},
           {data: 'name'},
           {data: 'username'},
-          {data: 'role', "searchable": false},
-          {data: 'kecamatan', "searchable": false},
-          {data: 'kelurahan', "searchable": false},
+          {data: 'role'},
+          {data: 'kecamatan'},
+          {data: 'kelurahan'},
           {data: null, "searchable": false},
         ],
         columnDefs  : [
