@@ -45,7 +45,7 @@ class ApiGisController extends Controller
 			$pos 	 = strpos($string, ',');
 			if ($pos)
 			{
-                $value->foto_bangunan = base_url($value->foto_bangunan);
+                $value->foto_bangunan = url($value->foto_bangunan);
                 $loc  = explode(",", $string);
                 $json['features'][] = array(
                     'type'       => 'Feature',
@@ -97,7 +97,7 @@ class ApiGisController extends Controller
 			$pos 	 = strpos($string, ',');
 			if ($pos)
 			{
-                $value->foto_bangunan = base_url($value->foto_bangunan);
+                $value->foto_bangunan = url($value->foto_bangunan);
                 $loc  = explode(",", $string);
                 $json['features'][] = array(
                     'type'       => 'Feature',
