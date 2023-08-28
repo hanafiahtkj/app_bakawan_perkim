@@ -20,6 +20,9 @@ class ApiGisController extends Controller
             ->leftJoin('setup_rtlh as setup22', 'setup22.id', '=', 'rtlh_kelayakan_rumah.kondisi_lantai')
             ->leftJoin('setup_rtlh as setup24', 'setup24.id', '=', 'rtlh_kelayakan_rumah.jenis_kloset')
             ->select(
+                'rtlh.nama_lengkap',
+                'rtlh.alamat_lengkap',
+                'rtlh_kondisi_rumah.foto_bangunan',
                 'rtlh_kondisi_rumah.jml_penghuni',
                 DB::raw("(rtlh_kondisi_rumah.panjang * rtlh_kondisi_rumah.lebar) as luas_rumah"),
                 'setup18.name as kondisi_atap',
@@ -69,6 +72,9 @@ class ApiGisController extends Controller
             ->leftJoin('setup_rtlh as setup22', 'setup22.id', '=', 'rtlh_kelayakan_rumah.kondisi_lantai')
             ->leftJoin('setup_rtlh as setup24', 'setup24.id', '=', 'rtlh_kelayakan_rumah.jenis_kloset')
             ->select(
+                'rtlh.nama_lengkap',
+                'rtlh.alamat_lengkap',
+                'rtlh_kondisi_rumah.foto_bangunan',
                 'rtlh_kondisi_rumah.jml_penghuni',
                 DB::raw("(rtlh_kondisi_rumah.panjang * rtlh_kondisi_rumah.lebar) as luas_rumah"),
                 'setup18.name as kondisi_atap',
