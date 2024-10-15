@@ -113,4 +113,19 @@ class ApiGisController extends Controller
 
         return response()->json($json);
     }
+
+    public function rtlhRealisasi(Request $request)
+    {
+        $rtlh = DB::table('rtlh')
+            ->leftJoin('indonesia_districts as kec', 'kec.id', '=', 'rtlh.id_kecamatan')
+            ->select(
+                'kec.name as name_kecamatan',
+                DB::raw('count(*) as total')
+            )
+            ->where('rtlh.stts_realisasi', 1)
+            ->groupBy('kec.name')
+            ->get();
+
+        return response()->json($rtlh);
+    }
 }

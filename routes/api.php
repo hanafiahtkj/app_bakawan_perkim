@@ -22,4 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group([ "middleware" => ['static_token']], function() {
     Route::get('geojson/rtlh', [ApiGisController::class, 'rtlh']);
     Route::get('geojson/penerima-bantuan', [ApiGisController::class, 'penerimaBantuan']);
+    Route::get('rtlhRealisasi', [ApiGisController::class, 'rtlhRealisasi']);
 });
