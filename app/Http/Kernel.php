@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'static_token' => \App\Http\Middleware\StaticTokenMiddleware::class,
+        'static_token_rtlh' => \App\Http\Middleware\StaticTokenRtlhMiddleware::class,
     ];
 }
