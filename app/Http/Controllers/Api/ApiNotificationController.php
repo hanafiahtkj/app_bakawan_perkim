@@ -16,7 +16,8 @@ class ApiNotificationController extends Controller
     {
         $adminIds = User::role('Admin')->pluck('id');
 
-        $query = PushNotification::select('title', 'body', DB::raw('MAX(id) as id'))
+        // Kolom `created_at` harus disertakan dalam select
+        $query = PushNotification::select('title', 'body', DB::raw('MAX(id) as id'), DB::raw('MAX(created_at) as created_at'))
             ->whereIn('id_user', $adminIds)
             ->groupBy('title', 'body')
             ->orderByDesc('id');
