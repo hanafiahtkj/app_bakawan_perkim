@@ -43,7 +43,7 @@
 
                 <div class="row stats">
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
-                        <div class="card card-statistic shadow-sm h-100">
+                        <div class="card card-statistic card-hover shadow-sm h-100">
                             <div class="card-body d-flex flex-column justify-content-between p-3">
                                 <div class="d-flex align-items-center">
                                     <div class="icon-stat mr-3">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
-                        <div class="card card-statistic shadow-sm h-100">
+                        <div class="card card-statistic card-hover shadow-sm h-100">
                             <div class="card-body d-flex flex-column justify-content-between p-3">
                                 <div class="d-flex align-items-center">
                                     <div class="icon-stat mr-3">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
-                        <div class="card card-statistic shadow-sm h-100">
+                        <div class="card card-statistic card-hover shadow-sm h-100">
                             <div class="card-body d-flex flex-column justify-content-between p-3">
                                 <div class="d-flex align-items-center">
                                     <div class="icon-stat mr-3">
@@ -442,8 +442,8 @@
                                 <div class="card h-100 border-0">
                                     <div class="card-body">
                                         <div
-                                            class="circle-number mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                            1
+                                            class="circle-number step-1 mb-3 mx-auto d-flex align-items-center justify-content-center">
+                                            <p class="mb-0">1</p>
                                         </div>
                                         <h5 class="font-weight-bold">Persiapan Dokumen</h5>
                                         <p class="text-muted mb-0">Siapkan KTP, KK, Salinan Alas hak, dan foto rumah
@@ -455,8 +455,8 @@
                                 <div class="card h-100 border-0">
                                     <div class="card-body">
                                         <div
-                                            class="circle-number mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                            2
+                                            class="circle-number step-2 mb-3 mx-auto d-flex align-items-center justify-content-center">
+                                            <p class="mb-0">2</p>
                                         </div>
                                         <h5 class="font-weight-bold">Pendaftaran</h5>
                                         <p class="text-muted mb-0">Daftar melalui petugas di kantor kelurahan</p>
@@ -467,8 +467,8 @@
                                 <div class="card h-100 border-0">
                                     <div class="card-body">
                                         <div
-                                            class="circle-number mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                            3
+                                            class="circle-number step-3 mb-3 mx-auto d-flex align-items-center justify-content-center">
+                                            <p class="mb-0">3</p>
                                         </div>
                                         <h5 class="font-weight-bold">Verifikasi</h5>
                                         <p class="text-muted mb-0">Tim verifikator akan melakukan survey dan assessment
@@ -480,8 +480,8 @@
                                 <div class="card h-100 border-0">
                                     <div class="card-body">
                                         <div
-                                            class="circle-number mb-3 mx-auto d-flex align-items-center justify-content-center">
-                                            4
+                                            class="circle-number step-4 mb-3 mx-auto d-flex align-items-center justify-content-center">
+                                            <p class="mb-0">4</p>
                                         </div>
                                         <h5 class="font-weight-bold">Pelaksanaan</h5>
                                         <p class="text-muted mb-0">Jika lolos verifikasi, masuk pertimbangan (menunggu
@@ -562,6 +562,55 @@
                 PADDING: 9PX;
                 BACKGROUND-COLOR: #212c82;
                 BORDER-RADIUS: 10PX;
+            }
+
+            .circle-number {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                color: #fff;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .circle-number p {
+                font-size: 1.5rem;
+                line-height: 1;
+            }
+
+            .step-1 {
+                background-color: #64b5f6;
+                /* Biru muda */
+            }
+
+            .step-2 {
+                background-color: #4db6ac;
+                /* Hijau toska */
+            }
+
+            .step-3 {
+                background-color: #ffb74d;
+                /* Oranye */
+            }
+
+            .step-4 {
+                background-color: #e57373;
+                /* Merah muda */
+            }
+
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .card-hover:hover {
+                transform: scale(1.05);
+                /* Memperbesar elemen 5% */
+                box-shadow: 0 10px 20px rgba(0, 0, 0, .15) !important;
+                /* Bayangan yang lebih besar dan gelap */
+                z-index: 1;
+                /* Menempatkan elemen di atas elemen lain */
             }
         </style>
     </x-slot>
