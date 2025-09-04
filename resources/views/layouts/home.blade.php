@@ -190,8 +190,8 @@
                                 <li class="nav-item"><a href="{{ url('cekbantuan') }}" class="nav-link">Cek DTSEN</a>
                                 </li>
                                 <li class="nav-item"><a href="https://webgis-bjm.vercel.app" class="nav-link">Web
-                                        GIS</a>
-                                    <!-- <li class="nav-item"><a href="#" class="nav-link">About</a></li> -->
+                                        GIS</a></li>
+                                <!-- <li class="nav-item"><a href="#" class="nav-link">About</a></li> -->
                             </ul>
                         </div>
                         <form class="form-inline ml-auto">
@@ -263,6 +263,10 @@
                                     @endforeach
                                 </ul>
                             </li>
+                            <li class="nav-item"><a href="{{ url('cekbantuan') }}" class="nav-link">Cek DTSEN</a>
+                            </li>
+                            <li class="nav-item"><a href="https://webgis-bjm.vercel.app" class="nav-link">Web
+                                    GIS</a></li>
                         </ul>
                     </div>
                 </nav>
