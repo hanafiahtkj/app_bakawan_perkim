@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-md-5 mb-5">
                                 <h1 class="welcome1">Selamat Datang</h1>
-                                <h3 class="lead welcome2"><b>BAKAWAN RTLH - Banjarmasin Aplikasi Wadah Pendataan Rumah
+                                <h3 class="lead bg-bluee"><b>BAKAWAN RTLH - Banjarmasin Aplikasi Wadah Pendataan Rumah
                                         Tidak Layak Huni</b></h3>
                                 <div class="mt-4">
                                     @if (Route::has('login'))
@@ -42,16 +42,16 @@
                 </div>
 
                 <div class="row stats">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
                         <div class="card card-statistic shadow-sm h-100">
                             <div class="card-body d-flex flex-column justify-content-between p-3">
                                 <div class="d-flex align-items-center">
                                     <div class="icon-stat mr-3">
                                         <i class="fas fa-home fa-2x text-primary"></i>
                                     </div>
-                                    <div class="text-right">
+                                    <div class="text-right w-100">
                                         <h6 class="mb-0 text-muted text-uppercase">Total Kasus RTLH</h6>
-                                        <h3 class="mb-0 text-primary">{{ $tot_diterima }}</h3>
+                                        <h3 class="mb-0 text-primary">{{ $tot_diterima + 3470 }}</h3>
                                     </div>
                                 </div>
                                 <div class="mt-2">
@@ -60,14 +60,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
                         <div class="card card-statistic shadow-sm h-100">
                             <div class="card-body d-flex flex-column justify-content-between p-3">
                                 <div class="d-flex align-items-center">
                                     <div class="icon-stat mr-3">
                                         <i class="fas fa-check-circle fa-2x text-success"></i>
                                     </div>
-                                    <div class="text-right">
+                                    <div class="text-right w-100">
                                         <h6 class="mb-0 text-muted text-uppercase">Total Perbaikan Rumah</h6>
                                         <h3 class="mb-0 text-success">{{ $tot_realisasi }}</h3>
                                     </div>
@@ -78,14 +78,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mb-4">
                         <div class="card card-statistic shadow-sm h-100">
                             <div class="card-body d-flex flex-column justify-content-between p-3">
                                 <div class="d-flex align-items-center">
                                     <div class="icon-stat mr-3">
                                         <i class="fas fa-exclamation-triangle fa-2x text-danger"></i>
                                     </div>
-                                    <div class="text-right">
+                                    <div class="text-right w-100">
                                         <h6 class="mb-0 text-muted text-uppercase">Tanpa Akses WC</h6>
                                         <h3 class="mb-0 text-danger">{{ $tot_tanpa_wc }}</h3>
                                     </div>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
+                    {{-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
                         <div class="card card-statistic shadow-sm h-100">
                             <div class="card-body d-flex flex-column justify-content-between p-3">
                                 <div class="d-flex align-items-center">
@@ -113,7 +113,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 {{-- <div class="row">
@@ -339,9 +339,9 @@
                     </div>
                 </div>
 
-                <section class="p-2 pt-4 welcome2">
+                <section class="p-2 pt-4 bg-bluee">
                     <div class="container">
-                        <h3 class="text-center font-weight-bold mb-2">Informasi Program Bantuan RTLH</h3>
+                        <h3 class="text-center font-weight-bold mb-2 text-white">Informasi Program Bantuan RTLH</h3>
                         <p class="text-center text-muted mb-4">Semua yang perlu Anda ketahui tentang program bantuan
                             rumah tidak layak huni</p>
                         <div class="row justify-content-center">
@@ -432,9 +432,9 @@
                     </div>
                 </section>
 
-                <section class="px-2 pt-4 welcome2 mt-4">
+                <section class="px-2 pt-4 bg-bluee mt-4">
                     <div class="container">
-                        <h3 class="text-center font-weight-bold mb-2">Alur Pendaftaran</h3>
+                        <h3 class="text-center font-weight-bold mb-2 text-white">Alur Pendaftaran</h3>
                         <p class="text-center text-muted mb-4">Ikuti langkah-langkah berikut untuk mendaftar program
                             RTLH</p>
                         <div class="row text-center">
@@ -555,6 +555,13 @@
 
             .icon-file-warning i {
                 font-size: 3rem;
+            }
+
+            .bg-bluee {
+
+                PADDING: 9PX;
+                BACKGROUND-COLOR: #212c82;
+                BORDER-RADIUS: 10PX;
             }
         </style>
     </x-slot>
