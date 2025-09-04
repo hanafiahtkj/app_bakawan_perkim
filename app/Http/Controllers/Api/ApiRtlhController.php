@@ -15,12 +15,12 @@ class ApiRtlhController extends Controller
         $query = DB::table('rtlh');
 
         $total = [
-            'tot_all'       => $query->count(),
-            'tot_menunggu'  => $query->where('rtlh.stts_verif', null)->count(),
-            'tot_diterima'  => $query->where('rtlh.stts_verif', 1)->count(),
-            'tot_ditolak'   => $query->where('rtlh.stts_verif', 2)->count(),
-            'tot_perbaikan' => $query->where('rtlh.stts_verif', 3)->count(),
-            'tot_realisasi' => $query->where('rtlh.stts_realisasi', 1)->count(),
+            'tot_all'       => DB::table('rtlh')->count(),
+            'tot_menunggu'  => DB::table('rtlh')->where('rtlh.stts_verif', null)->count(),
+            'tot_diterima'  => DB::table('rtlh')->where('rtlh.stts_verif', 1)->count(),
+            'tot_ditolak'   => DB::table('rtlh')->where('rtlh.stts_verif', 2)->count(),
+            'tot_perbaikan' => DB::table('rtlh')->where('rtlh.stts_verif', 3)->count(),
+            'tot_realisasi' => DB::table('rtlh')->where('rtlh.stts_realisasi', 1)->count(),
         ];
 
         return response()->json($total);
