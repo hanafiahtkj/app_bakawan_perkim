@@ -187,7 +187,11 @@
                                         @endforeach
                                     </div>
                                 </li>
-                                <!-- <li class="nav-item"><a href="#" class="nav-link">About</a></li> -->
+                                <li class="nav-item"><a href="{{ url('cekbantuan') }}" class="nav-link">Cek DTSEN</a>
+                                </li>
+                                <li class="nav-item"><a href="https://webgis-bjm.vercel.app" class="nav-link">Web
+                                        GIS</a>
+                                    <!-- <li class="nav-item"><a href="#" class="nav-link">About</a></li> -->
                             </ul>
                         </div>
                         <form class="form-inline ml-auto">
@@ -271,10 +275,10 @@
           border-radius: 10px;
       ">
                     <div class="footer-left">
-                        Copyright &copy; Dinas Perumahan dan Kawasan Permukiman Kota Banjarmasin 2021
+                        Copyright &copy; Dinas Perumahan Rakyat dan Kawasan Permukiman Kota Banjarmasin 2021
                     </div>
                     <div class="footer-right">
-                        1.0.0
+                        1.0.1
                     </div>
                 </footer>
             </div>
@@ -285,7 +289,7 @@
         <div class="container">
             <div class="text-center">
                 <!-- Copyright &copy; BAKAWAN-RTLH 2021 -->
-                Copyright &copy; Dinas Perumahan dan Kawasan Permukiman Kota Banjarmasin 2021
+                Copyright &copy; Dinas Perumahan Rakyat dan Kawasan Permukiman Kota Banjarmasin 2021
             </div>
             <!-- <div class="footer-right">
           1.0.0

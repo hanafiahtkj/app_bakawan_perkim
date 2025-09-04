@@ -39,4 +39,9 @@ class PageController extends Controller
     {
         return view('panduan');
     }
+
+    public function cekbantuan()
+    {
+        return view('cekbantuan');
+    }
 }

@@ -373,7 +373,7 @@
                                                     </p>
                                                 </div>
                                             </li>
-                                            <li class="d-flex align-items-start">
+                                            {{-- <li class="d-flex align-items-start">
                                                 <div class="mr-3">
                                                     <i class="fas fa-check-circle text-success mt-1"></i>
                                                 </div>
@@ -381,7 +381,7 @@
                                                     <h6 class="mb-0">Perbaikan Infrastruktur</h6>
                                                     <p class="text-muted mb-0 small">Akses jalan lingkungan</p>
                                                 </div>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                     </div>
                                 </div>

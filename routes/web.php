@@ -54,6 +54,8 @@ Route::get('/video', [PageController::class, 'video']);
 
 Route::get('/post/{id}', [PageController::class, 'post']);
 
+Route::get('/cekbantuan', [PageController::class, 'cekbantuan']);
+
 // ===================== //
 
 Route::group(['middleware' => ['auth']], function () {
