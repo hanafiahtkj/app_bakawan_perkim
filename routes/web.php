@@ -42,6 +42,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 
+Route::get('/check-status', [HomeController::class, 'checkStatus']);
+
 Route::get('/sarat-dan-kententuan', [PageController::class, 'saratKetentuan']);
 
 Route::get('/gallery', [PageController::class, 'gallery']);
