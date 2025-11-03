@@ -24,20 +24,40 @@ class AdminProfileController extends AdminController
     public function update(Request $request)
     {
         $id = $request->id;
-        $this->validate($request, [
+        $user = User::find($id);
+
+        $rules = [
             'name' => 'required',
             'username'   => 'required|unique:users,username,'.$id,
-            //'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:password_confirmation',
             'foto'       => 'mimes:jpg,bmp,png',
-            //'roles' => 'required'
-        ]);
+        ];
+
+        // Hanya validasi password jika ada input password baru
+        if (!empty($request->input('password'))) {
+            $rules['password'] = 'required|min:8|same:password_confirmation';
+            $rules['old_password'] = [
+                'required',
+                // Rule untuk memeriksa kecocokan password lama
+                function ($attribute, $value, $fail) use ($user) {
+                    if (!Hash::check($value, $user->password)) {
+                        $fail('Password lama tidak cocok.');
+                    }
+                },
+            ];
+        }
+
+        $this->validate($request, $rules);
 
         $input = $request->all();
-        if(!empty($input['password'])){
+
+        // Hapus password lama dari input karena tidak disimpan
+        $input = Arr::except($input, array('old_password'));
+
+        if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));
+        } else {
+            // Jika password baru kosong, hapus password dari input agar tidak mengganti password
+            $input = Arr::except($input, array('password', 'password_confirmation'));
         }
 
         // Upload foto bangunan
@@ -51,10 +71,9 @@ class AdminProfileController extends AdminController
             $input['foto'] = $upload_path . $imageName;
         }
 
-        $user = User::find($id);
         $user->update($input);
 
         return redirect()->route('admin.profile')
-                        ->with('success','User updated successfully');
+            ->with('success','User updated successfully');
     }
 }

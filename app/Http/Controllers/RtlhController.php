@@ -409,6 +409,8 @@ class RtlhController extends Controller
 
     public function show($id)
     {
+        $this->_checkAuthorization($id);
+
         $rtlh = DB::table('rtlh')
             ->select(
                 'rtlh.*',
@@ -470,6 +472,8 @@ class RtlhController extends Controller
 
     public function edit($id)
     {
+        $this->_checkAuthorization($id);
+
         $rtlh = DB::table('rtlh')
             ->select(
                 'rtlh.*',
@@ -964,5 +968,16 @@ class RtlhController extends Controller
         return response()->json([
             'validasi' => $filter_validasi,
         ]);
+    }
+
+    function _checkAuthorization($rtlhId)
+    {
+        $user = Auth::user();
+        if ($user->hasRole(['General', 'Konsultan'])) {
+            $rtlh = Rtlh::find($rtlhId);
+            if ($rtlh && $rtlh->id_user != $user->id) {
+                abort(403, 'Anda tidak memiliki akses untuk melihat data ini.');
+            }
+        }
     }
 }

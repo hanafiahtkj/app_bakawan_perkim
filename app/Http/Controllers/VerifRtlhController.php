@@ -25,6 +25,8 @@ class VerifRtlhController extends Controller
 {
     public function show($id)
     {
+        $this->_checkAuthorization($id);
+
         $rtlh = DB::table('rtlh')
             ->select('rtlh.*', DB::raw("DATE_FORMAT(rtlh.tgl_lahir, '%d/%m/%Y') as tgl_lahir2"))
             ->where('id', $id)->first();
@@ -454,5 +456,16 @@ class VerifRtlhController extends Controller
                 'body'  => $body,
             ])
             ->send();
+    }
+
+    function _checkAuthorization($rtlhId)
+    {
+        $user = Auth::user();
+        if ($user->hasRole(['General', 'Konsultan'])) {
+            $rtlh = Rtlh::find($rtlhId);
+            if ($rtlh && $rtlh->id_user != $user->id) {
+                abort(403, 'Anda tidak memiliki akses untuk melihat data ini.');
+            }
+        }
     }
 }
